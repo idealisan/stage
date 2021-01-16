@@ -1,767 +1,1720 @@
 <!doctype html>
 <html>
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>论文笔记</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
-.mac-os-11 { --title-bar-height:28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
-
-
-
-@media only screen {
-
-
-
-/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
-
-/* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
-
-/* =========== */
-
-:root {
-  --active-file-bg-color: #dadada;
-  --active-file-bg-color: rgba(32, 43, 51, 0.63);
-  --active-file-text-color: white;
-  --bg-color: #f3f2ee;
-  --text-color: #1f0909;
-  --control-text-color: #444;
-  --rawblock-edit-panel-bd: #e5e5e5;
-
-  --select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
-
-pre {
-  --select-text-bg-color: #36284e;
-  --select-text-font-color: #fff;
-}
-
-html {
-  font-size: 16px;
-}
-
-ty-footer{
-  background-color:f0f0f0;
-}
-
-html, body {
-  background-color: #cdd7e6;
-  font-family: "PT Serif", 'Times New Roman', Times, serif;
-  color: #1f0909;
-  line-height: 1.5em;
-  height: 100%;
-
-}
-
-
-#write {
-padding:40px;
-min-height: 100%;
-}
-/*
-@media (max-width: 36em) {
-   #write {
-     padding-left: 1em;
-      padding-right: 1em;
-   }
-}
-*/
-
-#write {
-  box-shadow:0px 0px 8px #666666;
-  max-width: 45em;
-  background-color:#FFFFFF;
-}
-
-ol li {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-ul li {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* styles */
-
-/* ====== */
-
-/* headings */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
-h1 {
-  font-size: 1.875em;
-  /*30 / 16*/
-  line-height: 1.6em;
-  /* 48 / 30*/
-  margin-top: 2em;
-}
-h2,
-h3 {
-  font-size: 1.3125em;
-  /*21 / 16*/
-  line-height: 1.15;
-  /*24 / 21*/
-  margin-top: 2.285714em;
-  /*48 / 21*/
-  margin-bottom: 1.15em;
-  /*24 / 21*/
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.125em;
-  /*18 / 16*/
-  margin-top: 2.67em;
-  /*48 / 18*/
-}
-h5,
-h6 {
-  font-size: 1em;
-  /*16*/
-}
-h1 {
-  border-bottom: 1px solid;
-  margin-bottom: 1.875em;
-  padding-bottom: 0.8125em;
-}
-/* links */
-
-a {
-  text-decoration: none;
-  color: #065588;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-/* block spacing */
-
-p,
-blockquote,
-.md-fences {
-  margin-bottom: 1.5em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1.5em;
-}
-/* blockquote */
-
-blockquote {
-  font-style: italic;
-  border-left: 5px solid;
-  margin-left: 2em;
-  padding-left: 1em;
-}
-/* lists */
-
-ul,
-ol {
-  margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,.md-before, .md-after {
-  color:#999;
-}
-
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
-}
-table tr th:last-child,
-table tr td:last-child {
-    margin-bottom: 0;
-}
-
-code,
-.md-fences {
-  background-color: #dadada;
-}
-
-code {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
-.md-fences {
-  margin-left: 2em;
-  margin-bottom: 3em;
-  padding-left: 1ch;
-  padding-right: 1ch;
-}
-
-pre,
-code,
-tt {
-  font-size: .875em;
-  line-height: 1.714285em;
-}
-/* some fixes */
-
-h1 {
-  line-height: 1.3em;
-  font-weight: normal;
-  margin-bottom: 0.5em;
-}
-
-p + ul,
-p + ol{
-  margin-top: .5em;
-}
-
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-  margin-top: .5em;
-}
-
-li > ul,
-li > ol {
-  margin-top: inherit;
-  margin-bottom: 0;
-}
-
-li ol>li {
-  list-style-type: lower-alpha;
-}
-
-li li ol>li{
-  list-style-type: lower-roman;
-}
-
-h2,
-h3 {
-  margin-bottom: .75em;
-}
-hr {
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid;
-  border-left: none;
-}
-h1 {
-  border-color: #c5c5c5;
-}
-blockquote {
-  border-color: #bababa;
-  color: #656565;
-}
-
-blockquote ul,
-blockquote ol {
-  margin-left:0;
-}
-
-.ty-table-edit {
-  background-color: transparent;
-}
-thead {
-  background-color: #dadada;
-}
-tr:nth-child(even) {
-  background: #e8e7e7;
-}
-hr {
-  border-color: #c5c5c5;
-}
-.task-list{
-  padding-left: 1rem;
-}
-
-.md-task-list-item {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.md-task-list-item > input:before {
-  content: '\221A';
-  display: inline-block;
-  width: 1.25rem;
-    height: 1.6rem;
-  vertical-align: middle;
-  text-align: center;
-  color: #ddd;
-  background-color: #F3F2EE;
-}
-
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before{
-  color: inherit;
-}
-
-#write pre.md-meta-block {
-  min-height: 1.875rem;
-  color: #555;
-  border: 0px;
-  background: transparent;
-  margin-top: -4px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.md-image>.md-meta {
-  color: #9B5146;
-}
-
-.md-image>.md-meta{
-  font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
-}
-
-
-#write>h3.md-focus:before{
-  left: -1.5rem;
-  color:#999;
-  border-color:#999;
-}
-#write>h4.md-focus:before{
-  left: -1.5rem;
-  top: .25rem;
-  color:#999;
-  border-color:#999;
-}
-#write>h5.md-focus:before{
-  left: -1.5rem;
-  top: .0.3125rem;
-  color:#999;
-  border-color:#999;
-}
-#write>h6.md-focus:before{
-  left: -1.5rem;
-  top: 0.3125rem;
-  color:#999;
-  border-color:#999;
-}
-
-.md-toc:focus .md-toc-content{
-  margin-top: 19px;
-}
-
-.md-toc-content:empty:before{
-  color: #065588;
-}
-.md-toc-item {
-  color: #065588;
-}
-#write div.md-toc-tooltip {
-  background-color: #f3f2ee;
-}
-
-#typora-sidebar {
-  background-color: #dde7f6;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
-
-.pin-outline #typora-sidebar {
-  /* background: inherit; */
-  box-shadow: none;
-  border-right: 1px solid;
-}
-
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-  border-left:1px solid;
-}
-
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
-
-.typora-node .outline-item:hover {
-    border-right: 28px solid #dadada;
-}
-
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size:14px;
-  top: 1px;
-}
-
-.outline-expander:hover:before,
-.outline-item-open>.outline-item>.outline-expander:before {
-  content: "\f0d7";
-}
-
-.modal-content {
-  background-color: #f3f2ee;
-}
-
-.auto-suggest-container ul li {
-  list-style-type: none;
-}
-
-/** UI for electron */
-
-.megamenu-menu,
-#top-titlebar, #top-titlebar *,
-.megamenu-content {
-  background: #f3f2ee;
-  color: #1f0909;
-}
-
-.megamenu-menu-header {
-  border-bottom: 1px dashed #202B33;
-}
-
-.megamenu-menu {
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-header, .context-menu, .megamenu-content, footer {
-  font-family: "PT Serif", 'Times New Roman', Times, serif;
-    color: #1f0909;
-}
-
-#megamenu-back-btn {
-  color: #1f0909;
-  border-color: #1f0909;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before {
-  color: #1f0909;
-}
-
-.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
-  color: inherit;
-  background-color: #e8e7df;
-}
-
-.long-btn:hover {
-  background-color: #e8e7df;
-}
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-    background-color: transparent !important;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-    color: inherit;
-}
-
-.megamenu-menu-panel .btn {
-  background-color: #D2D1D1;
-}
-
-.btn-default {
-  background-color: transparent;
-}
-
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-  background: #c7c5c5;
-}
-
-#typora-quick-open {
-    background-color: inherit;
-}
-
-.md-diagram-panel {
-  margin-top: 8px;
-}
-
-.file-list-item-file-name {
-  font-weight: initial;
-}
-
-.file-list-item-summary {
-  opacity: 1;
-}
-
-.file-list-item {
-  color: #777;
-}
-
-.file-list-item.active {
-  background-color: inherit;
-  color: black;
-}
-
-.ty-side-sort-btn.active {
-  background-color: inherit;
-}
-
-.file-list-item.active .file-list-item-file-name  {
-  font-weight: bold;
-}
-
-.file-list-item{
-    opacity:1 !important;
-}
-
-.file-library-node.active>.file-node-background{
-  background-color: rgba(32, 43, 51, 0.63);
-  background-color: var(--active-file-bg-color);
-}
-
-.file-tree-node.active>.file-node-content{
-  color: white;
-  color: var(--active-file-text-color);
-}
-
-.md-task-list-item>input {
-  margin-left: -1.6em;
-  margin-top: calc(1rem - 12px);
-}
-
-input {
-  border: 1px solid #aaa;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover, 
-.megamenu-menu-header:focus {
-  color: inherit;
-}
-
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
-}
-
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong  {
-  font-weight: 760;
-}
-
-.ty-preferences .btn-default {
-  background: transparent;
-}
-
-.ty-preferences .window-header {
-  border-bottom: 1px dashed #202B33;
-  box-shadow: none;
-}
-  
-}
-
-
- :root {--mermaid-font-zoom:1.25em ;}  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
-</style>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>sample</title>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+        tab-size: 4;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        user-select: none;
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+        background-color: #dadada;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+        vertical-align: initial;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none 0s ease 0s;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+        opacity: 0.3 !important;
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-require-zoom-fix foreignobject {
+        font-size: var(--mermaid-font-zoom);
+    }
+
+
+    @media only screen {
+
+
+        /* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+        /* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
+        /* =========== */
+        :root {
+            --active-file-bg-color: #dadada;
+            --active-file-bg-color: rgba(32, 43, 51, 0.63);
+            --active-file-text-color: white;
+            --bg-color: #f3f2ee;
+            --text-color: #1f0909;
+            --control-text-color: #444;
+            --rawblock-edit-panel-bd: #e5e5e5;
+
+            --select-text-bg-color: rgba(32, 43, 51, 0.63);
+            --select-text-font-color: white;
+        }
+
+        pre {
+            --select-text-bg-color: #36284e;
+            --select-text-font-color: #fff;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        ty-footer {
+            background-color: f0f0f0;
+        }
+
+        html, body {
+            background-color: #cdd7e6;
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+            line-height: 1.5em;
+            height: 100%;
+
+        }
+
+
+        #write {
+            padding: 40px;
+            min-height: 100%;
+        }
+
+        /*
+        @media (max-width: 36em) {
+           #write {
+             padding-left: 1em;
+              padding-right: 1em;
+           }
+        }
+        */
+        #write {
+            box-shadow: 0px 0px 8px #666666;
+            max-width: 45em;
+            background-color: #FFFFFF;
+        }
+
+        ol li {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+
+        ul li {
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* styles */
+        /* ====== */
+        /* headings */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.875em;
+            /*30 / 16*/
+            line-height: 1.6em;
+            /* 48 / 30*/
+            margin-top: 2em;
+        }
+
+        h2,
+        h3 {
+            font-size: 1.3125em;
+            /*21 / 16*/
+            line-height: 1.15;
+            /*24 / 21*/
+            margin-top: 2.285714em;
+            /*48 / 21*/
+            margin-bottom: 1.15em;
+            /*24 / 21*/
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 1.125em;
+            /*18 / 16*/
+            margin-top: 2.67em;
+            /*48 / 18*/
+        }
+
+        h5,
+        h6 {
+            font-size: 1em;
+            /*16*/
+        }
+
+        h1 {
+            border-bottom: 1px solid;
+            margin-bottom: 1.875em;
+            padding-bottom: 0.8125em;
+        }
+
+        /* links */
+        a {
+            text-decoration: none;
+            color: #065588;
+        }
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+        }
+
+        /* block spacing */
+        p,
+        blockquote,
+        .md-fences {
+            margin-bottom: 1.5em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 1.5em;
+        }
+
+        /* blockquote */
+        blockquote {
+            font-style: italic;
+            border-left: 5px solid;
+            margin-left: 2em;
+            padding-left: 1em;
+        }
+
+        /* lists */
+        ul,
+        ol {
+            margin: 0 0 1.5em 1.5em;
+        }
+
+        /* tables */
+        .md-meta, .md-before, .md-after {
+            color: #999;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border-top: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr th:last-child,
+        table tr td:last-child {
+            margin-bottom: 0;
+        }
+
+        code,
+        .md-fences {
+            background-color: #dadada;
+        }
+
+        code {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .md-fences {
+            margin-left: 2em;
+            margin-bottom: 3em;
+            padding-left: 1ch;
+            padding-right: 1ch;
+        }
+
+        pre,
+        code,
+        tt {
+            font-size: .875em;
+            line-height: 1.714285em;
+        }
+
+        /* some fixes */
+        h1 {
+            line-height: 1.3em;
+            font-weight: normal;
+            margin-bottom: 0.5em;
+        }
+
+        p + ul,
+        p + ol {
+            margin-top: .5em;
+        }
+
+        h3 + ul,
+        h4 + ul,
+        h5 + ul,
+        h6 + ul,
+        h3 + ol,
+        h4 + ol,
+        h5 + ol,
+        h6 + ol {
+            margin-top: .5em;
+        }
+
+        li > ul,
+        li > ol {
+            margin-top: inherit;
+            margin-bottom: 0;
+        }
+
+        li ol > li {
+            list-style-type: lower-alpha;
+        }
+
+        li li ol > li {
+            list-style-type: lower-roman;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: .75em;
+        }
+
+        hr {
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid;
+            border-left: none;
+        }
+
+        h1 {
+            border-color: #c5c5c5;
+        }
+
+        blockquote {
+            border-color: #bababa;
+            color: #656565;
+        }
+
+        blockquote ul,
+        blockquote ol {
+            margin-left: 0;
+        }
+
+        .ty-table-edit {
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: #dadada;
+        }
+
+        tr:nth-child(even) {
+            background: #e8e7e7;
+        }
+
+        hr {
+            border-color: #c5c5c5;
+        }
+
+        .task-list {
+            padding-left: 1rem;
+        }
+
+        .md-task-list-item {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        .md-task-list-item > input:before {
+            content: '\221A';
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.6rem;
+            vertical-align: middle;
+            text-align: center;
+            color: #ddd;
+            background-color: #F3F2EE;
+        }
+
+        .md-task-list-item > input:checked:before,
+        .md-task-list-item > input[checked]:before {
+            color: inherit;
+        }
+
+        #write pre.md-meta-block {
+            min-height: 1.875rem;
+            color: #555;
+            border: 0px;
+            background: transparent;
+            margin-top: -4px;
+            margin-left: 1em;
+            margin-top: 1em;
+        }
+
+        .md-image > .md-meta {
+            color: #9B5146;
+        }
+
+        .md-image > .md-meta {
+            font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+        }
+
+
+        #write > h3.md-focus:before {
+            left: -1.5rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h4.md-focus:before {
+            left: -1.5rem;
+            top: .25rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h5.md-focus:before {
+            left: -1.5rem;
+            top: .0 .3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h6.md-focus:before {
+            left: -1.5rem;
+            top: 0.3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        .md-toc:focus .md-toc-content {
+            margin-top: 19px;
+        }
+
+        .md-toc-content:empty:before {
+            color: #065588;
+        }
+
+        .md-toc-item {
+            color: #065588;
+        }
+
+        #write div.md-toc-tooltip {
+            background-color: #f3f2ee;
+        }
+
+        #typora-sidebar {
+            background-color: #dde7f6;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+        }
+
+        .pin-outline #typora-sidebar {
+            /* background: inherit; */
+            box-shadow: none;
+            border-right: 1px solid;
+        }
+
+        .pin-outline #typora-sidebar:hover .outline-title-wrapper {
+            border-left: 1px solid;
+        }
+
+        .outline-item:hover {
+            background-color: #dadada;
+            border-left: 28px solid #dadada;
+            border-right: 18px solid #dadada;
+        }
+
+        .typora-node .outline-item:hover {
+            border-right: 28px solid #dadada;
+        }
+
+        .outline-expander:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            font-size: 14px;
+            top: 1px;
+        }
+
+        .outline-expander:hover:before,
+        .outline-item-open > .outline-item > .outline-expander:before {
+            content: "\f0d7";
+        }
+
+        .modal-content {
+            background-color: #f3f2ee;
+        }
+
+        .auto-suggest-container ul li {
+            list-style-type: none;
+        }
+
+        /** UI for electron */
+        .megamenu-menu,
+        #top-titlebar, #top-titlebar *,
+        .megamenu-content {
+            background: #f3f2ee;
+            color: #1f0909;
+        }
+
+        .megamenu-menu-header {
+            border-bottom: 1px dashed #202B33;
+        }
+
+        .megamenu-menu {
+            box-shadow: none;
+            border-right: 1px dashed;
+        }
+
+        header, .context-menu, .megamenu-content, footer {
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+        }
+
+        #megamenu-back-btn {
+            color: #1f0909;
+            border-color: #1f0909;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title:before {
+            color: #1f0909;
+        }
+
+        .megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+            color: inherit;
+            background-color: #e8e7df;
+        }
+
+        .long-btn:hover {
+            background-color: #e8e7df;
+        }
+
+        #recent-file-panel tbody tr:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+            color: inherit;
+        }
+
+        .megamenu-menu-panel .btn {
+            background-color: #D2D1D1;
+        }
+
+        .btn-default {
+            background-color: transparent;
+        }
+
+        .typora-sourceview-on #toggle-sourceview-btn,
+        .ty-show-word-count #footer-word-count {
+            background: #c7c5c5;
+        }
+
+        #typora-quick-open {
+            background-color: inherit;
+        }
+
+        .md-diagram-panel {
+            margin-top: 8px;
+        }
+
+        .file-list-item-file-name {
+            font-weight: initial;
+        }
+
+        .file-list-item-summary {
+            opacity: 1;
+        }
+
+        .file-list-item {
+            color: #777;
+        }
+
+        .file-list-item.active {
+            background-color: inherit;
+            color: black;
+        }
+
+        .ty-side-sort-btn.active {
+            background-color: inherit;
+        }
+
+        .file-list-item.active .file-list-item-file-name {
+            font-weight: bold;
+        }
+
+        .file-list-item {
+            opacity: 1 !important;
+        }
+
+        .file-library-node.active > .file-node-background {
+            background-color: rgba(32, 43, 51, 0.63);
+            background-color: var(--active-file-bg-color);
+        }
+
+        .file-tree-node.active > .file-node-content {
+            color: white;
+            color: var(--active-file-text-color);
+        }
+
+        .md-task-list-item > input {
+            margin-left: -1.6em;
+            margin-top: calc(1rem - 12px);
+        }
+
+        input {
+            border: 1px solid #aaa;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title,
+        .megamenu-menu-header:hover,
+        .megamenu-menu-header:focus {
+            color: inherit;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+        }
+
+        /* https://github.com/typora/typora-issues/issues/2046 */
+        .os-windows-7 strong,
+        .os-windows-7 strong {
+            font-weight: 760;
+        }
+
+        .ty-preferences .btn-default {
+            background: transparent;
+        }
+
+        .ty-preferences .window-header {
+            border-bottom: 1px dashed #202B33;
+            box-shadow: none;
+        }
+
+    }
+
+
+    :root {
+        --mermaid-font-zoom: 1.25em;
+    }
+
+    .typora-export li, .typora-export p, .typora-export, .footnote-line {
+        white-space: normal;
+    }
+    </style>
 </head>
 <body class='typora-export os-windows'>
-<div id='write'  class=''><h2><a name="machine-learning-based-analysis-of-sepsis--review" class="md-header-anchor"></a><span>Machine Learning Based Analysis of Sepsis : Review</span></h2><p><span>基于机器学习的脓毒症分析：回顾</span></p><p><span>本文是一篇总结性的文章，大致描述了脓毒症的特征和十项先前发布的这方面的技术方法，对这一领域的入门有所帮助。</span></p><h2><a name="临床诊断的方法" class="md-header-anchor"></a><span>临床诊断的方法</span></h2><p><span>脓毒症的临床诊断方法有两个：</span></p><ol start='' ><li><span>SIRS，全身性炎症反应综合征</span></li><li><span>qSOFA，快速顺序器官衰竭评估</span></li></ol><p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/image-20210105194809968.png" referrerpolicy="no-referrer" alt="image-20210105194809968"></p><h2><a name="十个技术方法" class="md-header-anchor"></a><span>十个技术方法</span></h2><h3><a name="1用于提取特征的聚类方法2012年" class="md-header-anchor"></a><span>1.用于提取特征的聚类方法，2012年</span></h3><p><span>方法：使用两组数据，有或者没有乳酸水平的特征，使用贝叶斯网络分析两者的关系。</span></p><p><span>结论：排除了心率这个参数；研究中使用了呼吸速率（RR），白细胞（WBC），温度，平均动脉压（MAP），乳酸，住院天数（LOS）和败血症发生率（SO）；结论是乳酸水平可以预测SIRS标准。</span></p><p><span>数据来源：不详</span></p><h3><a name="2图计算方法adapdbn2016" class="md-header-anchor"></a><span>2.图计算方法AdapDBN，2016</span></h3><p><span>使用动态贝叶斯网络捕捉脓毒症风险因素。</span></p><p><span>用于构建AdapDBN的数据： Physician’s knowledge, published clinical research, epidemiological status and patient’s data</span></p><p><span>根据患者动迁状态动态调整筛选频率。</span></p><p><span>处理initial sepsis, severe sepsis and septic shock三种情况。</span></p><p><span>缩短症状检测时间；改善治疗效果。</span></p><p><span>数据源：不详</span></p><h3><a name="3因果依赖图2016" class="md-header-anchor"></a><span>3.因果依赖图，2016</span></h3><p><span>数据库：MEDAN，最大的可用的多中心的脓毒症数据库之一。【暂不知公开性】</span></p><p><span>根据：</span></p><ol start='' ><li><span>收治时候的患者状况</span></li><li><span>24h后的状况</span></li><li><span>48h后的状况</span></li></ol><p><span>分成三个集合。主要关注患者的生理指标和个人信息。</span></p><p><span>结论：脓毒症发展的高峰期是患者收治入ICU后的24h左右。</span></p><h3><a name="4使用远程监控方案对门诊败血症做远程检测" class="md-header-anchor"></a><span>4.使用远程监控方案对门诊败血症做远程检测</span></h3><p><span>未提及具体算法，提及的败血症风险指标包括：心率，呼吸频率，温度，血压和可疑感染。</span></p><p><span>生成每日报告并发送给护理人员</span></p><h3><a name="5cfoa-chaotic-fruitfly-optimization）学习策略" class="md-header-anchor"></a><span>5.CFOA （Chaotic Fruitfly Optimization）学习策略</span></h3><p><span>2018年发表了论文提高KELM（内核极限学习机）的性能。</span></p><p><span>使用chaotic population initialization和chaotic local search提高性能。</span></p><p><span>特征选择是通过随机森林完成的，而KELM参数的优化是通过提出的CFOA（具有五重交叉验证）完成的。</span></p><h3><a name="6热成像体温模式" class="md-header-anchor"></a><span>6.热成像体温模式</span></h3><p><span>考虑到外耳或鼻尖与内耳等核心温度之间的温差（ETD）。 他们使用模糊C均值（FCM）聚类算法，将ETD分为不同的聚类。 ETD中从5-6F变为1F的簇代表败血症。 此过程使用热图像作为输入来计算ETD。</span></p><h3><a name="7meta分析2019" class="md-header-anchor"></a><span>7.Meta分析，2019</span></h3><p><span>数据库：MIMIC-III（v.13）</span></p><p><span>考虑了对败血症进行分类的金标准，并针对特异性，敏感性，阳性和阴性似然比和诊断奇数比对这些标准中的每一个做出了结论</span></p><p><span>将不同的预测模型（例如InSight，SVM，ApeX，深度神经网络和Logistic回归）用于SIRS，ICD-9，ICD-10等不同的标准</span></p><p><span>结论：机器学习技术的强大预测性能可以改善败血症的诊断，从而降低医院的死亡率。</span></p><h3><a name="8名为ros的脓毒症筛选工具2019" class="md-header-anchor"></a><span>8.名为“RoS”的脓毒症筛选工具，2019</span></h3><p><span>诊断方法：比较SIRS、SOFA、qSOFA、MEWS和NEWS等之后，使用的是qSOFA</span></p><p><span>数据：49个城市社区医院急诊科的22个月成人患者的电子健康记录数据</span></p><p><span>方法：使用Rhee临床监测标准；特征选择过程的三个阶段被用作对败血症筛选的现有模型的评价，与主题专家的协商以及监督机器学习方法的梯度增强方法。在这项回顾性研究中，RoS评分比推荐的常规基准筛查工具更及时且与众不同。</span></p><h3><a name="9层次分析方法2019" class="md-header-anchor"></a><span>9.层次分析方法，2019</span></h3><p><span>数据描述：连续的，高频率的数据</span></p><p><span>对高风险患者使用生理体征检测的数据（每分钟）；使用Heart rate (HR), non invasive blood pressure (BP), temperature, respiratory rate (RR) and white blood cell count (WBC) 做二分类，这些特征被用于持续预测发生脓毒症的可能性；使用了一种两层方法，每层有不同的滑动时间窗口大小。第一层是30，60，120min的时间窗口。第二层是10和20min。用滑动时间窗口来收集生理数据流。模型估计的概率被赋予硬阈值0.5，用于预测脓毒症。使用的性能指标是敏感性，特异性，正预测值（PPV），准确性和F2得分。与其他现有的层叠分类器相比，在线特征提取方法是该方法的特色。</span></p><a href="/">Home Page</a></div>
+<div id='write' class=''>
+    <h2>Machine Learning Based Analysis of Sepsis : Review</h2>
+<p>基于机器学习的脓毒症分析：回顾</p>
+<p>本文是一篇总结性的文章，大致描述了脓毒症的特征和十项先前发布的这方面的技术方法，对这一领域的入门有所帮助。</p>
+<h2>临床诊断的方法</h2>
+<p>脓毒症的临床诊断方法有两个：</p>
+<ol>
+<li>SIRS，全身性炎症反应综合征
+</li><li>qSOFA，快速顺序器官衰竭评估
+</li></ol>
+
+
+<p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/image-20210105194809968.png" title="image-20210105194809968" alt="image-20210105194809968" /></p>
+<h2>十项技术方法（9个）</h2>
+<p></p>
+<h3>1.用于提取特征的聚类方法，2012年</h3>
+<p>方法：使用两组数据，有或者没有乳酸水平的特征，使用贝叶斯网络分析两者的关系。</p>
+<p>结论：排除了心率这个参数；研究中使用了呼吸速率（RR），白细胞（WBC），温度，平均动脉压（MAP），乳酸，住院天数（LOS）和败血症发生率（SO）；结论是乳酸水平可以预测SIRS标准。</p>
+<p>数据来源：不详</p>
+<h3>2.图计算方法AdapDBN，2016</h3>
+<p>使用动态贝叶斯网络捕捉脓毒症风险因素。</p>
+<p>用于构建AdapDBN的数据： Physician’s knowledge, published clinical research, epidemiological status and patient’s data</p>
+<p>根据患者当前状态动态调整筛选频率。</p>
+<p>处理initial sepsis, severe sepsis and septic shock三种情况。</p>
+<p>缩短症状检测时间；改善治疗效果。</p>
+<p>数据源：不详</p>
+<h3>3.因果依赖图，2016</h3>
+<p>数据库：MEDAN，最大的可用的多中心的脓毒症数据库之一。【暂未找到公开访问方法】</p>
+<p>根据：</p>
+<ol>
+<li>收治时候的患者状况
+</li><li>24h后的状况
+</li><li>48h后的状况
+</li></ol>
+
+
+<p>分成三个集合。主要关注患者的生理指标和个人信息。</p>
+<p>结论：脓毒症发展的高峰期是患者收治入ICU后的24h左右。</p>
+<h3>4.使用远程监控方案对门诊败血症做远程检测</h3>
+<p>未提及具体算法，提及的败血症风险指标包括：心率，呼吸频率，温度，血压和可疑感染。</p>
+<p>生成每日报告并发送给护理人员</p>
+<h3>5.CFOA （Chaotic Fruitfly Optimization）学习策略</h3>
+<p>2018年发表了论文提高KELM（内核极限学习机）的性能。</p>
+<p>使用chaotic population initialization和chaotic local search提高性能。</p>
+<p>特征选择是通过随机森林完成的，而KELM参数的优化是通过提出的CFOA（具有五重交叉验证）完成的。</p>
+<h3>6.热成像体温模式</h3>
+<p>考虑到外耳或鼻尖与内耳等核心温度之间的温差（ETD）。 他们使用模糊C均值（FCM）聚类算法，将ETD分为不同的聚类。 ETD中从5-6F变为1F的簇代表败血症。 此过程使用热图像作为输入来计算ETD。</p>
+<h3>7.Meta分析，2019</h3>
+<p>数据库：MIMIC-III（v.13）</p>
+<p>考虑了对败血症进行分类的金标准，并针对特异性，敏感性，阳性和阴性似然比和诊断奇数比对这些标准中的每一个做出了结论</p>
+<p>将不同的预测模型（例如InSight，SVM，ApeX，深度神经网络和Logistic回归）用于SIRS，ICD-9，ICD-10等不同的标准</p>
+<p>结论：机器学习技术的强大预测性能可以改善败血症的诊断，从而降低医院的死亡率。</p>
+<h3>8.名为“RoS”的脓毒症筛选工具，2019</h3>
+<p>诊断方法：比较SIRS、SOFA、qSOFA、MEWS和NEWS等之后，使用的是qSOFA</p>
+<p>数据：49个城市社区医院急诊科的22个月成人患者的电子健康记录数据</p>
+<p>方法：使用Rhee临床监测标准；特征选择过程的三个阶段被用作对败血症筛选的现有模型的评价，与主题专家的协商以及监督机器学习方法的梯度增强方法。在这项回顾性研究中，RoS评分比推荐的常规基准筛查工具更及时且与众不同。</p>
+<h3>9.层次分析方法，2019</h3>
+<p>数据描述：连续的，高频率的数据</p>
+<p>对高风险患者使用生理体征检测的数据（每分钟）；使用Heart rate (HR), non invasive blood pressure (BP), temperature, respiratory rate (RR) and white blood cell count (WBC) 做二分类，这些特征被用于持续预测发生脓毒症的可能性；使用了一种两层方法，每层有不同的滑动时间窗口大小。第一层是30，60，120min的时间窗口。第二层是10和20min。用滑动时间窗口来收集生理数据流。模型估计的概率被赋予硬阈值0.5，用于预测脓毒症。使用的性能指标是敏感性，特异性，正预测值（PPV），准确性和F2得分。与其他现有的层叠分类器相比，在线特征提取方法是该方法的特色。</p>
+<h2>3、Development and Evaluation of a Machine Learning Model for the Early Identification of Patients at Risk for Sepsis</h2>
+<p>Delahanty RJ, Alvarez J, Flynn LM et al , 2018, 33</p>
+<p>Delahanty R J , Alvarez J A , Flynn L M , et al. Development and Evaluation of a Machine Learning Model for the Early Identification of Patients at Risk for Sepsis[J]. Annals of Emergency Medicine, 2019.</p>
+<p><strong>（1）数据集</strong></p>
+<p>来自在22个月内向Tenet Healthcare运营49个城市社区医院急诊科就诊的成年患者的数据（N = 2,759,529），Rhee临床监测标准作为脓毒症的标准定义。54,661（2.0％）个符合Rhee败血症标准</p>
+<p><strong>（2）特征</strong></p>
+<p>217个特征选出13个特征</p>
+<p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/1594107145682-1ac14e12-b63b-4c5b-a382-a7f4c5bb4599.png" title="image.png" alt="image.png" /></p>
+<p>（冲击指数）休克指数=（脉搏率/收缩压）。</p>
+<p>纳入Ros的所有指标：</p>
+<table>
+<tr>
+<th >序号<br/></th>
+<th >1<br/></th>
+<th >2<br/></th>
+<th >3<br/></th>
+<th >4<br/></th>
+<th >5<br/></th>
+<th >6<br/></th>
+<th >7<br/></th>
+<th >8<br/></th>
+<th >9<br/></th>
+<th >10<br/></th>
+<th >11<br/></th>
+<th >12<br/></th>
+<th >13<br/></th>
+<th >14<br/></th>
+<th >15<br/></th>
+<th >16<br/></th>
+<th >17<br/></th>
+<th >18<br/></th>
+<th >19<br/></th>
+<th >20<br/></th>
+<th >21<br/></th>
+<th >22<br/></th>
+<th >23<br/></th>
+<th >24<br/></th>
+<th >25<br/></th>
+<th >26<br/></th>
+<th >27<br/></th>
+<th >28<br/></th>
+<th >29<br/></th>
+<th >30<br/></th>
+<th >31<br/></th>
+<th >32<br/></th>
+<th >33<br/></th>
+<th >34<br/></th>
+<th >35<br/></th>
+<th >36<br/></th>
+<th >37<br/></th>
+<th >38<br/></th>
+<th >39<br/></th>
+<th >40<br/></th>
+<th >41<br/></th>
+<th >42<br/></th>
+<th >43<br/></th>
+<th >44<br/></th>
+<th >45<br/></th>
+<th >46<br/></th>
+<th >47<br/></th>
+<th >48<br/></th>
+<th >49<br/></th>
+<th >50<br/></th>
+<th >51<br/></th>
+<th >52<br/></th>
+<th >53<br/></th>
+<th >54<br/></th>
+<th >55<br/></th>
+<th >56<br/></th>
+</tr>
+<tr>
+<td >FEATURE NAME<br/></td>
+<td >AGE<br/></td>
+<td >DOBUTAMINE (Y/N)</td>
+<td >DOPAMINE (Y/N)</td>
+<td >EPINEPHRINE (Y/N)</td>
+<td >NOREPINEPHRINE (Y/N)</td>
+<td >SYSTOLIC   BP x AGE</td>
+<td >SHOCK   INDEX (HR/SYSTOLIC BP)</td>
+<td >SHCOK   INDEX x AGE</td>
+<td >ANION   GAP<br/></td>
+<td >ALBUMIN<br/></td>
+<td >ALKALINE   PHOSPHATASE</td>
+<td >ASPARTATE   AMINOTRANSFERASE</td>
+<td >BANDS<br/></td>
+<td >BILIRUBIN<br/></td>
+<td >BUN<br/></td>
+<td >CALCIUM<br/></td>
+<td >CREATININE<br/></td>
+<td >GLOMULAR   FILTRATION RATE</td>
+<td >GLUCOSE<br/></td>
+<td >LACTIC   ACID<br/></td>
+<td >LYMPHOCYTE<br/></td>
+<td >MONOCYTE<br/></td>
+<td >NEUTROPHIL<br/></td>
+<td >PLATELET<br/></td>
+<td >WHITE   BLOOD CELL COUNT</td>
+<td >GLASGOW   COMA SCALE<br/></td>
+<td >SUPPLEMENTAL   OXYGEN (Y/N)</td>
+<td >VENTILATOR<br/></td>
+<td >ALTERED   MENTAL STATUS</td>
+<td >"ABSCESS"<br/></td>
+<td >"ACUTE"<br/></td>
+<td >"ALTERED"<br/></td>
+<td >"BACTEREMIA"<br/></td>
+<td >"CELLULITIS"<br/></td>
+<td >"CYSTITIS"<br/></td>
+<td >"DIABETES"<br/></td>
+<td >"FAILURE"<br/></td>
+<td >"LACTIC"<br/></td>
+<td >"LEUKOCYTOSIS"<br/></td>
+<td >"PNA"<br/></td>
+<td >"PNEUMONIA"<br/></td>
+<td >"PYELONEPHRITIS"<br/></td>
+<td >"RESPIRATORY"<br/></td>
+<td >"SEPSIS"<br/></td>
+<td >"SEPTIC"<br/></td>
+<td >"UROSEPSIS"<br/></td>
+<td >"UTI"<br/></td>
+<td >HEART   RATE</td>
+<td >MEAN   ARTERIAL PRESSURE</td>
+<td >RESPIRATORY   RATE</td>
+<td >SYSTTOLIC   BLOOD PRESSURE</td>
+<td >OXYGEN   SATURATION</td>
+<td >TEMPERATURE</td>
+<td >WEIGHT<br/></td>
+<td >HEIGHT<br/></td>
+<td >BMI<br/></td>
+</tr>
+<tr>
+<td >TYPE OF VARIABLE</td>
+<td >Demographic</td>
+<td >Medication<br/></td>
+<td >Medication<br/></td>
+<td >Medication<br/></td>
+<td >Medication<br/></td>
+<td >Engineered Feature<br/></td>
+<td >Engineered<br/></td>
+<td >Engineered<br/></td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result<br/></td>
+<td >Laboratory Result<br/></td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result<br/></td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result</td>
+<td >Laboratory Result<br/></td>
+<td >Neurological Evaluation</td>
+<td >Nursing Documentation<br/></td>
+<td >Nursing Documentation</td>
+<td >Nursing Documentation<br/></td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text- Keyword (ED chief complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Text-Keyword (ED chief   complaint)</td>
+<td >Vital Sign<br/></td>
+<td >Vital Sign<br/></td>
+<td >Vital Sign<br/></td>
+<td >Vital Sign<br/></td>
+<td >Vital Sign<br/></td>
+<td >Vital Sign<br/></td>
+<td >Physiological</td>
+<td >Physiological</td>
+<td >Physiological</td>
+</tr>
+</table>
+
+<p><strong>（3）模型</strong></p>
+<p>特征选择过程分为三个阶段：首先，我们审查了败血症筛选的现有模型；第二，我们咨询了当地主题专家；第三，我们使用了一种称为梯度提升的有监督机器学习。前两个阶段产生了由56个潜在模型输入组成的功能集，包括实验室结果，生命体征，人口统计学，所用药物，护理文档以及从ED首席投诉中摘录的关键词的子集。</p>
+<h4>基准模型、特征选择、xgboost阈值</h4>
+<p>梯度提升树模型：总共有217个特征被输入到有监督的机器学习特征选择过程中，迭代剔除增益最低的特征，知道auc大幅下降。</p>
+<p>最终的RoS评分模型（xgboost阈值）保留了13个特征</p>
+<p><strong>（4）结果</strong></p>
+<p>在所有时间阈值（接收器工作特性曲线下的区域0.93至0.97）下，RoS评分是最有区别的筛选工具。与次优判别基准（顺序器官衰竭评估）相比，RoS的敏感度（1小时的67.7％对49.2％，24小时的84.6％对80.4％）明显更精确（1小时和27.6％对12.2％，并且28.8％比24小时的11.4％）。qSOFA的灵敏度相对较低（1小时时为3.7％，24小时时为23.5％）。</p>
+<p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/1594107211158-9ebdabab-1705-4fd3-aa2f-bb60e75f5d1a.png" title="image.png" alt="image.png" /></p>
+<p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/1594107259666-2d9ccf4a-e842-499d-b762-aa73b3c4a29a.jpeg" title="image" alt="image" /></p>
+<p>1小时后，RoS得分的敏感性达到了67.7％，精确度达到了27.6％。就敏感度而言，SOFA和SIRS是最接近的基准（分别为49.2％和40.4％），但是两者的警报率（SOFA = 8.0％和SIRS = 7.1％）更高，而准确性却更低（SOFA = 12.2％和SIRS） = 11.2％）。RoS评分的警报率和准确性随时间保持相当稳定（警报率4.9％至5.8％；准确性27.6％至31.9％），而灵敏度随时间而大幅提高（1小时时为67.7％，而24小时时为84.6％） 。qSOFA具有非常高的特异性（特异性98.5％至99.8％），但它是最不敏感的筛查工具之一（敏感性3.7％至23.5％）。</p>
+<p><img src="%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0.assets/1594452191776-01ed7002-d782-4ff7-a825-462736065388.png" title="image.png" alt="image.png" /></p>
+<p><strong>（5）结论</strong></p>
+<p>与标准筛选工具（包括Sepsis-3工作组推荐的工具系统性炎症反应综合征，顺序器官衰竭评估（SOFA） ，qSOFA）相比，RoS更加及时和有区别。</p>
+<p>乳酸结果是RoS评分模型的重要输入。将测试队列中的所有乳酸结果替换为极高的值（–9,999），有效地使模型“模糊”了乳酸测量值，然后重新评估了性能统计信息。表明RoS评分模型对未观察到的乳酸结果具有鲁棒性，并且仍然非常有区别（1小时时的AUROC = 0.91，24小时时的0.96），并且仍然优于基准。</p>
+<p><strong>（6）优缺点</strong></p>
+<p>基准模型则易于描述和计算。没有解决如何将筛选工具整合到临床实践中的问题。</p>
+<p>RoS评分具有较高的错误发现率，并且广泛用于前测相对较低的人群可能会导致过度积极和不必要的治疗。</p>
+
+<a href="/">Home Page</a></div>
 </body>
 </html>

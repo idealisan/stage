@@ -1,2 +1,2 @@
-java -jar HtmlFolderIndexer.jar
+java -jar HtmlFolderIndexer.jar sample.html.template
 pause

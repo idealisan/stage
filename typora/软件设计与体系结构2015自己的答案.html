@@ -1,0 +1,1832 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>sample</title>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+        tab-size: 4;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        user-select: none;
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+        background-color: #dadada;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+        vertical-align: initial;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none 0s ease 0s;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+        opacity: 0.3 !important;
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-require-zoom-fix foreignobject {
+        font-size: var(--mermaid-font-zoom);
+    }
+
+
+    @media only screen {
+
+
+        /* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+        /* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
+        /* =========== */
+        :root {
+            --active-file-bg-color: #dadada;
+            --active-file-bg-color: rgba(32, 43, 51, 0.63);
+            --active-file-text-color: white;
+            --bg-color: #f3f2ee;
+            --text-color: #1f0909;
+            --control-text-color: #444;
+            --rawblock-edit-panel-bd: #e5e5e5;
+
+            --select-text-bg-color: rgba(32, 43, 51, 0.63);
+            --select-text-font-color: white;
+        }
+
+        pre {
+            --select-text-bg-color: #36284e;
+            --select-text-font-color: #fff;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        ty-footer {
+            background-color: f0f0f0;
+        }
+
+        html, body {
+            background-color: #cdd7e6;
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+            line-height: 1.5em;
+            height: 100%;
+
+        }
+
+
+        #write {
+            padding: 40px;
+            min-height: 100%;
+        }
+
+        /*
+        @media (max-width: 36em) {
+           #write {
+             padding-left: 1em;
+              padding-right: 1em;
+           }
+        }
+        */
+        #write {
+            box-shadow: 0px 0px 8px #666666;
+            max-width: 45em;
+            background-color: #FFFFFF;
+        }
+
+        ol li {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+
+        ul li {
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* styles */
+        /* ====== */
+        /* headings */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.875em;
+            /*30 / 16*/
+            line-height: 1.6em;
+            /* 48 / 30*/
+            margin-top: 2em;
+        }
+
+        h2,
+        h3 {
+            font-size: 1.3125em;
+            /*21 / 16*/
+            line-height: 1.15;
+            /*24 / 21*/
+            margin-top: 2.285714em;
+            /*48 / 21*/
+            margin-bottom: 1.15em;
+            /*24 / 21*/
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 1.125em;
+            /*18 / 16*/
+            margin-top: 2.67em;
+            /*48 / 18*/
+        }
+
+        h5,
+        h6 {
+            font-size: 1em;
+            /*16*/
+        }
+
+        h1 {
+            border-bottom: 1px solid;
+            margin-bottom: 1.875em;
+            padding-bottom: 0.8125em;
+        }
+
+        /* links */
+        a {
+            text-decoration: none;
+            color: #065588;
+        }
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+        }
+
+        /* block spacing */
+        p,
+        blockquote,
+        .md-fences {
+            margin-bottom: 1.5em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 1.5em;
+        }
+
+        /* blockquote */
+        blockquote {
+            font-style: italic;
+            border-left: 5px solid;
+            margin-left: 2em;
+            padding-left: 1em;
+        }
+
+        /* lists */
+        ul,
+        ol {
+            margin: 0 0 1.5em 1.5em;
+        }
+
+        /* tables */
+        .md-meta, .md-before, .md-after {
+            color: #999;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border-top: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr th:last-child,
+        table tr td:last-child {
+            margin-bottom: 0;
+        }
+
+        code,
+        .md-fences {
+            background-color: #dadada;
+        }
+
+        code {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .md-fences {
+            margin-left: 2em;
+            margin-bottom: 3em;
+            padding-left: 1ch;
+            padding-right: 1ch;
+        }
+
+        pre,
+        code,
+        tt {
+            font-size: .875em;
+            line-height: 1.714285em;
+        }
+
+        /* some fixes */
+        h1 {
+            line-height: 1.3em;
+            font-weight: normal;
+            margin-bottom: 0.5em;
+        }
+
+        p + ul,
+        p + ol {
+            margin-top: .5em;
+        }
+
+        h3 + ul,
+        h4 + ul,
+        h5 + ul,
+        h6 + ul,
+        h3 + ol,
+        h4 + ol,
+        h5 + ol,
+        h6 + ol {
+            margin-top: .5em;
+        }
+
+        li > ul,
+        li > ol {
+            margin-top: inherit;
+            margin-bottom: 0;
+        }
+
+        li ol > li {
+            list-style-type: lower-alpha;
+        }
+
+        li li ol > li {
+            list-style-type: lower-roman;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: .75em;
+        }
+
+        hr {
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid;
+            border-left: none;
+        }
+
+        h1 {
+            border-color: #c5c5c5;
+        }
+
+        blockquote {
+            border-color: #bababa;
+            color: #656565;
+        }
+
+        blockquote ul,
+        blockquote ol {
+            margin-left: 0;
+        }
+
+        .ty-table-edit {
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: #dadada;
+        }
+
+        tr:nth-child(even) {
+            background: #e8e7e7;
+        }
+
+        hr {
+            border-color: #c5c5c5;
+        }
+
+        .task-list {
+            padding-left: 1rem;
+        }
+
+        .md-task-list-item {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        .md-task-list-item > input:before {
+            content: '\221A';
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.6rem;
+            vertical-align: middle;
+            text-align: center;
+            color: #ddd;
+            background-color: #F3F2EE;
+        }
+
+        .md-task-list-item > input:checked:before,
+        .md-task-list-item > input[checked]:before {
+            color: inherit;
+        }
+
+        #write pre.md-meta-block {
+            min-height: 1.875rem;
+            color: #555;
+            border: 0px;
+            background: transparent;
+            margin-top: -4px;
+            margin-left: 1em;
+            margin-top: 1em;
+        }
+
+        .md-image > .md-meta {
+            color: #9B5146;
+        }
+
+        .md-image > .md-meta {
+            font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+        }
+
+
+        #write > h3.md-focus:before {
+            left: -1.5rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h4.md-focus:before {
+            left: -1.5rem;
+            top: .25rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h5.md-focus:before {
+            left: -1.5rem;
+            top: .0 .3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h6.md-focus:before {
+            left: -1.5rem;
+            top: 0.3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        .md-toc:focus .md-toc-content {
+            margin-top: 19px;
+        }
+
+        .md-toc-content:empty:before {
+            color: #065588;
+        }
+
+        .md-toc-item {
+            color: #065588;
+        }
+
+        #write div.md-toc-tooltip {
+            background-color: #f3f2ee;
+        }
+
+        #typora-sidebar {
+            background-color: #dde7f6;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+        }
+
+        .pin-outline #typora-sidebar {
+            /* background: inherit; */
+            box-shadow: none;
+            border-right: 1px solid;
+        }
+
+        .pin-outline #typora-sidebar:hover .outline-title-wrapper {
+            border-left: 1px solid;
+        }
+
+        .outline-item:hover {
+            background-color: #dadada;
+            border-left: 28px solid #dadada;
+            border-right: 18px solid #dadada;
+        }
+
+        .typora-node .outline-item:hover {
+            border-right: 28px solid #dadada;
+        }
+
+        .outline-expander:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            font-size: 14px;
+            top: 1px;
+        }
+
+        .outline-expander:hover:before,
+        .outline-item-open > .outline-item > .outline-expander:before {
+            content: "\f0d7";
+        }
+
+        .modal-content {
+            background-color: #f3f2ee;
+        }
+
+        .auto-suggest-container ul li {
+            list-style-type: none;
+        }
+
+        /** UI for electron */
+        .megamenu-menu,
+        #top-titlebar, #top-titlebar *,
+        .megamenu-content {
+            background: #f3f2ee;
+            color: #1f0909;
+        }
+
+        .megamenu-menu-header {
+            border-bottom: 1px dashed #202B33;
+        }
+
+        .megamenu-menu {
+            box-shadow: none;
+            border-right: 1px dashed;
+        }
+
+        header, .context-menu, .megamenu-content, footer {
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+        }
+
+        #megamenu-back-btn {
+            color: #1f0909;
+            border-color: #1f0909;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title:before {
+            color: #1f0909;
+        }
+
+        .megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+            color: inherit;
+            background-color: #e8e7df;
+        }
+
+        .long-btn:hover {
+            background-color: #e8e7df;
+        }
+
+        #recent-file-panel tbody tr:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+            color: inherit;
+        }
+
+        .megamenu-menu-panel .btn {
+            background-color: #D2D1D1;
+        }
+
+        .btn-default {
+            background-color: transparent;
+        }
+
+        .typora-sourceview-on #toggle-sourceview-btn,
+        .ty-show-word-count #footer-word-count {
+            background: #c7c5c5;
+        }
+
+        #typora-quick-open {
+            background-color: inherit;
+        }
+
+        .md-diagram-panel {
+            margin-top: 8px;
+        }
+
+        .file-list-item-file-name {
+            font-weight: initial;
+        }
+
+        .file-list-item-summary {
+            opacity: 1;
+        }
+
+        .file-list-item {
+            color: #777;
+        }
+
+        .file-list-item.active {
+            background-color: inherit;
+            color: black;
+        }
+
+        .ty-side-sort-btn.active {
+            background-color: inherit;
+        }
+
+        .file-list-item.active .file-list-item-file-name {
+            font-weight: bold;
+        }
+
+        .file-list-item {
+            opacity: 1 !important;
+        }
+
+        .file-library-node.active > .file-node-background {
+            background-color: rgba(32, 43, 51, 0.63);
+            background-color: var(--active-file-bg-color);
+        }
+
+        .file-tree-node.active > .file-node-content {
+            color: white;
+            color: var(--active-file-text-color);
+        }
+
+        .md-task-list-item > input {
+            margin-left: -1.6em;
+            margin-top: calc(1rem - 12px);
+        }
+
+        input {
+            border: 1px solid #aaa;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title,
+        .megamenu-menu-header:hover,
+        .megamenu-menu-header:focus {
+            color: inherit;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+        }
+
+        /* https://github.com/typora/typora-issues/issues/2046 */
+        .os-windows-7 strong,
+        .os-windows-7 strong {
+            font-weight: 760;
+        }
+
+        .ty-preferences .btn-default {
+            background: transparent;
+        }
+
+        .ty-preferences .window-header {
+            border-bottom: 1px dashed #202B33;
+            box-shadow: none;
+        }
+
+    }
+
+
+    :root {
+        --mermaid-font-zoom: 1.25em;
+    }
+
+    .typora-export li, .typora-export p, .typora-export, .footnote-line {
+        white-space: normal;
+    }
+    </style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write' class=''>
+    <ol>
+<li>继承，实现
+</li><li>保证，后置条件
+</li><li>角色，协作
+</li><li>架构，详细，编码（可执行设计）
+</li><li>团队沟通，软件工程，风险管理，技术知识
+</li><li>信息，方法
+</li><li>复杂度，简单
+</li><li>业务流程协调器，消息代理，应用服务器，运输
+</li><li>组件，连接器，约束
+</li><li>通信，职责
+</li><li>计算，展现，验证，数据源
+</li></ol>
+
+
+<h2>简答题</h2>
+<p>1.MVC架构的元素：</p>
+<p>词汇：组件包括数据模型，控制器和视图，连接器是方法调用（也可能是隐式的）。约束包括开发语言要支持面向对象、编程环境要能够管理MVC分层架构项目、项目规模大到适合使用MVC分层架构。</p>
+<p>交互关系：MVC架构中输入、请求来自视图，视图可以访问数据模型，也可以将请求交给控制器，有控制器根据业务逻辑选择合适的视图和数据作为响应返回给用户。</p>
+<p>2.GRASP的九个模式</p>
+<ol>
+<li>创造者模式
+</li><li>信息专家模式
+</li><li>高内聚
+</li><li>低耦合
+</li><li>多态（面向对象）
+</li><li>控制器
+</li><li>纯虚构（面向对象）
+</li><li>间接
+</li><li>防止变异
+</li></ol>
+
+
+<p>3.针对接口编程可以解耦合调用对象和实现类的对象，减少甚至避免被调对象变化时调用者的变化。从而有利于代码复用和设计的稳定性。使用针对接口的编程，只需要调用接口的方法即可，而不必关心具体实现。当实现类发生变化时，必须要保证相应的接口仍被正确实现即可，而调用者不必作出修改。针对接口编程增强了项目的可伸缩性、可重用性和可维护性。</p>
+<p>4</p>
+<ol>
+<li>单一职责
+</li><li>开放封闭（对扩展开放，对修改封闭）
+</li><li>liskov可替换
+</li><li>接口分离
+</li><li>依赖反转
+</li></ol>
+
+
+<h1>提纲缩略</h1>
+<p></p>
+<h2>性能指标</h2>
+<p></p>
+<ol>
+<li>性能
+</li><li>吞吐量
+</li><li>响应时间
+</li><li>截止时间
+</li></ol>
+
+
+<h2>常用中间件</h2>
+<p>类型</p>
+<ol>
+<li>业务消息协调器
+</li><li>消息代理
+</li><li>应用服务器
+</li><li>运输
+</li></ol>
+
+
+<p>中间件</p>
+<ol>
+<li>CORBA
+</li><li>J2EE
+</li><li>基本面向消息中间件MOM
+</li><li>消息代理
+</li><li>业务流程协调器
+</li></ol>
+
+
+<h2>什么是软件架构</h2>
+<p>建立一个系统所需要的结构，包括元素，它们之间的关系，以及它们的性质。一旦构建就难以再更改的部分。架构是设计，设计并不总是架构。质量属性、非功能性需求、性能。</p>
+<h2>架构风格</h2>
+<p>架构风格是一类系统的结构和组织的模式。包含</p>
+<ol>
+<li>词汇表，包括组件、连接器
+</li><li>约束——如何结合这些元素
+</li></ol>
+
+
+<h2>具体的架构风格</h2>
+<p></p>
+<ol>
+<li>管道过滤器
+</li><li>面向对象
+</li><li>隐式调用
+</li><li>客户端服务器风格
+</li><li>分层风格
+</li><li>仓库风格
+</li><li>解释器风格
+</li><li>过程控制风格
+</li></ol>
+
+
+<h2>架构师的核心技能</h2>
+<p></p>
+<ol>
+<li>与涉众沟通
+</li><li>技术知识
+</li><li>软件工程学
+</li><li>风险管理
+</li></ol>
+
+
+<h2>架构视图</h2>
+<p>一个架构视图是从某一视角或者某一点上看到的系统所做的简化的描述，描述中涵盖了系统的某一特定方面，从而忽略了与此方面无关的实体。</p>
+<h2>软件架构过程</h2>
+<p>记忆提示：先确定需求，然后做设计，最后验证。如果验证不通过，则可以向前返工。</p>
+<ol>
+<li>确定架构需求
+</li><li>架构设计
+</li><li>验证（可以返工到1或2）
+</li></ol>
+
+
+<h2>质量属性</h2>
+<p></p>
+<ol>
+<li>可靠性
+</li><li>可以执行
+</li><li>可用性
+</li><li>可伸缩性
+</li><li>性能
+</li></ol>
+
+
+<h2>软件可用性取决于</h2>
+<p>记忆提示：一般的三个步骤所需的时间，先检测错误，然后纠正错误，最后重新启动应用。</p>
+<ol>
+<li>故障检测时间
+</li><li>纠正失败的时间
+</li><li>重新启动应用的时间
+</li></ol>
+
+
+<h2>伸缩性涉及的方面</h2>
+<p></p>
+<ol>
+<li>请求负载
+</li><li>连接数
+</li><li>数据规模
+</li><li>部署
+</li></ol>
+
+
+<h2>吞吐率指标</h2>
+<p></p>
+<ol>
+<li>每秒事务数
+</li><li>每分钟消息数
+</li><li>每秒消息数
+</li><li>最大持续吞吐量
+</li></ol>
+
+
+<h2>软件架构元素的通信方式</h2>
+<p>主要有两大类：</p>
+<ol>
+<li>数据传递
+</li><li>控制流
+</li></ol>
+
+
+<p>数据传递包括：</p>
+<ol>
+<li>函数调用
+</li><li>远程方法调用
+</li><li>异步消息
+</li></ol>
+
+
+<p>控制流：</p>
+<ol>
+<li>顺序
+</li><li>并行
+</li><li>同步
+</li><li>消息流
+</li></ol>
+
+
+<h2>各种风格的组件和连接器是什么</h2>
+<p></p>
+<ol>
+<li>管道过滤器：组件是过滤器，连接器是管道
+</li><li>面向对象：组件是对象，连接器是功能和过程调用
+</li><li>隐式调用：组件是可以注册的各个组件，连接器是广播系统
+</li><li>客户端服务器风格：组件时客户端和服务器，连接器是网络
+</li><li>分层风格：组件是每一层的过程集合，连接器是过程调用
+</li><li>仓库风格：组件是数据结构的正确状态的集合、操作数据结构的过程的集合，连接器是过程调用、直接内存访问
+</li><li>解释器风格：组件是状态机（引擎的当前状态，要解释的程序，当前被解释的程序的状态），连接器是过程调用、直接内存访问
+</li><li>过程控制风格：组件是过程定义、控制算法，连接器是数据流关系
+</li></ol>
+
+
+<h2>软件性能指标</h2>
+<p></p>
+<ol>
+<li>吞吐量
+</li><li>响应时间
+</li><li>截止时间
+</li></ol>
+
+
+<h2>响应时间的度量</h2>
+<p></p>
+<ol>
+<li>平均响应时间
+</li><li>保证的最长响应时间
+</li></ol>
+
+
+<h2>安全质量标准</h2>
+<p></p>
+<ol>
+<li>身份验证
+</li><li>授权
+</li><li>加密
+</li><li>完整性
+</li><li>不可否认性
+</li></ol>
+
+
+<h2>实现高可用性的策略</h2>
+<p></p>
+<ol>
+<li>消除单点故障
+</li><li>复制和故障转移
+</li><li>自动检测和重新启动
+</li></ol>
+
+
+<h2>信息隐藏原理</h2>
+<p>信息隐藏指在设计和确定模块时，使得一个模块内包含的特定信息（过程或数据），对于不 需要这些信息的其他模块来说，是不可访问的。 信息隐藏（封装）主要是为了提高软件的可重用性和可维护性。信息隐藏造成了系统各个部 分耦合性低。系统是由各个部分构成的，如果这些部分耦合性低的话，那么这个系统开发、 维护等就较容易</p>
+<ol>
+<li>隐藏数据呈现方式
+</li><li>隐藏算法
+</li></ol>
+
+
+<h2>接口访问外部对象企业应用在各层的模式</h2>
+<p></p>
+<h5>表现层</h5>
+<p>提供服务、显示信息（如在 WINDOWS 或 HTML 页面中，处理用户请求，HTTP 请求，命令 行调用，批处理 API） 表现逻辑处理用户与软件间的交互。</p>
+<p>主要职责是： 向用户显示信息 把从用户那里获得的信息解释成领域层或数据源层上的各种动作。</p>
+<h5>领域层</h5>
+<p>领域逻辑，系统中真正的核心。也称为业务逻辑，它就是应用程序必须做的所有领域相关工 作：包括根据输入数据或者已有数据进行计算，对从表现层输入的数据进行验证，以及根据 从表现层接收的命令来确定应该调试哪些数据源逻辑。 领域逻辑（业务逻辑），它就是应用</p>
+<p>必须做的所有领域相关的工作： 根据输入数据或已有数据进行计算 对从表现层输入的数据进行验证 根据从表现层接收的命令来确定应该调度哪些数据源逻辑。</p>
+<h5>数据源层</h5>
+<p>与数据库、系统消息系统、事务管理器及其他软件包通信。最主要的数据源逻辑就是数据库， 主要责任是存储持久数据。数据源逻辑主要关注与其他系统的交互，这些系统将代表应邀完 成相关的任务。主要的数据源逻辑就是数据库，它的主要职责是存储持久数据。</p>
+<p>三层的关系：领域层是核心！表现层是系统对外提供服务的外部接口；数据源层是系统使用 外部服务的接口</p>
+<h2>Larman 的敏捷 UP 设计方法的具体步骤</h2>
+<p>（1） 初始：大体上的构想、业务案例、范围和模糊评估。（2） 细化：已精化的构想、核心架构的迭代实现、高风险的解决、确定大多数需求和范围以及进行更为实际的评估。（3） 构造：对遗留下来的风险较低和比较简单地元素进行迭代实现，准备部署。（4） 移交：进行 beta 测试和部署。</p>
+<h2>企业应用架构在领域层、展现层、数据源层分别有哪些常用架构</h2>
+<p></p>
+<h5>领域层</h5>
+<p></p>
+<ol>
+<li>六边形架构
+</li><li>分层架构
+</li><li>洋葱模型
+</li><li>干净架构
+</li></ol>
+
+
+<h5>展现层</h5>
+<p></p>
+<ol>
+<li>MVC
+</li><li>MVVM
+</li><li>分层架构
+</li><li>干净架构？
+</li></ol>
+
+
+<h5>数据源层</h5>
+<p></p>
+<ol>
+<li>仓库模型
+</li><li>分层架构
+</li><li>干净架构？
+</li></ol>
+
+
+<h2>4+1 视图</h2>
+<p>从 5 个不同的视角（逻辑视图，过程视图，物理视图，开发视图 和场景视图）来描述软件体系结构。每个视图之关心系统的一个侧面，5 个视图结合在一起 才能反映系统的软件体系结构的全部内容。</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/image-20200104123456089.png" title="image-20200104123456089" alt="image-20200104123456089" /></p>
+<h2>非功能属性</h2>
+<p></p>
+<ol>
+<li>技术限制
+</li><li>业务约束
+</li><li>质量属性
+</li></ol>
+
+
+<h2>设计模式</h2>
+<p></p>
+<ol>
+<li>命令模式（抽象命令接口，具体命令，接收者，请求者）
+</li><li>状态模式（又叫状态对象，上下文，抽象状态，具体状态）
+</li><li>装饰模式（又叫包装器，常常有额外的方法添加进来，抽象组件，抽象装饰，具体组件，具体装饰）
+</li><li>观察者模式（又叫发布——订阅模式，观察者，主题，具体主题，具体观察者）
+</li><li>策略模式（又叫政策，抽象策略，具体策略，上下文）
+</li><li>适配器模式（也叫做包装器，和装饰器不同的是适配器一般不额外添加方法，目标，被适配者，适配器）
+</li><li>责任链模式（对象连成一条链，并 沿着这条链传递该请求，直到有一个对象处理它为止，抽象处理者，具体处理者）
+</li><li>外观模式（为系统中的多个接口提供一个统一的接口，客户依然可以使用系统中原来的类，子系统，外观）
+</li><li>迭代器模式（又叫游标，提供一种方法顺序访问一个聚合对象中的各个元素，而 又不需要暴露该对象的内部表示。集合，具体集合，迭代器，具体迭代器）
+</li><li>模板方法模式（提供一个算法骨架，把一些步骤延迟到子类中实现，抽象模板，具体模板）
+</li><li>单件模式（一个类总是只有一个实例，并提供一个全局访问点，只有一个角色就是单件类）
+</li><li>抽象工厂模式（抽象产品，具体产品，抽象工厂，具体工厂）
+</li><li>工厂方法模式（又叫虚拟构造，抽象产品，具体产品，抽象构造者，具体构造者）
+</li></ol>
+
+
+<h2>类图画法</h2>
+<p><img src="软件设计与体系结构2015自己的答案.assets/20160607094445730" title="这里写图片描述" alt="这里写图片描述" /></p>
+<h2>从一个示例开始</h2>
+<p>请看以下这个类图，类之间的关系是我们需要关注的：</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_class_struct.jpg" title="_images/uml_class_struct.jpg" alt="_images/uml_class_struct.jpg" /></p>
+<ul>
+<li>车的类图结构为<<abstract>>，表示车是一个抽象类；
+</li><li>它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用带空心箭头的虚线表示；
+</li><li>小汽车为与SUV之间也是继承关系，它们之间的关系为泛化关系，使用带空心箭头的实线表示；
+</li><li>小汽车与发动机之间是组合关系，使用带实心箭头的实线表示；
+</li><li>学生与班级之间是聚合关系，使用带空心箭头的实线表示；
+</li><li>学生与身份证之间为关联关系，使用一根实线表示；
+</li><li>学生上学需要用到自行车，与自行车是一种依赖关系，使用带箭头的虚线表示；
+</li></ul>
+
+
+<p>下面我们将介绍这六种关系；</p>
+<h3></h3>
+<p></p>
+<h2>类之间的关系</h2>
+<p></p>
+<h3>泛化关系(generalization)</h3>
+<p>类的继承结构表现在UML中为：泛化(generalize)与实现(realize)：</p>
+<p>继承关系为 is-a的关系；两个对象之间如果可以用 is-a 来表示，就是继承关系：（..是..)</p>
+<p>eg：自行车是车、猫是动物</p>
+<p>泛化关系用一条带空心箭头的直接表示；如下图表示（A继承自B）；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_generalization.jpg" title="_images/uml_generalization.jpg" alt="_images/uml_generalization.jpg" /></p>
+<p>eg：汽车在现实中有实现，可用汽车定义具体的对象；汽车与SUV之间为泛化关系；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_generalize.jpg" title="_images/uml_generalize.jpg" alt="_images/uml_generalize.jpg" /></p>
+<p>注：最终代码中，泛化关系表现为继承非抽象类；</p>
+<h3>实现关系(realize)</h3>
+<p>实现关系用一条带空心箭头的虚线表示；</p>
+<p>eg：”车”为一个抽象概念，在现实中并无法直接用来定义对象；只有指明具体的子类(汽车还是自行车)，才 可以用来定义对象（”车”这个类在C++中用抽象类表示，在JAVA中有接口这个概念，更容易理解）</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_realize.jpg" title="_images/uml_realize.jpg" alt="_images/uml_realize.jpg" /></p>
+<p>注：最终代码中，实现关系表现为继承抽象类；</p>
+<h3>聚合关系(aggregation)</h3>
+<p>聚合关系用一条带空心菱形箭头的直线表示，如下图表示A聚合到B上，或者说B由A组成；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_aggregation.jpg" title="_images/uml_aggregation.jpg" alt="_images/uml_aggregation.jpg" /></p>
+<p>聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成；</p>
+<p>与组合关系不同的是，整体和部分不是强依赖的，即使整体不存在了，部分仍然存在；例如， 部门撤销了，人员不会消失，他们依然存在；</p>
+<h3>组合关系(composition)</h3>
+<p>组合关系用一条带实心菱形箭头直线表示，如下图表示A组成B，或者B由A组成；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_composition.jpg" title="_images/uml_composition.jpg" alt="_images/uml_composition.jpg" /></p>
+<p>与聚合关系一样，组合关系同样表示整体由部分构成的语义；比如公司由多个部门组成；</p>
+<p>但组合关系是一种强依赖的特殊聚合关系，如果整体不存在了，则部分也不存在了；例如， 公司不存在了，部门也将不存在了；</p>
+<h3>关联关系(association)</h3>
+<p>关联关系是用一条直线表示的；它描述不同类的对象之间的结构关系；它是一种静态关系， 通常与运行状态无关，一般由常识等因素决定的；它一般用来定义对象之间静态的、天然的结构； 所以，关联关系是一种“强关联”的关系；</p>
+<p>比如，乘车人和车票之间就是一种关联关系；学生和学校就是一种关联关系；</p>
+<p>关联关系默认不强调方向，表示对象间相互知道；如果特别强调方向，如下图，表示A知道B，但 B不知道A；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_association.jpg" title="_images/uml_association.jpg" alt="_images/uml_association.jpg" /></p>
+<p>注：在最终代码中，关联对象通常是以成员变量的形式实现的；</p>
+<h3>依赖关系(dependency)</h3>
+<p>依赖关系是用一套带箭头的虚线表示的；如下图表示A依赖于B；他描述一个对象在运行期间会用到另一个对象的关系；</p>
+<p><img src="软件设计与体系结构2015自己的答案.assets/uml_dependency.jpg" title="_images/uml_dependency.jpg" alt="_images/uml_dependency.jpg" /></p>
+<p>与关联关系不同的是，它是一种临时性的关系，通常在运行期间产生，并且随着运行时的变化； 依赖关系也可能发生变化；</p>
+<p>显然，依赖也有方向，双向依赖是一种非常糟糕的结构，我们总是应该保持单向依赖，杜绝双向依赖的产生；</p>
+<p>注：在最终代码中，依赖关系体现为类构造方法及类方法的传入参数，箭头的指向为调用关系；依赖关系除了临时知道对方外，还是“使用”对方的方法和属性。</p>
+
+<a href="/">Home Page</a></div>
+</body>
+</html>

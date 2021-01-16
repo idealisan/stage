@@ -1,0 +1,1617 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>sample</title>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+        tab-size: 4;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        user-select: none;
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+        background-color: #dadada;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+        vertical-align: initial;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none 0s ease 0s;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+        opacity: 0.3 !important;
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-require-zoom-fix foreignobject {
+        font-size: var(--mermaid-font-zoom);
+    }
+
+
+    @media only screen {
+
+
+        /* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+        /* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
+        /* =========== */
+        :root {
+            --active-file-bg-color: #dadada;
+            --active-file-bg-color: rgba(32, 43, 51, 0.63);
+            --active-file-text-color: white;
+            --bg-color: #f3f2ee;
+            --text-color: #1f0909;
+            --control-text-color: #444;
+            --rawblock-edit-panel-bd: #e5e5e5;
+
+            --select-text-bg-color: rgba(32, 43, 51, 0.63);
+            --select-text-font-color: white;
+        }
+
+        pre {
+            --select-text-bg-color: #36284e;
+            --select-text-font-color: #fff;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        ty-footer {
+            background-color: f0f0f0;
+        }
+
+        html, body {
+            background-color: #cdd7e6;
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+            line-height: 1.5em;
+            height: 100%;
+
+        }
+
+
+        #write {
+            padding: 40px;
+            min-height: 100%;
+        }
+
+        /*
+        @media (max-width: 36em) {
+           #write {
+             padding-left: 1em;
+              padding-right: 1em;
+           }
+        }
+        */
+        #write {
+            box-shadow: 0px 0px 8px #666666;
+            max-width: 45em;
+            background-color: #FFFFFF;
+        }
+
+        ol li {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+
+        ul li {
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* styles */
+        /* ====== */
+        /* headings */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.875em;
+            /*30 / 16*/
+            line-height: 1.6em;
+            /* 48 / 30*/
+            margin-top: 2em;
+        }
+
+        h2,
+        h3 {
+            font-size: 1.3125em;
+            /*21 / 16*/
+            line-height: 1.15;
+            /*24 / 21*/
+            margin-top: 2.285714em;
+            /*48 / 21*/
+            margin-bottom: 1.15em;
+            /*24 / 21*/
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 1.125em;
+            /*18 / 16*/
+            margin-top: 2.67em;
+            /*48 / 18*/
+        }
+
+        h5,
+        h6 {
+            font-size: 1em;
+            /*16*/
+        }
+
+        h1 {
+            border-bottom: 1px solid;
+            margin-bottom: 1.875em;
+            padding-bottom: 0.8125em;
+        }
+
+        /* links */
+        a {
+            text-decoration: none;
+            color: #065588;
+        }
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+        }
+
+        /* block spacing */
+        p,
+        blockquote,
+        .md-fences {
+            margin-bottom: 1.5em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 1.5em;
+        }
+
+        /* blockquote */
+        blockquote {
+            font-style: italic;
+            border-left: 5px solid;
+            margin-left: 2em;
+            padding-left: 1em;
+        }
+
+        /* lists */
+        ul,
+        ol {
+            margin: 0 0 1.5em 1.5em;
+        }
+
+        /* tables */
+        .md-meta, .md-before, .md-after {
+            color: #999;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border-top: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr th:last-child,
+        table tr td:last-child {
+            margin-bottom: 0;
+        }
+
+        code,
+        .md-fences {
+            background-color: #dadada;
+        }
+
+        code {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .md-fences {
+            margin-left: 2em;
+            margin-bottom: 3em;
+            padding-left: 1ch;
+            padding-right: 1ch;
+        }
+
+        pre,
+        code,
+        tt {
+            font-size: .875em;
+            line-height: 1.714285em;
+        }
+
+        /* some fixes */
+        h1 {
+            line-height: 1.3em;
+            font-weight: normal;
+            margin-bottom: 0.5em;
+        }
+
+        p + ul,
+        p + ol {
+            margin-top: .5em;
+        }
+
+        h3 + ul,
+        h4 + ul,
+        h5 + ul,
+        h6 + ul,
+        h3 + ol,
+        h4 + ol,
+        h5 + ol,
+        h6 + ol {
+            margin-top: .5em;
+        }
+
+        li > ul,
+        li > ol {
+            margin-top: inherit;
+            margin-bottom: 0;
+        }
+
+        li ol > li {
+            list-style-type: lower-alpha;
+        }
+
+        li li ol > li {
+            list-style-type: lower-roman;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: .75em;
+        }
+
+        hr {
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid;
+            border-left: none;
+        }
+
+        h1 {
+            border-color: #c5c5c5;
+        }
+
+        blockquote {
+            border-color: #bababa;
+            color: #656565;
+        }
+
+        blockquote ul,
+        blockquote ol {
+            margin-left: 0;
+        }
+
+        .ty-table-edit {
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: #dadada;
+        }
+
+        tr:nth-child(even) {
+            background: #e8e7e7;
+        }
+
+        hr {
+            border-color: #c5c5c5;
+        }
+
+        .task-list {
+            padding-left: 1rem;
+        }
+
+        .md-task-list-item {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        .md-task-list-item > input:before {
+            content: '\221A';
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.6rem;
+            vertical-align: middle;
+            text-align: center;
+            color: #ddd;
+            background-color: #F3F2EE;
+        }
+
+        .md-task-list-item > input:checked:before,
+        .md-task-list-item > input[checked]:before {
+            color: inherit;
+        }
+
+        #write pre.md-meta-block {
+            min-height: 1.875rem;
+            color: #555;
+            border: 0px;
+            background: transparent;
+            margin-top: -4px;
+            margin-left: 1em;
+            margin-top: 1em;
+        }
+
+        .md-image > .md-meta {
+            color: #9B5146;
+        }
+
+        .md-image > .md-meta {
+            font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+        }
+
+
+        #write > h3.md-focus:before {
+            left: -1.5rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h4.md-focus:before {
+            left: -1.5rem;
+            top: .25rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h5.md-focus:before {
+            left: -1.5rem;
+            top: .0 .3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h6.md-focus:before {
+            left: -1.5rem;
+            top: 0.3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        .md-toc:focus .md-toc-content {
+            margin-top: 19px;
+        }
+
+        .md-toc-content:empty:before {
+            color: #065588;
+        }
+
+        .md-toc-item {
+            color: #065588;
+        }
+
+        #write div.md-toc-tooltip {
+            background-color: #f3f2ee;
+        }
+
+        #typora-sidebar {
+            background-color: #dde7f6;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+        }
+
+        .pin-outline #typora-sidebar {
+            /* background: inherit; */
+            box-shadow: none;
+            border-right: 1px solid;
+        }
+
+        .pin-outline #typora-sidebar:hover .outline-title-wrapper {
+            border-left: 1px solid;
+        }
+
+        .outline-item:hover {
+            background-color: #dadada;
+            border-left: 28px solid #dadada;
+            border-right: 18px solid #dadada;
+        }
+
+        .typora-node .outline-item:hover {
+            border-right: 28px solid #dadada;
+        }
+
+        .outline-expander:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            font-size: 14px;
+            top: 1px;
+        }
+
+        .outline-expander:hover:before,
+        .outline-item-open > .outline-item > .outline-expander:before {
+            content: "\f0d7";
+        }
+
+        .modal-content {
+            background-color: #f3f2ee;
+        }
+
+        .auto-suggest-container ul li {
+            list-style-type: none;
+        }
+
+        /** UI for electron */
+        .megamenu-menu,
+        #top-titlebar, #top-titlebar *,
+        .megamenu-content {
+            background: #f3f2ee;
+            color: #1f0909;
+        }
+
+        .megamenu-menu-header {
+            border-bottom: 1px dashed #202B33;
+        }
+
+        .megamenu-menu {
+            box-shadow: none;
+            border-right: 1px dashed;
+        }
+
+        header, .context-menu, .megamenu-content, footer {
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+        }
+
+        #megamenu-back-btn {
+            color: #1f0909;
+            border-color: #1f0909;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title:before {
+            color: #1f0909;
+        }
+
+        .megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+            color: inherit;
+            background-color: #e8e7df;
+        }
+
+        .long-btn:hover {
+            background-color: #e8e7df;
+        }
+
+        #recent-file-panel tbody tr:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+            color: inherit;
+        }
+
+        .megamenu-menu-panel .btn {
+            background-color: #D2D1D1;
+        }
+
+        .btn-default {
+            background-color: transparent;
+        }
+
+        .typora-sourceview-on #toggle-sourceview-btn,
+        .ty-show-word-count #footer-word-count {
+            background: #c7c5c5;
+        }
+
+        #typora-quick-open {
+            background-color: inherit;
+        }
+
+        .md-diagram-panel {
+            margin-top: 8px;
+        }
+
+        .file-list-item-file-name {
+            font-weight: initial;
+        }
+
+        .file-list-item-summary {
+            opacity: 1;
+        }
+
+        .file-list-item {
+            color: #777;
+        }
+
+        .file-list-item.active {
+            background-color: inherit;
+            color: black;
+        }
+
+        .ty-side-sort-btn.active {
+            background-color: inherit;
+        }
+
+        .file-list-item.active .file-list-item-file-name {
+            font-weight: bold;
+        }
+
+        .file-list-item {
+            opacity: 1 !important;
+        }
+
+        .file-library-node.active > .file-node-background {
+            background-color: rgba(32, 43, 51, 0.63);
+            background-color: var(--active-file-bg-color);
+        }
+
+        .file-tree-node.active > .file-node-content {
+            color: white;
+            color: var(--active-file-text-color);
+        }
+
+        .md-task-list-item > input {
+            margin-left: -1.6em;
+            margin-top: calc(1rem - 12px);
+        }
+
+        input {
+            border: 1px solid #aaa;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title,
+        .megamenu-menu-header:hover,
+        .megamenu-menu-header:focus {
+            color: inherit;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+        }
+
+        /* https://github.com/typora/typora-issues/issues/2046 */
+        .os-windows-7 strong,
+        .os-windows-7 strong {
+            font-weight: 760;
+        }
+
+        .ty-preferences .btn-default {
+            background: transparent;
+        }
+
+        .ty-preferences .window-header {
+            border-bottom: 1px dashed #202B33;
+            box-shadow: none;
+        }
+
+    }
+
+
+    :root {
+        --mermaid-font-zoom: 1.25em;
+    }
+
+    .typora-export li, .typora-export p, .typora-export, .footnote-line {
+        white-space: normal;
+    }
+    </style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write' class=''>
+    <h1>测试的基础</h1>
+<p></p>
+<h2>error，testing，debugging，test process，test strategy，correctness，reliability</h2>
+<p></p>
+<h2>finite state machine</h2>
+<p></p>
+<h2>test techniques</h2>
+<p></p>
+<h2>测试用例</h2>
+<p>测试用例包含测试输入数据和预期输出数据</p>
+<h2>测试集合</h2>
+<p>包含0个或更多测试用例的集合</p>
+<h2>程序行为</h2>
+<p>程序行为可以用</p>
+<p>·纯自然语言描述</p>
+<p>·状态图</p>
+<p>·数学说明</p>
+<p>等形式表达</p>
+<h2>测试者（oracle）</h2>
+<p>可以是人或者一个程序，检查程序的行为。</p>
+<h2>测试与认证</h2>
+<p>认证是为了表明程序的正确性，要求程序完全无错误</p>
+<p>测试是为了发现程序中的错误，程序可能存在未被检测到的错误</p>
+<h2>测试生成策略</h2>
+<p>正式场合中，以需求文档作为源。</p>
+<h3>基于模型</h3>
+<p>使用正式的标记方式为需求中的子集建立模型，常常是图</p>
+<h3>基于说明文档</h3>
+<p>使用数学标记建立需求的子集的模型</p>
+<h3>基于代码</h3>
+<p>直接从代码生成测试</p>
+<h2>软件测试的分类</h2>
+<p></p>
+<h3>按照生成源分类</h3>
+<p>从需求</p>
+<p>​    黑盒测试</p>
+<p>从代码</p>
+<p>​    白盒测试</p>
+<p>从需求和代码</p>
+<p>​    黑盒测试与白盒测试</p>
+<p>从正式的模型</p>
+<p>​    基于模型的说明</p>
+<p>从组件接口</p>
+<p>​    接口测试</p>
+<h3>测试执行的生命周期分类</h3>
+<p>编码阶段 - 单元测试</p>
+<p>整合阶段 - 整合测试</p>
+<p>系统整合 - 系统测试</p>
+<p>维护阶段 - 回归测试</p>
+<p>发行前测试 - beta测试</p>
+<h3>测试活动的目的分类</h3>
+<p></p>
+<h3>人的作用和角色分类</h3>
+<p></p>
+<h1>划分域</h1>
+<p></p>
+<h4>用于功能测试</h4>
+<p></p>
+<h4>等价类hua'fen</h4>
+<p></p>
+<h4>边界值分析</h4>
+<p><strong>黑盒测试</strong></p>
+<p><strong>无论是单元还是系统</strong></p>
+<p><strong>与需求相比是否正确实现</strong></p>
+<h3></h3>
+<p><strong>测试方案</strong></p>
+<p><em>针对系统级的测试，包含测试所需的所有内容</em></p>
+<p><strong>测试设计说明</strong></p>
+<p><em>包含要测试的内容的一个子集，包含测试这个子集所需要的用例</em></p>
+<p><strong>测试用例说明</strong></p>
+<p><em>列出输入、预期输出、功能和其他特别的需求，例如运行环境和测试流程</em></p>
+<p><em>标明与其他测试用例的依赖关系</em></p>
+<p><em>为了在其他文档中引用，测试用例要有唯一的ID</em></p>
+<h3></h3>
+<p><strong>输入域D，程序P，测试用例集T</strong></p>
+<h3></h3>
+<p><strong>穷举法</strong></p>
+<p><em>输入域太大</em></p>
+<h2><strong>等价类划分</strong></h2>
+<p><em>前提：程序给同一类输入的行为是一样的</em></p>
+<p><em>目的：直击程序的错误行为</em></p>
+<p><em>有经验的测试者可以在程序编码完成前做完等价类划分</em></p>
+<h3>基于输入域</h3>
+<p>· 无交集</p>
+<p>· 交集等于输入域</p>
+<p>· 一般至少可分为两个部分：有效输入和无效输入</p>
+<h3>基于输出域</h3>
+<p>偶尔也用输出域划分输入域形成等价类</p>
+<p></p>
+<p><strong>有效性</strong></p>
+<p>· 测试出的错误占程序中潜藏的错误的比例，越高越有效</p>
+<p>· 更明确的需求说明和仔细选择的等价类能够提高有效性</p>
+<h3>系统化划分步骤</h3>
+<p>1.明确输入域</p>
+<p>​    根据需求说明明确输入和输出以及他们的类型、使用情景</p>
+<p>2.划分等价类</p>
+<p>​    将每个变量的可能值划分成不相交的子集，程序对每个子集中的每个元素应该有相同的行为。</p>
+<p>3.组合等价类</p>
+<p>​    使用组合多维等价类的方法，将多个输入选项的等价类组合起来。这一步常常忽略，但忽略后可能造成遗漏有用的测试用例。</p>
+<p>4.明确无效的（不实际的）等价类</p>
+<p>​    不实际的等价类是指其包含了不能生成测试的输入数据组合，例如：PC 与 macOS 的组合，或者由 GUI 控制而不可能输入的情况。</p>
+<h2>边界值分析</h2>
+<p></p>
+<h3>划分等价类</h3>
+<p></p>
+<h3>明确边界</h3>
+<p></p>
+<h3>构造测试集</h3>
+<p>1.分割输入域成块</p>
+<p>2.明确各个块的边界</p>
+<p>​    <em>边界可能受各个输入之间的关系的影响</em></p>
+<p>3.生成测试数据</p>
+<p>​    <em>每个边界值至少在一个输入测试中出现</em></p>
+<h1>范畴划分</h1>
+<p></p>
+<h2>范畴划分步骤</h2>
+<p>1.分析需求说明</p>
+<p>2.明确范畴</p>
+<p>​    每一个输入变量或者环境变量是一个范畴</p>
+<p>3.划分范畴</p>
+<p>​    将每个范畴划分为几个部分，类似等价类划分</p>
+<p>4.明确限制</p>
+<p>5.（再次）撰写测试说明</p>
+<p>6.处理测试说明</p>
+<p>​    从测试说明产生测试框架。测试框架并非测试用例，测试框架包含运行环境，可以有助于搭建测试所需的环境。</p>
+<p>7.预估生成器输出</p>
+<p>8.生成测试脚本</p>
+<h1>谓词与布尔表达式</h1>
+<p>从谓词生成测试用例</p>
+<p>因果图</p>
+<h2>谓词测试的错误模型</h2>
+<p>使用谓词分析进行软件测试的目的是发现布尔类型的表达式、操作符错误</p>
+<h2>操作符错误</h2>
+<p>将合取、析取等操作符写错</p>
+<p>将操作数（单词，即变量a、b、c等）写错</p>
+<h2>关系符错误</h2>
+<p>将比较关系写错，例如：错将>写成>=等</p>
+<h2>代数表达式错误</h2>
+<p>表达式与需求说明中所需要的不符，整个式子是错的</p>
+<p><em>Correct predicate: Ec: a<(b+c). </em></p>
+<p><em>Assume ε=1.</em></p>
+<ul>
+<li><em>• Ei: a<b. Given c=1, Ei has an off-by-1 fault as |a-b|= 1 for a test case for which a=b+c, e.g. <a=2, b=1, c=1>.</em>
+</li><li><em>• Ei: a<b+1. Given c=2, Ei has an off-by-1 fault as |a-(b+1)|≥ 1 for any test case for which a=b+c; <a=4, b=2, c=2></em>
+</li><li><em>• Ei: a<b-1. Given c>0, Ei has an off-by-1+ fault as |a-(b-1)|>1 for any test case for which a=b+c; <a=3, b=2, c=1>.</em>
+</li></ul>
+
+
+<h2>谓词测试的目的</h2>
+<p>找出不同真值，发现错与误模型匹配的错误</p>
+<h2>缺失或存在额外布尔变量的错误</h2>
+<p>意外的漏掉了或者多写了布尔变量的错误</p>
+<h2>谓词限制：布尔-关系符</h2>
+<p>例如：对表达式E：a<b，限制为>，即意味着限制为a>b，那么得到E的值终将为False</p>
+<h3>无效的（不可达的）限制</h3>
+<p>例如：表达式E：a>b^b>d，若限制为a<d，那么这样的限制是无效的，不可达的。</p>
+<h1>谓词分析</h1>
+<p>借助为谓词分析生成测试用例</p>
+<p>因果图</p>
+<h2>限制集</h2>
+<p></p>
+<p></p>
+
+<a href="/">Home Page</a></div>
+</body>
+</html>
