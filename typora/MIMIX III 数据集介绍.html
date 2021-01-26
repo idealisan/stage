@@ -1,0 +1,3986 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>MIMIX III 数据集介绍</title>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+        tab-size: 4;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        user-select: none;
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+        background-color: #dadada;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+        vertical-align: initial;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none 0s ease 0s;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+        opacity: 0.3 !important;
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-require-zoom-fix foreignobject {
+        font-size: var(--mermaid-font-zoom);
+    }
+
+
+    @media only screen {
+
+
+        /* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+        /* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
+        /* =========== */
+        :root {
+            --active-file-bg-color: #dadada;
+            --active-file-bg-color: rgba(32, 43, 51, 0.63);
+            --active-file-text-color: white;
+            --bg-color: #f3f2ee;
+            --text-color: #1f0909;
+            --control-text-color: #444;
+            --rawblock-edit-panel-bd: #e5e5e5;
+
+            --select-text-bg-color: rgba(32, 43, 51, 0.63);
+            --select-text-font-color: white;
+        }
+
+        pre {
+            --select-text-bg-color: #36284e;
+            --select-text-font-color: #fff;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        ty-footer {
+            background-color: f0f0f0;
+        }
+
+        html, body {
+            background-color: #cdd7e6;
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+            line-height: 1.5em;
+            height: 100%;
+
+        }
+
+
+        #write {
+            padding: 40px;
+            min-height: 100%;
+        }
+
+        /*
+        @media (max-width: 36em) {
+           #write {
+             padding-left: 1em;
+              padding-right: 1em;
+           }
+        }
+        */
+        #write {
+            box-shadow: 0px 0px 8px #666666;
+            max-width: 45em;
+            background-color: #FFFFFF;
+        }
+
+        ol li {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+
+        ul li {
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* styles */
+        /* ====== */
+        /* headings */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.875em;
+            /*30 / 16*/
+            line-height: 1.6em;
+            /* 48 / 30*/
+            margin-top: 2em;
+        }
+
+        h2,
+        h3 {
+            font-size: 1.3125em;
+            /*21 / 16*/
+            line-height: 1.15;
+            /*24 / 21*/
+            margin-top: 2.285714em;
+            /*48 / 21*/
+            margin-bottom: 1.15em;
+            /*24 / 21*/
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 1.125em;
+            /*18 / 16*/
+            margin-top: 2.67em;
+            /*48 / 18*/
+        }
+
+        h5,
+        h6 {
+            font-size: 1em;
+            /*16*/
+        }
+
+        h1 {
+            border-bottom: 1px solid;
+            margin-bottom: 1.875em;
+            padding-bottom: 0.8125em;
+        }
+
+        /* links */
+        a {
+            text-decoration: none;
+            color: #065588;
+        }
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+        }
+
+        /* block spacing */
+        p,
+        blockquote,
+        .md-fences {
+            margin-bottom: 1.5em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 1.5em;
+        }
+
+        /* blockquote */
+        blockquote {
+            font-style: italic;
+            border-left: 5px solid;
+            margin-left: 2em;
+            padding-left: 1em;
+        }
+
+        /* lists */
+        ul,
+        ol {
+            margin: 0 0 1.5em 1.5em;
+        }
+
+        /* tables */
+        .md-meta, .md-before, .md-after {
+            color: #999;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border-top: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr th:last-child,
+        table tr td:last-child {
+            margin-bottom: 0;
+        }
+
+        code,
+        .md-fences {
+            background-color: #dadada;
+        }
+
+        code {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .md-fences {
+            margin-left: 2em;
+            margin-bottom: 3em;
+            padding-left: 1ch;
+            padding-right: 1ch;
+        }
+
+        pre,
+        code,
+        tt {
+            font-size: .875em;
+            line-height: 1.714285em;
+        }
+
+        /* some fixes */
+        h1 {
+            line-height: 1.3em;
+            font-weight: normal;
+            margin-bottom: 0.5em;
+        }
+
+        p + ul,
+        p + ol {
+            margin-top: .5em;
+        }
+
+        h3 + ul,
+        h4 + ul,
+        h5 + ul,
+        h6 + ul,
+        h3 + ol,
+        h4 + ol,
+        h5 + ol,
+        h6 + ol {
+            margin-top: .5em;
+        }
+
+        li > ul,
+        li > ol {
+            margin-top: inherit;
+            margin-bottom: 0;
+        }
+
+        li ol > li {
+            list-style-type: lower-alpha;
+        }
+
+        li li ol > li {
+            list-style-type: lower-roman;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: .75em;
+        }
+
+        hr {
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid;
+            border-left: none;
+        }
+
+        h1 {
+            border-color: #c5c5c5;
+        }
+
+        blockquote {
+            border-color: #bababa;
+            color: #656565;
+        }
+
+        blockquote ul,
+        blockquote ol {
+            margin-left: 0;
+        }
+
+        .ty-table-edit {
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: #dadada;
+        }
+
+        tr:nth-child(even) {
+            background: #e8e7e7;
+        }
+
+        hr {
+            border-color: #c5c5c5;
+        }
+
+        .task-list {
+            padding-left: 1rem;
+        }
+
+        .md-task-list-item {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        .md-task-list-item > input:before {
+            content: '\221A';
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.6rem;
+            vertical-align: middle;
+            text-align: center;
+            color: #ddd;
+            background-color: #F3F2EE;
+        }
+
+        .md-task-list-item > input:checked:before,
+        .md-task-list-item > input[checked]:before {
+            color: inherit;
+        }
+
+        #write pre.md-meta-block {
+            min-height: 1.875rem;
+            color: #555;
+            border: 0px;
+            background: transparent;
+            margin-top: -4px;
+            margin-left: 1em;
+            margin-top: 1em;
+        }
+
+        .md-image > .md-meta {
+            color: #9B5146;
+        }
+
+        .md-image > .md-meta {
+            font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+        }
+
+
+        #write > h3.md-focus:before {
+            left: -1.5rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h4.md-focus:before {
+            left: -1.5rem;
+            top: .25rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h5.md-focus:before {
+            left: -1.5rem;
+            top: .0 .3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        #write > h6.md-focus:before {
+            left: -1.5rem;
+            top: 0.3125rem;
+            color: #999;
+            border-color: #999;
+        }
+
+        .md-toc:focus .md-toc-content {
+            margin-top: 19px;
+        }
+
+        .md-toc-content:empty:before {
+            color: #065588;
+        }
+
+        .md-toc-item {
+            color: #065588;
+        }
+
+        #write div.md-toc-tooltip {
+            background-color: #f3f2ee;
+        }
+
+        #typora-sidebar {
+            background-color: #dde7f6;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+        }
+
+        .pin-outline #typora-sidebar {
+            /* background: inherit; */
+            box-shadow: none;
+            border-right: 1px solid;
+        }
+
+        .pin-outline #typora-sidebar:hover .outline-title-wrapper {
+            border-left: 1px solid;
+        }
+
+        .outline-item:hover {
+            background-color: #dadada;
+            border-left: 28px solid #dadada;
+            border-right: 18px solid #dadada;
+        }
+
+        .typora-node .outline-item:hover {
+            border-right: 28px solid #dadada;
+        }
+
+        .outline-expander:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            font-size: 14px;
+            top: 1px;
+        }
+
+        .outline-expander:hover:before,
+        .outline-item-open > .outline-item > .outline-expander:before {
+            content: "\f0d7";
+        }
+
+        .modal-content {
+            background-color: #f3f2ee;
+        }
+
+        .auto-suggest-container ul li {
+            list-style-type: none;
+        }
+
+        /** UI for electron */
+        .megamenu-menu,
+        #top-titlebar, #top-titlebar *,
+        .megamenu-content {
+            background: #f3f2ee;
+            color: #1f0909;
+        }
+
+        .megamenu-menu-header {
+            border-bottom: 1px dashed #202B33;
+        }
+
+        .megamenu-menu {
+            box-shadow: none;
+            border-right: 1px dashed;
+        }
+
+        header, .context-menu, .megamenu-content, footer {
+            font-family: "PT Serif", 'Times New Roman', Times, serif;
+            color: #1f0909;
+        }
+
+        #megamenu-back-btn {
+            color: #1f0909;
+            border-color: #1f0909;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title:before {
+            color: #1f0909;
+        }
+
+        .megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+            color: inherit;
+            background-color: #e8e7df;
+        }
+
+        .long-btn:hover {
+            background-color: #e8e7df;
+        }
+
+        #recent-file-panel tbody tr:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+            color: inherit;
+        }
+
+        .megamenu-menu-panel .btn {
+            background-color: #D2D1D1;
+        }
+
+        .btn-default {
+            background-color: transparent;
+        }
+
+        .typora-sourceview-on #toggle-sourceview-btn,
+        .ty-show-word-count #footer-word-count {
+            background: #c7c5c5;
+        }
+
+        #typora-quick-open {
+            background-color: inherit;
+        }
+
+        .md-diagram-panel {
+            margin-top: 8px;
+        }
+
+        .file-list-item-file-name {
+            font-weight: initial;
+        }
+
+        .file-list-item-summary {
+            opacity: 1;
+        }
+
+        .file-list-item {
+            color: #777;
+        }
+
+        .file-list-item.active {
+            background-color: inherit;
+            color: black;
+        }
+
+        .ty-side-sort-btn.active {
+            background-color: inherit;
+        }
+
+        .file-list-item.active .file-list-item-file-name {
+            font-weight: bold;
+        }
+
+        .file-list-item {
+            opacity: 1 !important;
+        }
+
+        .file-library-node.active > .file-node-background {
+            background-color: rgba(32, 43, 51, 0.63);
+            background-color: var(--active-file-bg-color);
+        }
+
+        .file-tree-node.active > .file-node-content {
+            color: white;
+            color: var(--active-file-text-color);
+        }
+
+        .md-task-list-item > input {
+            margin-left: -1.6em;
+            margin-top: calc(1rem - 12px);
+        }
+
+        input {
+            border: 1px solid #aaa;
+        }
+
+        .megamenu-menu-header #megamenu-menu-header-title,
+        .megamenu-menu-header:hover,
+        .megamenu-menu-header:focus {
+            color: inherit;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+        }
+
+        /* https://github.com/typora/typora-issues/issues/2046 */
+        .os-windows-7 strong,
+        .os-windows-7 strong {
+            font-weight: 760;
+        }
+
+        .ty-preferences .btn-default {
+            background: transparent;
+        }
+
+        .ty-preferences .window-header {
+            border-bottom: 1px dashed #202B33;
+            box-shadow: none;
+        }
+
+    }
+
+
+    :root {
+        --mermaid-font-zoom: 1.25em;
+    }
+
+    .typora-export li, .typora-export p, .typora-export, .footnote-line {
+        white-space: normal;
+    }
+    </style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write' class=''>
+    <p><div id="home" style="margin-top: 416px;"><div id="header"><div id="blogTitle"><a id="lnkBlogLogo" href="https://www.cnblogs.com/linzhenyu/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页"></a><br/></p>
+<p><!--done--><h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/linzhenyu/">林震宇</a></h1><h2>think more) do more) love more) make more money)</h2></p>
+<p></p>
+<p></p>
+<pre><code>        
+    &lt;/div&gt;&lt;!--end: blogTitle 博客的标题和副标题 --&gt;
+    &lt;div id="navigator"&gt;</code></pre>
+
+<p><ul id="navList"><li><a id="blog<em>nav</em>sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li><li><a id="blog<em>nav</em>myhome" class="menu" href="https://www.cnblogs.com/linzhenyu/">首页</a></li><li></p>
+<p><a id="blog<em>nav</em>newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li><li><a id="blog<em>nav</em>contact" class="menu" href="https://msg.cnblogs.com/send/%E6%9E%97%E9%9C%87%E5%AE%87">联系</a></li><li><a id="blog<em>nav</em>rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/linzhenyu/rss/">订阅</a><!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li><li><a id="blog<em>nav</em>admin" class="menu" href="https://i.cnblogs.com/">管理</a></li></ul></p>
+<p></p>
+<pre><code>        &lt;div class="blogStats"&gt;
+            &lt;span id="stats_post_count"&gt;随笔 - 55&nbsp; &lt;/span&gt;
+&lt;span id="stats_article_count"&gt;文章 - 1&nbsp; &lt;/span&gt;
+&lt;span id="stats-comment_count"&gt;评论 - 9&lt;/span&gt;</code></pre>
+
+<pre><code>        &lt;/div&gt;&lt;!--end: blogStats --&gt;
+    &lt;/div&gt;&lt;!--end: navigator 博客导航栏 --&gt;
+&lt;/div&gt;&lt;!--end: header 头部 --&gt;
+&lt;div id="main"&gt;
+    &lt;div id="mainContent"&gt;
+    &lt;div class="forFlow"&gt;
+        &lt;div id="post_detail"&gt;
+    &lt;!--done--&gt;
+    &lt;div id="topics"&gt;
+        &lt;div class="post"&gt;
+            &lt;h1 class="postTitle"&gt;</code></pre>
+
+<p><a id="cb<em>post</em>title_url" class="postTitle2 vertical-middle post-del-title" href="https://www.cnblogs.com/linzhenyu/p/13206761.html"><span>KDD MIMIC-III数据集介绍</span></p>
+<p></p>
+<p></a></p>
+<pre><code>            &lt;/h1&gt;
+            &lt;div class="clear"&gt;&lt;/div&gt;
+            &lt;div class="postBody"&gt;</code></pre>
+
+<pre><code>    &lt;div id="cnblogs_post_description" style="display: none"&gt;
+        MIMIC-III 数据库 详细信息介绍 表格内容详情
+    &lt;/div&gt;
+&lt;div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"&gt;
+    &lt;span title-type="h1" class="header__span" style="transform:scale(1.0);"&gt;&lt;h1 id="mimic-iii" tid="tid-eXkw4m" class="header__dev"&gt;&lt;span style=""&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;1&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;0&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;MIMIC-III&lt;/span&gt;&lt;/b&gt;&lt;/h1&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;免费公开的重症监护医学信息数据库。包含2001年至2012年之间进入重症监护病房的成年患者的53423例不同的医院入院数据和2001年至2008年之间收治的7870名新生儿数据。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://mimic.physionet.org/" target="_blank"&gt;Home&lt;/a&gt; | &lt;a href="https://github.com/MIT-LCP/mimic-code" target="_blank"&gt;Github&lt;/a&gt; | &lt;a href="https://mimic.physionet.org/about/mimic/" target="_blank"&gt;Doc&lt;/a&gt;&lt;/p&gt;
+&lt;span title-type="h1" class="header__span" style="transform:scale(1.0);"&gt;&lt;h1 id="字典信息数据" tid="tid-PDrNTy" class="header__dev"&gt;&lt;span style=""&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;0&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;字典信息数据&lt;/span&gt;&lt;/b&gt;&lt;/h1&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;字典信息数据，共包含5个数据表。抽取患者的数据比如说生命体征,心率等,实验室指标(如白细胞红细胞等)等, 需要在相应的字典中找到相应的item,即项目标识符,再对应查找某一个患者对应指标下的数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="d_cpt" tid="tid-FakpNj" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;1&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;d_cpt&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;操作记录代码索引&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CATEGORY&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;CPT code 类别号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SECTIONRANGE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;给定的代码范围&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SECTIONHEADER&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;给定的代码说明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBSECTIONRANGE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;更多有用的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBSECTIONHEADER&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;更多有用的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CODESUFFIX&lt;/td&gt;
+&lt;td&gt;VARCHAR(5)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MINCODEINSUBSECTION&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;SUBSECTIONRANGE 的最小值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MAXCODEINSUBSECTION&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;SUBSECTIONRANGE 的最大值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="d_icd_diagnoses" tid="tid-CFrBSa" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;d_icd_diagnoses&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;诊断代码索引&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICD9_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;ICD-9 编码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SHORT_TITLE&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;缩写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LONG_TITLE&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;全称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="d_icd_procedures" tid="tid-2QcRdB" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;d_icd_procedures&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;手术操作代码索引&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICD9_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;ICD-9 编码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SHORT_TITLE&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;缩写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LONG_TITLE&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;全称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="d_items" tid="tid-RhQmGe" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;4&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;d_items&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记录项目代码索引&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LABEL&lt;/td&gt;
+&lt;td&gt;VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;项目标签&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ABBREVIATION&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;标签缩写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DBSOURCE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;数据来源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LINKSTO&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;对应的数据表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CATEGORY&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;项目种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;UNITNAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;项目测量单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PARAM_TYPE&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;记录数据的类型  a date, a number, a text field&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CONCEPTID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="d_labitems" tid="tid-KiS2xd" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;5&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;d_labitems&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;化验项目代码索引&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LABEL&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;项目标签&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FLUID&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;测量的物质 ‘blood’ ‘urine’&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CATEGORY&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;测量的种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LOINC_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h1" class="header__span" style="transform:scale(1.0);"&gt;&lt;h1 id="患者基本信息和院内采集信息数据" tid="tid-Q5CQPS" class="header__dev"&gt;&lt;span style=""&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;0&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;患者基本信息和院内采集信息数据&lt;/span&gt;&lt;/b&gt;&lt;/h1&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者基本信息和院内采集信息数据，共包含21个数据表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="admissions" tid="tid-4k22JW" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;1&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;admissions&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者入院情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name     Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID     INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID     INT&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID     INT&lt;/td&gt;
+&lt;td&gt;病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ADMITTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;入院时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DISCHTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;出院时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DEATHTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;死亡时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ADMISSION_TYPE     VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;入院类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ADMISSION_LOCATION     VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;入院地点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DISCHARGE_LOCATION     VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;出院地点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INSURANCE     VARCHAR(255)&lt;/td&gt;
+&lt;td&gt;保险类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LANGUAGE     VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;语种&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RELIGION     VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;宗教信仰&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MARITAL_STATUS     VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;婚姻状况&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ETHNICITY     VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;种族&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDREGTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;急诊留观登记时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDOUTTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;急诊留观出观时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DIAGNOSIS     VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;初步诊断&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HOSPITAL_EXPIRE_FLAG     TINYINT&lt;/td&gt;
+&lt;td&gt;院内死亡标记&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HAS_CHARTEVENTS_DATA     TINYINT&lt;/td&gt;
+&lt;td&gt;是否有chartevents记录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="callout" tid="tid-xBF2bW" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;2&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;callout&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者ICU出科的即时信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name     Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID     INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID     INT&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID     INT&lt;/td&gt;
+&lt;td&gt;病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBMIT_WARDID     INT&lt;/td&gt;
+&lt;td&gt;提交申请的科室代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBMIT_CAREUNIT     VARCHAR(15)&lt;/td&gt;
+&lt;td&gt;提交申请的科室所属的ICU cost类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURR_WARDID     INT&lt;/td&gt;
+&lt;td&gt;患者所属科室&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURR_CAREUNIT     VARCHAR(15)&lt;/td&gt;
+&lt;td&gt;患者所属的ICU cost类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CALLOUT_WARDID     INT&lt;/td&gt;
+&lt;td&gt;申请转移的地方 0 代表 Home / 1 代表转移到可用的的病房&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CALLOUT_SERVICE     VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;患者需接受的治疗服务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REQUEST_TELE     SMALLINT&lt;/td&gt;
+&lt;td&gt;预防患者已经感染的疾病&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REQUEST_RESP     SMALLINT&lt;/td&gt;
+&lt;td&gt;预防患者已经感染的疾病&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REQUEST_CDIFF     SMALLINT&lt;/td&gt;
+&lt;td&gt;预防患者已经感染的疾病&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REQUEST_MRSA     SMALLINT&lt;/td&gt;
+&lt;td&gt;预防患者已经感染的疾病&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REQUEST_VRE     SMALLINT&lt;/td&gt;
+&lt;td&gt;预防患者已经感染的疾病&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CALLOUT_STATUS     VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;申请的状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CALLOUT_OUTCOME     VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;‘Discharged’ or ‘Cancelled’&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DISCHARGE_WARDID     INT&lt;/td&gt;
+&lt;td&gt;实际转移的地方 0 代表 Home / 1 代表转移到可用的的病房&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ACKNOWLEDGE_STATUS     VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;申请的反馈结果状态  ‘Acknowledged’, ‘Revised’, ‘Unacknowledged’ or ‘Reactivated’&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CREATETIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;申请创建时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;UPDATETIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;更新时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ACKNOWLEDGETIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;反馈时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OUTCOMETIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;callout完成时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FIRSTRESERVATIONTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;首次病房保留时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURRENTRESERVATIONTIME     TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;当前病房保留时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="caregivers" tid="tid-74AJEx" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;caregivers&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;护理人员信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name     Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID     INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID     INT&lt;/td&gt;
+&lt;td&gt;护理人员标志符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LABEL     VARCHAR(15)&lt;/td&gt;
+&lt;td&gt;护理人员的头衔 RN, MD, PharmD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DESCRIPTION     VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;护理人员的结构化数据信息 17 unique values&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="chartevents" tid="tid-hfBXDT" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;4&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;chartevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者观察记录数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;In CareVue&lt;/th&gt;
+&lt;th&gt;In Metavision&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;NUMBER(7,0)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;NUMBER(7,0)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;NUMBER(7,0)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;ICU病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;NUMBER(7,0)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;DATE&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;记录时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;DATE&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;存储时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;NUMBER(7,0)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;护理人员标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUE&lt;/td&gt;
+&lt;td&gt;VARCHAR2(200 BYTE)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;项目测量的值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUENUM&lt;/td&gt;
+&lt;td&gt;NUMBER&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;项目测量的数字信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR2(20 BYTE)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;项目测量的值对应的单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WARNING&lt;/td&gt;
+&lt;td&gt;NUMBER(1,0)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;测量过程发生的警告 / Metavision specific columns&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ERROR&lt;/td&gt;
+&lt;td&gt;NUMBER(1,0)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;测量过程发生的错误 / Metavision specific columns&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RESULTSTATUS&lt;/td&gt;
+&lt;td&gt;VARCHAR2(20 BYTE)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;测量类型 ‘Manual’ or ‘Automatic’ /  CareVue specific columns&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STOPPED&lt;/td&gt;
+&lt;td&gt;VARCHAR2(20 BYTE)&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;测量是否停止&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="cptevents" tid="tid-teiRQF" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;5&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;cptevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者操作记录，记录程序操作是对哪位患者收费，便于知道某种操作是否执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COSTCENTER&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;操作部门&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTDATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;操作时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CPT_CD&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;操作的原始编码code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CPT_NUMBER&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;CPT_CD 的数字信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CPT_SUFFIX&lt;/td&gt;
+&lt;td&gt;VARCHAR(5)&lt;/td&gt;
+&lt;td&gt;CPT_CD 的文本后缀&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TICKET_ID_SEQ&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;CPT_CD 的顺序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SECTIONHEADER&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;CPT_CD 的种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBSECTIONHEADER&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;CPT_CD 的种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;CPT_CD 的详细信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="datetimeevents" tid="tid-3Z4jJy" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;6&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;datetimeevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者操作时间信息，包括患者在ICU中所有时间的测量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;ICU病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;记录时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;存储时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;护理人员标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WARNING&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ERROR&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RESULTSTATUS&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STOPPED&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;同上chartevents&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="diagnoses_icd" tid="tid-eDRBfM" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;7&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;diagnoses_icd&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者诊断ICD-9编码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;PostgreSQL data type&lt;/th&gt;
+&lt;th&gt;Modifiers&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SEQ_NUM&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;ICD诊断顺序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICD9_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;实际编码IDC-9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="drgcodes" tid="tid-di24m7" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;8&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;drgcodes&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者诊断类别组，包含诊断所属的种类&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;PostgreSQL data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRG_TYPE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;诊断类别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRG_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;诊断编码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;详细描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRG_SEVERITY&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;严重程度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRG_MORTALITY&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;死亡率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="icustays" tid="tid-ePde6a" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;9&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;icustays&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ICU入住信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;ICU病案号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DBSOURCE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;来源数据库  ‘carevue’ ‘metavision’ 在某些地方处理上有所不同&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FIRST_CAREUNIT&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;患者入住监护室24小时内的首个ICU监护室种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LAST_CAREUNIT&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;患者入住监护室24小时内的最终ICU监护室种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FIRST_WARDID&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;监护室编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LAST_WARDID&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;监护室编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;入科时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OUTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;出科时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LOS&lt;/td&gt;
+&lt;td&gt;DOUBLE&lt;/td&gt;
+&lt;td&gt;入住时长 可能包括单个或多个ICU单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="inputevents_cv" tid="tid-EthbkE" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;10&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;inputevents_cv&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用carevue监护系统记录的入量信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;记录时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AMOUNT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;总入量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AMOUNTUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;入量单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RATE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;给药速率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RATEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;速率单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;存储时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;护理人员编码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;同一次输入的多个药物进行链接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LINKORDERID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;同一次的单个药物不同改变进行链接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STOPPED&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;输入是否暂停&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NEWBOTTLE&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;新配制的溶液&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALAMOUNT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALAMOUNTUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALROUTE&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALRATE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALRATEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALSITE&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="inputevents_mv" tid="tid-8ppPNr" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;11&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;inputevents_mv&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用metavision系统记录的入量信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;入量开始时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ENDTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;入量结束时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AMOUNT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;总入量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AMOUNTUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;入量单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RATE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;给药速率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RATEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;速率单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;存储时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;护理人员编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;同上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LINKORDERID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;同上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERCATEGORYNAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SECONDARYORDERCATEGORYNAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERCOMPONENTTYPEDESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERCATEGORYDESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PATIENTWEIGHT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;患者体重 (kg)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TOTALAMOUNT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;溶液液体总量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TOTALAMOUNTUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;溶液液体总量单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISOPENBAG&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CONTINUEINNEXTDEPT&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;转移是否继续入量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CANCELREASON&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;取消原因&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STATUSDESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;项目最终状态 changed paused finishedrunning stopped rewritten flushed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_STATUS&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_TITLE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_DATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALAMOUNT&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORIGINALRATE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="labevents" tid="tid-RAGGF5" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;12&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;labevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者化验项目&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;测量时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUE&lt;/td&gt;
+&lt;td&gt;VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;测量项目&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUENUM&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;测量数值数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;测量单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FLAG&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;测量值是否异常&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="microbiologyevents" tid="tid-2A52kS" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;13&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;microbiologyevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者标本微生物病原体检测结果，包括采集的培养物和相关敏感性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTDATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;记录日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;记录时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SPEC_ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;化验项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SPEC_TYPE_DESC&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;化验类型 血液 尿液 痰&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORG_ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;生成的有机物标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORG_NAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;有机物名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISOLATE_NUM&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;分离菌落数目&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AB_ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;抗生素敏感性测试标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AB_NAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;抗生素名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DILUTION_TEXT&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;测试抗生素敏感性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DILUTION_COMPARISON&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DILUTION_VALUE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;测试抗生素敏感性时的稀释值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INTERPRETATION&lt;/td&gt;
+&lt;td&gt;VARCHAR(5)&lt;/td&gt;
+&lt;td&gt;解释抗生素的敏感性和试验结果 “S”是敏感的，“R”是抗性的，“I”是中间的，“P”是待定的&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="noteevents" tid="tid-8jPFNx" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;14&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;noteevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;治疗记录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTDATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CATEGORY&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;记录类型 ‘Discharge’ ：出院&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(300)&lt;/td&gt;
+&lt;td&gt;记录类别 ‘Summary’ ：总结&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;护理人员标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISERROR&lt;/td&gt;
+&lt;td&gt;CHAR(1)&lt;/td&gt;
+&lt;td&gt;‘1’ 代表该记录被标记为错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TEXT&lt;/td&gt;
+&lt;td&gt;TEXT&lt;/td&gt;
+&lt;td&gt;医嘱内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="outputevents" tid="tid-yEyycB" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;15&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;outputevents&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者出量数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CHARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;项目标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;出量值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;出量值的单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;存储时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;BIGINT&lt;/td&gt;
+&lt;td&gt;护理人员标识符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STOPPED&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;是否中断&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NEWBOTTLE&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;是否有准备新溶液&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISERROR&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;是否被标记为错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="patients" tid="tid-f8aKDW" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;16&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;patients&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;患者编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GENDER&lt;/td&gt;
+&lt;td&gt;VARCHAR(5)&lt;/td&gt;
+&lt;td&gt;性别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOB&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;出生日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOD&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;死亡日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOD_HOSP&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;院内登记死亡日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOD_SSN&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;社保局登记死亡日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPIRE_FLAG&lt;/td&gt;
+&lt;td&gt;VARCHAR(5)&lt;/td&gt;
+&lt;td&gt;死亡标记&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="prescriptions" tid="tid-M3YpMD" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;17&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;prescriptions&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;病人用药记录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STARTDATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;用药开始时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ENDDATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;用药结束时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRUG_TYPE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRUG&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRUG_NAME_POE&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物说明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DRUG_NAME_GENERIC&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物说明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FORMULARY_DRUG_CD&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;处方药代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GSN&lt;/td&gt;
+&lt;td&gt;VARCHAR(200)&lt;/td&gt;
+&lt;td&gt;Generic Sequence Number&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NDC&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;National Drug Code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PROD_STRENGTH&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOSE_VAL_RX&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DOSE_UNIT_RX&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FORM_VAL_DISP&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FORM_UNIT_DISP&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ROUTE&lt;/td&gt;
+&lt;td&gt;VARCHAR(120)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="procedureevents_mv" tid="tid-skNrfW" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;18&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;procedureevents_mv&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;metavision系统操作信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT NOT NULL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT NOT NULL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT NOT NULL&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STARTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ENDTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ITEMID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUE&lt;/td&gt;
+&lt;td&gt;DOUBLE PRECISION&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VALUEUOM&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LOCATION&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LOCATIONCATEGORY&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STORETIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CGID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LINKORDERID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERCATEGORYNAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物一级分类名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SECONDARYORDERCATEGORYNAME&lt;/td&gt;
+&lt;td&gt;VARCHAR(100)&lt;/td&gt;
+&lt;td&gt;药物二级分类名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORDERCATEGORYDESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(50)&lt;/td&gt;
+&lt;td&gt;药物分类描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISOPENBAG&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CONTINUEINNEXTDEPT&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CANCELREASON&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;取消原因&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STATUSDESCRIPTION&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;状态描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_EDITEDBY&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_CANCELEDBY&lt;/td&gt;
+&lt;td&gt;VARCHAR(30)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMMENTS_DATE&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="procedures_icd" tid="tid-KhxF2A" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;19&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;procedures_icd&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;病人手术记录ICD-9编码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;PostgreSQL data type&lt;/th&gt;
+&lt;th&gt;Modifiers&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;not null&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SEQ_NUM&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;操作顺序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICD9_CODE&lt;/td&gt;
+&lt;td&gt;VARCHAR(10)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;ICD-9 编码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="services" tid="tid-fjrsmy" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;20&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;services&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者需要接受的医疗服务&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TRANSFERTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;服务种类更改时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PREV_SERVICE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;前次服务种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURR_SERVICE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;当前服务种类&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;span title-type="h3" class="header__span" style="transform:scale(0.8);left: -74.00px;"&gt;&lt;h3 id="服务的名称缩写及其详细说明" tid="tid-YTMmHQ" class="header__dev"&gt;&lt;span style="visibility: hidden;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;1&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;0&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;span class="iconfont icon-weibiaoti22 titleIcon" style="left: 32.00px;"&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;服务的名称缩写及其详细说明&lt;/span&gt;&lt;/b&gt;&lt;/h3&gt;&lt;/span&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Service&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CMED&lt;/td&gt;
+&lt;td&gt;Cardiac Medical - for non-surgical cardiac related admissions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CSURG&lt;/td&gt;
+&lt;td&gt;Cardiac Surgery - for surgical cardiac admissions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DENT&lt;/td&gt;
+&lt;td&gt;Dental - for dental/jaw related admissions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ENT&lt;/td&gt;
+&lt;td&gt;Ear, nose, and throat - conditions primarily affecting these areas&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GU&lt;/td&gt;
+&lt;td&gt;Genitourinary - reproductive organs/urinary system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GYN&lt;/td&gt;
+&lt;td&gt;Gynecological - female reproductive systems and breasts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MED&lt;/td&gt;
+&lt;td&gt;Medical - general service for internal medicine&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NB&lt;/td&gt;
+&lt;td&gt;Newborn - infants born at the hospital&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NBB&lt;/td&gt;
+&lt;td&gt;Newborn baby - infants born at the hospital&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NMED&lt;/td&gt;
+&lt;td&gt;Neurologic Medical - non-surgical, relating to the brain&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NSURG&lt;/td&gt;
+&lt;td&gt;Neurologic Surgical - surgical, relating to the brain&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OBS&lt;/td&gt;
+&lt;td&gt;Obstetrics - conerned with childbirth and the care of women giving birth&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORTHO&lt;/td&gt;
+&lt;td&gt;Orthopaedic - surgical, relating to the musculoskeletal system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OMED&lt;/td&gt;
+&lt;td&gt;Orthopaedic medicine - non-surgical, relating to musculoskeletal system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PSURG&lt;/td&gt;
+&lt;td&gt;Plastic - restortation/reconstruction of the human body (including cosmetic or aesthetic)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PSYCH&lt;/td&gt;
+&lt;td&gt;Psychiatric - mental disorders relating to mood, behaviour, cognition, or perceptions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SURG&lt;/td&gt;
+&lt;td&gt;Surgical - general surgical service not classified elsewhere&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TRAUM&lt;/td&gt;
+&lt;td&gt;Trauma - injury or damage caused by physical harm from an external source&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TSURG&lt;/td&gt;
+&lt;td&gt;Thoracic Surgical - surgery on the thorax, located between the neck and the abdomen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VSURG&lt;/td&gt;
+&lt;td&gt;Vascular Surgical - surgery relating to the circulatory system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span title-type="h2" class="header__span" style="transform:scale(0.9);left: -37.00px;"&gt;&lt;h2 id="transfers" tid="tid-KEKZbQ" class="header__dev"&gt;&lt;span style="position: relative;left: -5px;"&gt;&lt;b class="dev__fe"&gt;&lt;i&gt;3&lt;/i&gt;&lt;/b&gt;&lt;span class="dev__slash"&gt;|&lt;/span&gt;&lt;b class="dev__ux"&gt;&lt;i&gt;21&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;b class="dev__developer"&gt;&lt;span class="dev__title"&gt;transfers&lt;/span&gt;&lt;/b&gt;&lt;/h2&gt;&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;患者周转信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Postgres data type&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ROW_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SUBJECT_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HADM_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ICUSTAY_ID&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DBSOURCE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;数据来源  ‘carevue’  ‘metavision’&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EVENTTYPE&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;转移的类型 ‘admit’  ‘transfer’  ‘discharge’&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PREV_CAREUNIT&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;前次所在监护室&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURR_CAREUNIT&lt;/td&gt;
+&lt;td&gt;VARCHAR(20)&lt;/td&gt;
+&lt;td&gt;当前所在监护室&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PREV_WARDID&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;前次所在科室代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CURR_WARDID&lt;/td&gt;
+&lt;td&gt;SMALLINT&lt;/td&gt;
+&lt;td&gt;当前所在科室代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;入科时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OUTTIME&lt;/td&gt;
+&lt;td&gt;TIMESTAMP(0)&lt;/td&gt;
+&lt;td&gt;出科时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LOS&lt;/td&gt;
+&lt;td&gt;INT&lt;/td&gt;
+&lt;td&gt;住院时长&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+<p><br><p class="essaySuffix-eof"><strong>EOF</strong></p><div class="essaySuffix-box"><div class="essaySuffix-box-left"><img src="https://files-cdn.cnblogs.com/files/linzhenyu/ico.bmp" alt=""></div><div class="essaySuffix-box-right"><span class="essaySuffix-right-title">本文作者</span>：<strong><span style="font-size: 12px;"><a href="https://www.cnblogs.com/linzhenyu/p/13206761.html" target="<em>blank">林震宇</a></span></strong> <br><span style="font-weight: bold; white-space:nowrap;">本文链接</span>：<a href="https://www.cnblogs.com/linzhenyu/p/13206761.html" target="</em>blank">https://www.cnblogs.com/linzhenyu/p/13206761.html</a><br><span class="essaySuffix-right-title">关于博主</span>：评论和私信会在第一时间回复。或者<a href="https://msg.cnblogs.com/msg/send/linzhenyu" target="<em>blank">直接私信</a>我。<br><span class="essaySuffix-right-title">版权声明</span>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA" title="BY-NC-SA" target="</em>blank">BY-NC-SA</a> 许可协议。转载请注明出处！<br><span class="essaySuffix-right-title">声援博主</span>：如果您觉得文章对您有帮助，可以点击文章右下角<strong><span style="color: #ff0000; font-size: 12pt;">【<a id="post-up" onclick="votePost(13206761,'Digg')" href="javascript:void(0);">推荐</a>】</span></strong>一下。您的鼓励是博主的最大动力！<br></div><div style="clear: both;"></div></div></div><div id="MySignature"></div><div class="clear"></div><div id="blog<em>post</em>info_block"><div id="BlogPostCategory">分类:<a href="https://www.cnblogs.com/linzhenyu/category/1802468.html" target="<em>blank"><span class="iconfont icon-marketing</em>fill"></span>知识发现与数据挖掘</a></div><div id="EntryTag">标签:<a href="https://www.cnblogs.com/linzhenyu/tag/MIMIC/"><span class="iconfont icon-label<em>fill"></span>MIMIC</a>,             <a href="https://www.cnblogs.com/linzhenyu/tag/KDD/"><span class="iconfont icon-label</em>fill"></span>KDD</a>,             <a href="https://www.cnblogs.com/linzhenyu/tag/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"><span class="iconfont icon-label_fill"></span>数据挖掘</a></div></p>
+<pre><code>    &lt;div id="blog_post_info"&gt;
+&lt;div id="green_channel"&gt;
+        &lt;a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(13206761,cb_blogId,1);green_channel_success(this,'谢谢推荐！');"&gt;好文要顶&lt;/a&gt;
+        &lt;a id="green_channel_follow" onclick="follow('731d7b80-4ed9-444d-6c9c-08d810f32599');" href="javascript:void(0);"&gt;关注我&lt;/a&gt;
+    &lt;a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);"&gt;收藏该文&lt;/a&gt;
+    &lt;a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"&gt;&lt;img src="https://common.cnblogs.com/images/icon_weibo_24.png" alt=""&gt;&lt;/a&gt;
+    &lt;a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"&gt;&lt;img src="https://common.cnblogs.com/images/wechat.png" alt=""&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id="author_profile"&gt;
+    &lt;div id="author_profile_info" class="author_profile_info"&gt;
+            &lt;a href="https://home.cnblogs.com/u/linzhenyu/" target="_blank"&gt;&lt;img src="https://pic.cnblogs.com/face/2067563/20200705212727.png" class="author_avatar" alt=""&gt;&lt;/a&gt;
+        &lt;div id="author_profile_detail" class="author_profile_info"&gt;
+            &lt;a href="https://home.cnblogs.com/u/linzhenyu/"&gt;林震宇&lt;/a&gt;&lt;br&gt;
+            &lt;a href="https://home.cnblogs.com/u/linzhenyu/followees/"&gt;关注 - 3&lt;/a&gt;&lt;br&gt;
+            &lt;a href="https://home.cnblogs.com/u/linzhenyu/followers/"&gt;粉丝 - 11&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="clear"&gt;&lt;/div&gt;
+    &lt;div id="author_profile_honor"&gt;&lt;/div&gt;
+    &lt;div id="author_profile_follow"&gt;
+                &lt;a href="javascript:void(0);" onclick="follow('731d7b80-4ed9-444d-6c9c-08d810f32599');return false;"&gt;+加关注&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="div_digg"&gt;
+    &lt;div class="diggit" onclick="votePost(13206761,'Digg')"&gt;
+        &lt;span class="diggnum" id="digg_count"&gt;0&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="buryit" onclick="votePost(13206761,'Bury')"&gt;
+        &lt;span class="burynum" id="bury_count"&gt;0&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="clear"&gt;&lt;/div&gt;
+    &lt;div class="diggword" id="digg_tips"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p><script type="text/javascript">currentDiggType = 0;</script></div><div class="clear"></div><div id="post<em>next</em>prev"></p>
+<pre><code>    &lt;a href="https://www.cnblogs.com/linzhenyu/p/13205481.html" class="p_n_p_prefix"&gt;« &lt;/a&gt; 上一篇：    &lt;a href="https://www.cnblogs.com/linzhenyu/p/13205481.html" title="发布于 2020-06-28 22:47"&gt;Python 函数&lt;/a&gt;
+    &lt;br&gt;
+    &lt;a href="https://www.cnblogs.com/linzhenyu/p/13212481.html" class="p_n_p_prefix"&gt;» &lt;/a&gt; 下一篇：    &lt;a href="https://www.cnblogs.com/linzhenyu/p/13212481.html" title="发布于 2020-06-30 10:50"&gt;KDD MIMIC-III 数据分析，预处理和可视化&lt;/a&gt;</code></pre>
+
+<p></div></div></div><div class="postDesc" style="display: block;">posted @<span id="post-date">2020-06-29 10:55</span>&nbsp;<a href="https://www.cnblogs.com/linzhenyu/">林震宇</a>&nbsp;阅读(<span id="post<em>view</em>count">947</span>)&nbsp;评论(<span id="post<em>comment</em>count">0</span>)&nbsp;<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13206761" rel="nofollow">编辑</a>&nbsp;<a href="javascript:void(0)" onclick="AddToWz(13206761);return false;">收藏</a></div></div></p>
+<pre><code>        
+    &lt;/div&gt;&lt;!--end: topics 文章、评论容器--&gt;
+&lt;/div&gt;
+&lt;script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;markdown_highlight();&lt;/script&gt;
+&lt;script&gt;
+    var allowComments = true, cb_blogId = 611063, cb_blogApp = 'linzhenyu', cb_blogUserGuid = '731d7b80-4ed9-444d-6c9c-08d810f32599';
+    var cb_entryId = 13206761, cb_entryCreatedDate = '2020-06-29 10:55', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+&lt;/script&gt;
+&lt;a name="!comments"&gt;&lt;/a&gt;
+&lt;div id="blog-comments-placeholder"&gt;&lt;/div&gt;
+&lt;div id="comment_form" class="commentform"&gt;
+    &lt;a name="commentform"&gt;&lt;/a&gt;
+    &lt;div id="divCommentShow"&gt;&lt;/div&gt;
+    &lt;div id="comment_nav"&gt;&lt;span id="span_refresh_tips"&gt;&lt;/span&gt;&lt;a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static"&gt;刷新评论&lt;/a&gt;&lt;a href="#" onclick="return RefreshPage();"&gt;刷新页面&lt;/a&gt;&lt;a href="#top"&gt;返回顶部&lt;/a&gt;&lt;/div&gt;
+    &lt;div id="comment_form_container" style="visibility: visible;"&gt;&lt;script type="text/javascript" src="https://mention.cnblogs.com/bundles/mention.min.js"&gt;&lt;/script&gt;
+&lt;div id="commentform_title"&gt;发表评论&lt;/div&gt;
+&lt;span id="tip_comment" style="color:Red"&gt;&lt;/span&gt;
+&lt;div class="commentbox_main comment_textarea"&gt;
+    &lt;div class="commentbox_title"&gt;
+        &lt;div class="commentbox_title_left"&gt;
+            &lt;span id="btn_edit_comment" class="commentbox_tab active" title="编辑评论"&gt;编辑&lt;/span&gt;
+            &lt;span id="btn_preview_comment" class="commentbox_tab" title="Markdown 预览"&gt;预览&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="commentbox_title_right"&gt;
+            &lt;span id="ubb_bold" class="comment_icon" alt="粗体" title="添加粗体(Ctrl + B)"&gt;
+                &lt;svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+                    &lt;g fill-rule="evenodd"&gt;
+                        &lt;path d="m13.221 19c1.4414 0 2.5793-0.27451 3.3759-0.82353 0.92931-0.66667 1.4034-1.7059 1.4034-3.1176 0-0.94118-0.22759-1.7059-0.66379-2.2549-0.45517-0.56863-1.119-0.94118-2.0103-1.1176 0.68276-0.27451 1.1948-0.64706 1.5552-1.1569 0.36034-0.54902 0.55-1.2157 0.55-2 0-1.0588-0.36034-1.902-1.0621-2.5294-0.75862-0.66667-1.8207-1-3.1672-1h-6.2017v14h6.2207zm-0.82196-8h-3.3987v-4h3.4367c0.91139 0 1.557 0.15686 1.9747 0.47059 0.37975 0.29412 0.58861 0.78431 0.58861 1.451 0 0.72549-0.20886 1.2549-0.58861 1.5882-0.39873 0.31373-1.0633 0.4902-2.0127 0.4902zm0.52612 6h-3.9249v-4h3.9855c1.052 0 1.8208 0.16216 2.3064 0.48649 0.46532 0.32432 0.70809 0.84685 0.70809 1.5856 0 0.72072-0.3237 1.2252-0.9711 1.5495-0.50578 0.25225-1.2139 0.37838-2.104 0.37838z" fill-rule="nonzero" stroke-width=".35"&gt;&lt;/path&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
+            &lt;span id="ubb_url" class="comment_icon" title="添加链接(Ctrl + K)" alt="链接"&gt;
+                &lt;svg class="comment_svg comment_svg_stroke" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+                    &lt;g fill-rule="evenodd"&gt;
+                        &lt;g transform="translate(4 4)" fill-rule="nonzero" stroke-width=".4"&gt;
+                            &lt;path d="m6.304 9.696c-0.288-0.288-0.512-0.608-0.704-0.992-0.16-0.32-0.032-0.704 0.288-0.864 0.32-0.16 0.704-0.032 0.864 0.288 0.128 0.224 0.256 0.448 0.448 0.64 0.928 0.928 2.432 0.928 3.36 0l3.36-3.328c0.928-0.928 0.928-2.432 0-3.36s-2.432-0.928-3.36 0l-2.272 2.272c-0.256 0.256-0.64 0.256-0.896 0-0.256-0.256-0.256-0.64 0-0.896l2.272-2.272c1.44-1.44 3.744-1.44 5.184 0 1.44 1.44 1.44 3.744 0 5.184l-3.36 3.296c-0.704 0.704-1.632 1.088-2.592 1.088-0.928 0-1.856-0.352-2.592-1.056z"&gt;&lt;/path&gt;
+                            &lt;path d="m3.776 15.808c-0.992 0-1.888-0.384-2.592-1.056-1.44-1.44-1.44-3.744 0-5.184l3.328-3.328c1.44-1.44 3.744-1.44 5.184 0 0.288 0.288 0.544 0.64 0.736 1.024 0.16 0.32 0 0.704-0.32 0.864-0.32 0.16-0.704 0-0.864-0.32-0.128-0.256-0.288-0.48-0.48-0.672-0.928-0.928-2.432-0.928-3.36 0l-3.296 3.328c-0.928 0.928-0.928 2.432 0 3.36 0.448 0.448 1.056 0.704 1.664 0.704 0.608 0 1.248-0.256 1.664-0.704l2.112-2.112c0.256-0.256 0.64-0.256 0.896 0s0.256 0.64 0 0.896l-2.112 2.112c-0.672 0.704-1.568 1.088-2.56 1.088z"&gt;&lt;/path&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
+            &lt;span id="ubb_code" class="comment_icon" title="添加代码(Ctrl + `)" alt="代码"&gt;
+                &lt;svg class="comment_svg comment_svg_stroke" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+                    &lt;g fill-rule="evenodd"&gt;
+                        &lt;g transform="translate(16 6)" stroke-linecap="round" stroke-width="2"&gt;
+                            &lt;line x1=".5" x2="4.5" y1=".7" y2="6.3"&gt;&lt;/line&gt;
+                            &lt;line transform="translate(2.5 9.1) scale(1 -1) translate(-2.5 -9.1)" x1=".5" x2="4.5" y1="6.3" y2="11.9"&gt;&lt;/line&gt;
+                        &lt;/g&gt;
+                        &lt;g transform="translate(3 6.1)" stroke-linecap="round" stroke-width="2"&gt;
+                            &lt;line transform="translate(2.5 3.5) scale(-1 1) translate(-2.5 -3.5)" x1=".5" x2="4.5" y1=".7" y2="6.3"&gt;&lt;/line&gt;
+                            &lt;line transform="translate(2.5 9.1) scale(-1) translate(-2.5 -9.1)" x1=".5" x2="4.5" y1="6.3" y2="11.9"&gt;&lt;/line&gt;
+                        &lt;/g&gt;
+                        &lt;path transform="translate(12 12.5) scale(1 -1) translate(-12 -12.5)" d="m10.778 7.1249c0.50008-0.11366 0.9978 0.16911 1.1643 0.64128l0.032406 0.11223 2 8.8c0.1224 0.53855-0.21496 1.0744-0.75351 1.1968-0.50008 0.11366-0.9978-0.16911-1.1643-0.64128l-0.032406-0.11223-2-8.8c-0.1224-0.53855 0.21496-1.0744 0.75351-1.1968z" fill-rule="nonzero" stroke-width=".25"&gt;&lt;/path&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
+            &lt;span id="ubb_quote" class="comment_icon" title="添加引用(Ctrl + Q)" alt="引用"&gt;
+                &lt;svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+                    &lt;g fill-rule="evenodd"&gt;
+                        &lt;g transform="translate(5 4)" fill-rule="nonzero" stroke-width=".25"&gt;
+                            &lt;path d="m5.0013 15v-5.2702h-2.8008c-0.13413-3.3762 1.2004-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.285e-5zm8.7987 0v-5.2702h-2.8008c-0.13453-3.3762 1.2-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.28e-5z"&gt;&lt;/path&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
+            &lt;span id="ubb_img" class="comment_icon" alt="图片" title="上传图片(Ctrl + I)"&gt;
+                &lt;svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+                    &lt;g fill-rule="evenodd"&gt;
+                        &lt;g transform="translate(3 3.8)" fill-rule="nonzero"&gt;
+                            &lt;path d="m14.1 0.58235h-11.2c-1.32 0-2.4 1.0482-2.4 2.3294v10.871c0 1.2812 1.08 2.3294 2.4 2.3294h11.2c1.32 0 2.4-1.0482 2.4-2.3294v-10.871c0-1.2812-1.08-2.3294-2.4-2.3294zm0.7 13.569-3.63-3.4165 1.33-1.2909c0.21-0.20382 0.59-0.20382 0.8 0l1.6 1.5529v2.7856c0 0.13588-0.04 0.26206-0.1 0.36882zm-11.9-12.016h11.2c0.44 0 0.8 0.34941 0.8 0.77647v5.8915l-0.47-0.45618c-0.84-0.825-2.22-0.825-3.07 0l-1.35 1.3103-2.39-2.2421c-0.85-0.825-2.22-0.825-3.05-0.019412l-2.48 2.2615v-6.7456c0.01-0.42706 0.37-0.77647 0.81-0.77647zm-0.8 11.647v-1.9897l3.6-3.2806c0.21-0.20382 0.58-0.21353 0.81 0.0097059l6.43 6.0371h-10.04c-0.44 0-0.8-0.33971-0.8-0.77647z"&gt;&lt;/path&gt;
+                            &lt;ellipse cx="10.5" cy="6.4059" rx="1" ry="1"&gt;&lt;/ellipse&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div style="display:none"&gt;
+        &lt;span id="comment_edit_id"&gt;&lt;/span&gt;
+        &lt;span id="span_parentcomment_id"&gt;&lt;/span&gt;
+        &lt;span id="span_parent_id"&gt;&lt;/span&gt;
+        &lt;span id="span_comment_replyto"&gt;&lt;/span&gt;
+        &lt;span id="span_comment_posted"&gt;&lt;/span&gt;
+        &lt;span id="span_current_user_id"&gt;18be4a65-8603-4113-8c9f-08d6b3fcf9d2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;textarea id="tbCommentBody" placeholder="支持 Markdown"&gt;&lt;/textarea&gt;
+    &lt;div id="tbCommentBodyPreview" class="feedbackCon" style="display: none"&gt;
+        &lt;div id="tbCommentBodyPreviewBody" class="blog_comment_body comment_preview cnblogs-markdown"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="commentbox_footer"&gt;
+        &lt;a class="comment_option"&gt;Markdown 帮助&lt;/a&gt;
+        &lt;span id="btn_comment_options" class="comment_option"&gt;
+            &lt;input id="ubb_auto_completion" class="inline_middle" type="checkbox"&gt;
+            &lt;label class="inline_middle" for="ubb_auto_completion"&gt;自动补全&lt;/label&gt;
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p id="commentbox_opt"&gt;
+    &lt;input id="btn_comment_submit" type="button" class="comment_btn" title="提交评论(Ctrl + Enter)" value="提交评论"&gt;
+    &lt;span id="span_comment_canceledit" style="display:none"&gt;&lt;a href="javascript:void(0);" onclick="return CancelCommentEdit()"&gt;不改了&lt;/a&gt;&lt;/span&gt;
+    &lt;a href="javascript:void(0);" onclick="return logout();"&gt;退出&lt;/a&gt;
+            &lt;a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()"&gt;订阅评论&lt;/a&gt;
+            &lt;a href="//www.cnblogs.com/memoryLost/" target="_blank"&gt;我的博客&lt;/a&gt;
+&lt;/p&gt;
+&lt;div id="tip_comment2" style="color:Red"&gt;&lt;/div&gt;
+&lt;p&gt;[Ctrl+Enter快捷键提交]&lt;/p&gt;
+&lt;script&gt;var commentEditor = initCommentEditor("tbCommentBody");&lt;/script&gt;</code></pre>
+
+<p></div><div class="ad<em>text</em>commentbox" id="ad<em>text</em>under_commentbox"></div><div id="ad_t2"></div><div id="opt<em>under</em>post"></div><div id="cnblogs<em>c1" class="c</em>ad_block"><div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;"></div></div><div id="under<em>post</em>news"></div><div id="cnblogs<em>c2" class="c</em>ad_block"><div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;"></div></div><div id="under<em>post</em>kb"></div><div id="HistoryToday" class="c<em>ad</em>block"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);fixPostBody();deliverBigBanner();setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();deliverC1C2();loadNewsAndKb();loadBlogSignature();LoadPostCategoriesTags(cb<em>blogId, cb</em>entryId);       LoadPostInfoBlock(cb<em>blogId, cb</em>entryId, cb<em>blogApp, cb</em>blogUserGuid);GetPrevNextPost(cb<em>entryId, cb</em>blogId, cb<em>entryCreatedDate, cb</em>postType);loadOptUnderPost();GetHistoryToday(cb<em>blogId, cb</em>blogApp, cb_entryCreatedDate);</script></div></p>
+<pre><code>    &lt;/div&gt;&lt;!--end: forFlow --&gt;
+    &lt;/div&gt;&lt;!--end: mainContent 主体内容容器--&gt;
+    &lt;div id="sideBar"&gt;
+        &lt;div id="sideBarMain"&gt;
+            &lt;div id="sidebar_news" class="newsItem"&gt;&lt;!--done--&gt;
+&lt;h3 class="catListTitle"&gt;公告&lt;/h3&gt;</code></pre>
+
+<p><div id="blog-news"><div class="container">    <div class="menu-wrap optiscroll is-enabled" id="menuWrap" style="display:none"><div class=" optiscroll-content" style="right: -2px; bottom: -2px;">        <nav class="menu">            <!-- 个人简介 -->            <div class="introduce-box">                <div class="introduce-head">                    <div class="introduce-via" id="menuBlogAvatar"><img src="https://files-cdn.cnblogs.com/files/linzhenyu/ico.bmp"></div>                </div>                <div id="introduce">昵称：<a href="https://home.cnblogs.com/u/linzhenyu/">林震宇</a><br>园龄：<a href="https://home.cnblogs.com/u/linzhenyu/" title="入园时间：2020-06-15">7个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/linzhenyu/followers/">11</a><br>关注：<a href="https://home.cnblogs.com/u/linzhenyu/followees/">3</a><div id="p<em>b</em>follow"><a href="javascript:void(0)" onclick="follow('731d7b80-4ed9-444d-6c9c-08d810f32599')">+加关注</a></div></p>
+<pre><code>    &lt;/div&gt;            &lt;/div&gt;            &lt;!-- 导航 --&gt;            &lt;div class="nav-title"&gt;&lt;/div&gt;            &lt;div class="icon-list"&gt;                &lt;ul id="m-nav-list"&gt;                &lt;li&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/" target="_self"&gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://msg.cnblogs.com/send/linzhenyu" target="_blank"&gt;联系&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/rss" target="_blank"&gt;订阅&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://i.cnblogs.com/" target="_blank"&gt;管理&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://github.com/linzhenyuyuchen/" target="_blank"&gt;Github&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://linzhenyuyuchen.github.io/" target="_blank"&gt;LZY Blog&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;            &lt;/div&gt;            &lt;!-- 日历 --&gt;            &lt;span id="calendar-box"&gt;&lt;div id="blog-calendar" style="visibility: visible;"&gt;</code></pre>
+
+<p><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0"><tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0" border="0"><tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2020/12/19'); return false;">&lt;</a></td><td align="center">2021年1月</td><td align="right" class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2021/02/19'); return false;">&gt;</a></td></tr></tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td class="" align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td class="" align="center">4</td><td class="" align="center">5</td><td class="" align="center">6</td><td class="" align="center">7</td><td class="" align="center">8</td><td class="CalWeekendDay" align="center"><a href="https://www.cnblogs.com/linzhenyu/archive/2021/01/09.html"><u>9</u></a></td></tr><tr><td class="CalWeekendDay" align="center">10</td><td class="" align="center"><a href="https://www.cnblogs.com/linzhenyu/archive/2021/01/11.html"><u>11</u></a></td><td class="" align="center">12</td><td class="" align="center">13</td><td class="" align="center">14</td><td class="" align="center"><a href="https://www.cnblogs.com/linzhenyu/archive/2021/01/15.html"><u>15</u></a></td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td class="" align="center">18</td><td class="CalTodayDay" align="center">19</td><td class="" align="center">20</td><td class="" align="center">21</td><td class="" align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td class="" align="center">25</td><td class="" align="center">26</td><td class="" align="center">27</td><td class="" align="center">28</td><td class="" align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr></tbody></table></div></span>            <!-- 找找看 -->            <div class="m-list-title" style="display: block;"><span>找找看</span></div>            <div class="m-icon-list" id="sb-sidebarSearchBox"><div id="sb<em>widget</em>my<em>zzk" class="div</em>my<em>zzk"><input id="q" type="text" onkeydown="return zzk</em>go<em>enter(event);" class="input</em>my<em>zzk"></div></div>            <!-- 积分与排名 -->            <div class="m-list-title" style="display: block;"><span>积分排名<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-sidebarScorerank"><div><ul><li><a href="javascript:void(0);"><span class="iconfont icon-collection</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>积分 -<br/>9110</a></li><li><a href="javascript:void(0);"><span class="iconfont icon-collection_fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>排名 -<br/>91408</a></li></ul></div></div>            <!-- 最新随笔 -->            <div class="m-list-title" style="display: block;"><span>最新随笔<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-sidebarRecentposts"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/p/14283274.html"><span class="iconfont icon-time<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>【医学图像处理】提取勾画</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14282712.html"><span class="iconfont icon-time</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>【Kaggle】HuBMAP - 图像分割竞赛</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14261697.html"><span class="iconfont icon-time<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>【Kaggle】 冠军方案 SIIM-ACR Pneumothorax Segmentation</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14261667.html"><span class="iconfont icon-time</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>【图像分割 损失函数】Loss functions for image segmentation</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14254625.html"><span class="iconfont icon-time<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>【批处理】子文件夹压缩包和指定后缀名文件</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14110873.html"><span class="iconfont icon-time</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>RIADD (ISBI-2021)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/14063779.html"><span class="iconfont icon-time<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>SegPC2021</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13600454.html"><span class="iconfont icon-time</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>自然语言处理工具之gensim / 预训练模型 word2vec doc2vec</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"><span class="iconfont icon-time<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Linux 根目录空间不足解决方法</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13578360.html"><span class="iconfont icon-time</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>文本挖掘预处理之分词 / 向量化 / TF-IDF / Hash trick 附代码 Demo</a></li></ul></div></div>            <!-- 我的标签 -->            <div class="m-list-title" style="display: block;"><span>我的标签<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-toptags"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/tag/Linux/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Linux(22)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/Python/"><span class="iconfont icon-label</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Python(11)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/KDD/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>KDD(8)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"><span class="iconfont icon-label</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>数据挖掘(8)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>图像分割(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E8%AE%BA%E6%96%87/"><span class="iconfont icon-label</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>论文(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/NLP/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>NLP(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2/"><span class="iconfont icon-label</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>实例分割(6)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>自然语言处理(5)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><span class="iconfont icon-label</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>深度学习(5)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/"><span class="iconfont icon-label<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>更多</a></li></ul></div></div>            <!-- 随笔分类 -->            <div class="m-list-title" style="display: block;"><span>随笔分类<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-classify"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/category/1834642.html" rel="" target=""><span class="iconfont icon-marketing</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Kaggle(3)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1802477.html" rel="" target=""><span class="iconfont icon-marketing<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Linux(8)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1802475.html" rel="" target=""><span class="iconfont icon-marketing</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Python(12)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1802472.html" rel="" target=""><span class="iconfont icon-marketing<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>论文笔记(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1802470.html" rel="" target=""><span class="iconfont icon-marketing</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>图像分割(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1802468.html" rel="" target=""><span class="iconfont icon-marketing<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>知识发现与数据挖掘(10)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/category/1834638.html" rel="" target=""><span class="iconfont icon-marketing</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>自然语言处理(4)</a></li></ul></div></div>            <!-- 文章分类 -->            <div class="m-list-title"><span>文章分类<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-ArticleCategory"></div>            <!-- 阅读排行 -->            <div class="m-list-title" style="display: block;"><span>阅读排行<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-topview"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/p/13277552.html"><span class="iconfont icon-browse<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Torchtext使用教程 文本数据处理 (1779)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13229431.html"><span class="iconfont icon-browse</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>KDD MIMIC-IV与MIMIC-III的区别(982)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13206761.html"><span class="iconfont icon-browse<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>KDD MIMIC-III数据集介绍(947)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13212481.html"><span class="iconfont icon-browse</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>KDD MIMIC-III 数据分析，预处理和可视化(387)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"><span class="iconfont icon-browse<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Linux 根目录空间不足解决方法(359)</a></li></ul></div></div>            <!-- 推荐排行 -->            <div class="m-list-title" style="display: block;"><span>推荐排行<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-topDiggPosts"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"><span class="iconfont icon-like</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Linux 根目录空间不足解决方法(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13428285.html"><span class="iconfont icon-like<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Ubuntu安装postgresql / psycopg2包 / Python连接postgreSQL(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13297132.html"><span class="iconfont icon-like</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>自监督 论文 Self-supervised Visual Feature Learning with Deep Neural Networks(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13277552.html"><span class="iconfont icon-like_fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Torchtext使用教程 文本数据处理 (1)</a></li></ul></div></div>            <!-- 最新评论 -->            <div class="m-list-title" style="display: block;"><span>最新评论<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-recentComments"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"><span class="iconfont icon-pinglunzu" style="color: #888;font-size: 15px;margin-right: 5px;"></span>Re:Linux 根目录空间不足解决方法</a><div style="padding-left: 1.5em;color: #777;position: relative;top: -5px;">真不错</div><div style="text-align: right;color: #444;position: relative;top: -10px;">--达芬骑驴</div></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13277552.html"><span class="iconfont icon-pinglunzu" style="color: #888;font-size: 15px;margin-right: 5px;"></span>Re:Torchtext使用教程 文本数据处理</a><div style="padding-left: 1.5em;color: #777;position: relative;top: -5px;">博主博客好漂亮，要是写个 配置教程就好了</div><div style="text-align: right;color: #444;position: relative;top: -10px;">--douzujun</div></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13229431.html"><span class="iconfont icon-pinglunzu" style="color: #888;font-size: 15px;margin-right: 5px;"></span>Re:KDD MIMIC-IV与MIMIC-III的区别</a><div style="padding-left: 1.5em;color: #777;position: relative;top: -5px;">博主您好！我想问下您，这个MIMIC IV数据库是如何申请的？或者说申请途径有哪些？</div><div style="text-align: right;color: #444;position: relative;top: -10px;">--Zero0Alpha</div></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13169082.html"><span class="iconfont icon-pinglunzu" style="color: #888;font-size: 15px;margin-right: 5px;"></span>Re:Python 基础知识点</a><div style="padding-left: 1.5em;color: #777;position: relative;top: -5px;">写的太好了，马上会用python了，希望马上看到下一篇！</div><div style="text-align: right;color: #444;position: relative;top: -10px;">--Tanglement</div></li><li><a href="https://www.cnblogs.com/linzhenyu/p/13156301.html"><span class="iconfont icon-pinglunzu" style="color: #888;font-size: 15px;margin-right: 5px;"></span>Re:Linux 文件打包与解压缩</a><div style="padding-left: 1.5em;color: #777;position: relative;top: -5px;">太多了，记不住。只会一个tar -zxvf file.tar.gz</div><div style="text-align: right;color: #444;position: relative;top: -10px;">--Tanglement</div></li></ul></div></div>            <!-- 文章档案 -->            <div class="m-list-title"><span>文章档案<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-articlearchive"></div>            <!-- 随笔档案 -->            <div class="m-list-title" style="display: block;"><span>随笔档案<span class="iconfont icon-select m-list-title-select"></span></span></div>            <div class="m-icon-list" id="sb-record"><div><ul><li><a href="https://www.cnblogs.com/linzhenyu/archive/2021/01.html" rel="" target=""><span class="iconfont icon-task<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2021年1月(5)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/12.html" rel="" target=""><span class="iconfont icon-task</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年12月(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/11.html" rel="" target=""><span class="iconfont icon-task<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年11月(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/09.html" rel="" target=""><span class="iconfont icon-task</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年9月(1)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/08.html" rel="" target=""><span class="iconfont icon-task<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年8月(7)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/07.html" rel="" target=""><span class="iconfont icon-task</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年7月(17)</a></li><li><a href="https://www.cnblogs.com/linzhenyu/archive/2020/06.html" rel="" target=""><span class="iconfont icon-task<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>2020年6月(23)</a></li></ul></div></div>            <!-- 自定义列表 -->            <span id="menuCustomList"><div class="m-list-title" style="display: block;"><span>基友们</span></div><div class="m-icon-list"><div><ul><li><a href="https://www.cnblogs.com/chenshaowei/"><span class="iconfont icon-brush</em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>Tanglement</a></li><li><a href="https://www.cnblogs.com/beeblog72/"><span class="iconfont icon-brush<em>fill" style="color: #888;font-size: 14px;margin-right: 5px;"></span>达芬骑驴</a></li></ul></div></div></span>        </nav>        <button class="close-button" id="close-button">Close Menu</button>        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"></path>            <desc>Created with Snap</desc><defs></defs></svg>        </div>    </div><div class="optiscroll-v"><b class="optiscroll-vtrack"></b></div><div class="optiscroll-h"><b class="optiscroll-htrack"></b></div></div>    <button class="menu-button" id="open-button">MENU</button>    <div class="content-wrap" id="content-wrap"></div><!-- /content-wrap --></div><div class="main-header" style="height: 40vh; background: url(&quot;https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@master/img/webp/nothome</em>top_bg.webp&quot;) center center / cover no-repeat rgb(34, 34, 34);">    <canvas id="notHomeTopCanvas" width="0" height="0"></canvas>    <div class="vertical">        <div class="main-header-content inner" style="max-width: 100vw;">            <h1 class="page-title" id="homeTopTitle" style="display: none;">林震宇</h1>            <h2 class="page-description" id="hitokoto"></h2>            <h3 class="page-author" id="hitokotoAuthor"></h3>            <h1 class="sb-title" id="sbTitle">KDD MIMIC-III数据集介绍</p>
+<p></p>
+<p></h1>            <p class="article-info" id="articleInfo"><p class="article-info-text"><span class="postMeta"><i class="iconfont icon-time1"></i>发表于 2020-06-29 10:55<i class="iconfont icon-browse"></i>阅读：947<i class="iconfont icon-interactive"></i>评论：0<i class="iconfont icon-hot"></i>推荐：0</span></p><a href="https://www.cnblogs.com/linzhenyu/category/1802468.html" target="<em>blank"><span class="article-info-tag article-tag-class-color">知识发现与数据挖掘</span></a><a href="https://www.cnblogs.com/linzhenyu/tag/MIMIC/" target="</em>blank"><span class="article-info-tag article-tag-color">MIMIC</span></a><a href="https://www.cnblogs.com/linzhenyu/tag/KDD/" target="<em>blank"><span class="article-info-tag article-tag-color">KDD</span></a><a href="https://www.cnblogs.com/linzhenyu/tag/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" target="</em>blank"><span class="article-info-tag article-tag-color">数据挖掘</span></a></p>        </div>    </div>    <a class="scroll-down" href="javascript:void(0);" data-offset="-45" style="display: none;">        <span class="hidden">Scroll Down</span>        <i class="scroll-down-icon iconfont icon-fanhui"></i>    </a></div><div id="loading" style="display: none;"></div><div id="bottomProgressBar"><div id="top-progress-bar" style="position: relative; top: 0px; left: 0px; right: 0px; background-color: rgb(119, 182, 255); height: 2px; width: 0%; transition: width 0.2s ease 0s, opacity 0.6s ease 0s; opacity: 1;"></div></div><div id="rightMenu"><div id="rightDashang" clickflg="false"><span class="rightMenuSpan rightDanshanSpan"><div class="ds-pay"><div class="ds-alipay"><img src="https://blog-static.cnblogs.com/files/linzhenyu/alipay.gif"><span>Alipay</span></div></div></span><i class="iconfont icon-shang"></i></div><div id="rightDiggit" clickflg="false" onclick="votePost(13206761,'Digg')"><span class="rightMenuSpan rightDiggitSpan">0</span><i class="iconfont icon-zan1"></i></div><div id="rightBuryit" clickflg="false" onclick="votePost(13206761,'Bury')"><span class="rightMenuSpan rightBuryitSpan">0</span><i class="iconfont icon-buzan"></i></div><div id="attention" onclick="follow('731d7b80-4ed9-444d-6c9c-08d810f32599')" clickflg="false"><span class="rightMenuSpan attentionSpan">关注</span><i class="iconfont icon-dianzan"></i></div><div id="toUpDown" data="down"><span class="rightMenuSpan toUpDownSpan">跳至底部</span><div id="toUpDownI" style="transform: rotate(-180deg); transform-origin: 50% 50%;"><i class="iconfont icon-zhiding"></i></div></div></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['4']();</script><script type="text/javascript">window['__document_write_ajax_callbacks__']['1']();</script><script type="text/javascript">window['__document_write_ajax_callbacks__']['5']();</script><script type="text/javascript">window['__document_write_ajax_callbacks__']['6']();</script><script>window['__document_write_ajax_callbacks__']['2']();</script><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/linzhenyu/">林震宇</a><br>园龄：<a href="https://home.cnblogs.com/u/linzhenyu/" title="入园时间：2020-06-15">7个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/linzhenyu/followers/">11</a><br>关注：<a href="https://home.cnblogs.com/u/linzhenyu/followees/">3</a><div id="p<em>b</em>follow"><a href="javascript:void(0)" onclick="follow('731d7b80-4ed9-444d-6c9c-08d810f32599')">+加关注</a></div><script type="text/javascript">window['__document_write_ajax_callbacks__']['7']();</script><script>window['__document_write_ajax_callbacks__']['3']();</script></div></div></p>
+<p></div><div id="sidebar_c3"></div><script>loadBlogDefaultCalendar();</script><br/><div id="leftcontentcontainer"><div id="blog-sidecolumn"><!-- 搜索 --><div id="sidebar_search" class="sidebar-block"><div id="sidebar_search" class="mySearch"><h3 class="catListTitle">搜索</h3><div id="sidebar<em>search</em>box"><div id="widget<em>my</em>zzk" class="div<em>my</em>zzk"><input type="text" id="q" onkeydown="return zzk<em>go</em>enter(event);" class="input<em>my</em>zzk">&nbsp;<input onclick="zzk<em>go()" type="button" value="找找看" id="btnZzk" class="btn</em>my_zzk"></div></p>
+<pre><code>        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p><!-- 常用链接 --><div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink"><h3 class="catListTitle">常用链接</h3><ul></p>
+<p><li><a href="https://www.cnblogs.com/linzhenyu/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/linzhenyu/MyComments.html" title="我的发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/linzhenyu/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/linzhenyu/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/" title="我的博客的标签列表">我的标签</a></li></p>
+<p></ul></div></p>
+<p></div></p>
+<p><!-- 最新随笔 --><div id="sidebar_recentposts" class="sidebar-block"><div class="catListEssay"><h3 class="catListTitle">最新随笔</h3><ul><li></p>
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14283274.html">1.【医学图像处理】提取勾画</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14282712.html">2.【Kaggle】HuBMAP - 图像分割竞赛</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14261697.html">3.【Kaggle】 冠军方案 SIIM-ACR Pneumothorax Segmentation</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14261667.html">4.【图像分割 损失函数】Loss functions for image segmentation</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14254625.html">5.【批处理】子文件夹压缩包和指定后缀名文件</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14110873.html">6.RIADD (ISBI-2021)</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/14063779.html">7.SegPC2021</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/13600454.html">8.自然语言处理工具之gensim / 预训练模型 word2vec doc2vec </a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html">9.Linux 根目录空间不足解决方法</a></p>
+<pre><code>                &lt;/li&gt;
+                &lt;li&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/p/13578360.html">10.文本挖掘预处理之分词 / 向量化 / TF-IDF / Hash trick 附代码 Demo</a></p>
+<pre><code>                &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+
+<p></div></p>
+<p><!-- 我的标签 --><div id="sidebar_toptags" class="sidebar-block"><div class="catListTag"><h3 class="catListTitle">我的标签</h3><ul><li><a href="https://www.cnblogs.com/linzhenyu/tag/Linux/">Linux<span class="tag-count">(22)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/Python/">Python<span class="tag-count">(11)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/KDD/">KDD<span class="tag-count">(8)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘<span class="tag-count">(8)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/">图像分割<span class="tag-count">(7)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E8%AE%BA%E6%96%87/">论文<span class="tag-count">(7)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/NLP/">NLP<span class="tag-count">(7)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2/">实例分割<span class="tag-count">(6)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理<span class="tag-count">(5)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习<span class="tag-count">(5)</span></a></li><li><a href="https://www.cnblogs.com/linzhenyu/tag/">更多</a></li></p>
+<p></ul></div></p>
+<p></div></p>
+<p><!-- 积分与排名 --><div id="sidebar_scorerank" class="sidebar-block"><div class="catListBlogRank"><h3 class="catListTitle">积分与排名</h3><ul><li class="liScore">积分 -<br/>9110</li><li class="liRank">排名 -<br/>91408</li></ul></div></p>
+<p></p>
+<p></div></p>
+<p><!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 --><div id="sidebar_categories"></p>
+<pre><code>    &lt;div id="sidebar_postcategory" class="catListPostCategory sidebar-block"&gt;
+        &lt;h3 class="catListTitle"&gt;</code></pre>
+
+<p>随笔分类</p>
+<p></p>
+<pre><code>        &lt;/h3&gt;</code></pre>
+
+<pre><code>        &lt;ul&gt;</code></pre>
+
+<pre><code>                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1834642.html" rel="" target="">Kaggle(3)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1802477.html" rel="" target="">Linux(8)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1802475.html" rel="" target="">Python(12)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1802472.html" rel="" target="">论文笔记(7)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1802470.html" rel="" target="">图像分割(7)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1802468.html" rel="" target="">知识发现与数据挖掘(10)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/category/1834638.html" rel="" target="">自然语言处理(4)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                </code></pre>
+
+<pre><code>        &lt;/ul&gt;
+</code></pre>
+
+<pre><code>    &lt;/div&gt;    
+    &lt;div id="sidebar_postarchive" class="catListPostArchive sidebar-block"&gt;
+        &lt;h3 class="catListTitle"&gt;</code></pre>
+
+<p>随笔档案</p>
+<p></p>
+<pre><code>        &lt;/h3&gt;</code></pre>
+
+<pre><code>        &lt;ul&gt;</code></pre>
+
+<pre><code>                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2021/01.html" rel="" target="">2021年1月(5)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/12.html" rel="" target="">2020年12月(1)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/11.html" rel="" target="">2020年11月(1)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/09.html" rel="" target="">2020年9月(1)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/08.html" rel="" target="">2020年8月(7)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/07.html" rel="" target="">2020年7月(17)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                
+                &lt;li data-category-list-item-visible="true" style="display: block"&gt;</code></pre>
+
+<p><a href="https://www.cnblogs.com/linzhenyu/archive/2020/06.html" rel="" target="">2020年6月(23)</a></p>
+<p></p>
+<pre><code>                &lt;/li&gt;                </code></pre>
+
+<pre><code>        &lt;/ul&gt;
+</code></pre>
+
+<pre><code>    &lt;/div&gt;    
+&lt;/div&gt;</code></pre>
+
+<p><!-- 最新评论 --><div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment"><h3 class="catListTitle">最新评论</h3></p>
+<pre><code>    &lt;div class="RecentCommentBlock"&gt;
+        &lt;ul&gt;
+                    &lt;li class="recent_comment_title"&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"&gt;1. Re:Linux 根目录空间不足解决方法&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="recent_comment_body"&gt;&lt;p&gt;真不错&lt;/p&gt;
+&lt;/li&gt;
+                    &lt;li class="recent_comment_author"&gt;--达芬骑驴&lt;/li&gt;
+                    &lt;li class="recent_comment_title"&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/p/13277552.html"&gt;2. Re:Torchtext使用教程 文本数据处理 &lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="recent_comment_body"&gt;&lt;p&gt;博主博客好漂亮，要是写个 配置教程就好了&lt;/p&gt;
+&lt;/li&gt;
+                    &lt;li class="recent_comment_author"&gt;--douzujun&lt;/li&gt;
+                    &lt;li class="recent_comment_title"&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/p/13229431.html"&gt;3. Re:KDD MIMIC-IV与MIMIC-III的区别&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="recent_comment_body"&gt;&lt;p&gt;博主您好！我想问下您，这个MIMIC IV数据库是如何申请的？或者说申请途径有哪些？&lt;/p&gt;
+&lt;/li&gt;
+                    &lt;li class="recent_comment_author"&gt;--Zero0Alpha&lt;/li&gt;
+                    &lt;li class="recent_comment_title"&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/p/13169082.html"&gt;4. Re:Python 基础知识点&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="recent_comment_body"&gt;&lt;p&gt;写的太好了，马上会用python了，希望马上看到下一篇！&lt;/p&gt;
+&lt;/li&gt;
+                    &lt;li class="recent_comment_author"&gt;--Tanglement&lt;/li&gt;
+                    &lt;li class="recent_comment_title"&gt;&lt;a href="https://www.cnblogs.com/linzhenyu/p/13156301.html"&gt;5. Re:Linux 文件打包与解压缩&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="recent_comment_body"&gt;&lt;p&gt;太多了，记不住。只会一个tar -zxvf file.tar.gz&lt;/p&gt;
+&lt;/li&gt;
+                    &lt;li class="recent_comment_author"&gt;--Tanglement&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p></div></p>
+<p><!-- 阅读排行榜 --><div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView"><h3 class="catListTitle">阅读排行榜</h3><div id="TopViewPostsBlock"><ul style="word-break:break-all"><li><a href="https://www.cnblogs.com/linzhenyu/p/13277552.html"></p>
+<ol>
+<li>Torchtext使用教程 文本数据处理 (1779)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13229431.html">
+</li><li>KDD MIMIC-IV与MIMIC-III的区别(982)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13206761.html">
+</li><li>KDD MIMIC-III数据集介绍(947)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13212481.html">
+</li><li>KDD MIMIC-III 数据分析，预处理和可视化(387)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html">
+</li><li>Linux 根目录空间不足解决方法(359)<br/></a><br/></li><br/></ul><br/></div><br/></div>
+</li></ol>
+
+
+<p></div></p>
+<p><!-- 评论排行榜 --></p>
+<p><!-- 推荐排行榜 --><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg<em>posts</em>wrap"><div class="catListView"><h3 class="catListTitle">推荐排行榜</h3><div id="TopDiggPostsBlock"><ul style="word-break: break-all"><li><a href="https://www.cnblogs.com/linzhenyu/p/13591294.html"></p>
+<ol>
+<li>Linux 根目录空间不足解决方法(1)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13428285.html">
+</li><li>Ubuntu安装postgresql / psycopg2包 / Python连接postgreSQL(1)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13297132.html">
+</li><li>自监督 论文 Self-supervised Visual Feature Learning with Deep Neural Networks(1)<br/></a><br/></li><br/><li><br/><a href="https://www.cnblogs.com/linzhenyu/p/13277552.html">
+</li><li>Torchtext使用教程 文本数据处理 (1)<br/></a><br/></li><br/></ul><br/></div><br/></div><br/></div></div></div><br/><script>loadBlogSideColumn();</script><br/></div><br/></div><!--end: sideBarMain --><br/></div><!--end: sideBar 侧边栏容器 --><br/><div class="clear"></div><br/></div><!--end: main --><br/><div class="clear"></div><br/><div id="footer"><footer><footer-background><figure class="clouds"></figure><figure class="background"></figure><figure class="foreground"></figure></footer-background></footer><div class="footer-box"><div><span id="blogRunTimeSpan">This blog has running : 218 d 8 h 12 m 45 s</span><span class="my-face">ღゝ◡╹)ノ♡</span></div><div id="blogrollInfo">友情链接：<a href="https://www.cnblogs.com/beeblog72" target="<em>blank">达芬骑驴</a><span style="margin: 0 3px;">/</span><a href="https://linzhenyuyuchen.github.io/" target="</em>blank">LZY Blog</a><span style="margin: 0 3px;">/</span><a href="https://www.cnblogs.com/chenshaowei/" target="_blank">Tanglement</a></div><div>
+</li></ol>
+
+
+<p>Copyright © 2021 林震宇Powered by .NET 5.0 on Kubernetes</p>
+<p></p>
+<pre><code>    &lt;/div&gt;&lt;div id="cnzzInfo"&gt;&lt;/div&gt;&lt;div id="themeInfo"&gt;Theme version: &lt;a href="https://github.com/BNDong/Cnblogs-Theme-SimpleMemory/tree/v1.3.1" target="_blank" style="color: #888;text-decoration: underline;"&gt;v1.3.1&lt;/a&gt; / Loading theme version: &lt;a href="https://github.com/BNDong/Cnblogs-Theme-SimpleMemory/tree/v1.3.1" target="_blank" style="color: #888;text-decoration: underline;"&gt;v1.3.1&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--end: footer --&gt;
+&lt;/div&gt;</code></pre>
+
+
+<a href="/">Home Page</a></div>
+</body>
+</html>

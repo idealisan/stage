@@ -5,7 +5,7 @@ import os
 import requests.utils
 
 # no need of ending slash
-site = "https://stage.gp.idealisan.com"
+site = "https://pages.gp.idealisan.com"
 
 # preventing adding page resources
 blocked_res=[".js",".css",".jpg","jpeg",".png",".svg"]
