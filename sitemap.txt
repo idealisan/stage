@@ -3,6 +3,7 @@ https://pages.gp.idealisan.com/index0.html
 https://pages.gp.idealisan.com/index1.html
 https://pages.gp.idealisan.com/index2.html
 https://pages.gp.idealisan.com/index3.html
+https://pages.gp.idealisan.com/index4.html
 https://pages.gp.idealisan.com/README.html
 https://pages.gp.idealisan.com/typora/6%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E4%BD%9C%E4%B8%9A.html
 https://pages.gp.idealisan.com/typora/C%20Sharp%20%E5%AE%9E%E7%8E%B0%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%89%88TCPing.html
@@ -14,7 +15,7 @@ https://pages.gp.idealisan.com/typora/Centos%E5%BC%80%E5%90%AF%E9%98%B2%E7%81%AB
 https://pages.gp.idealisan.com/typora/chrome_offline_download.html
 https://pages.gp.idealisan.com/typora/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html
 https://pages.gp.idealisan.com/typora/Docker%E6%9C%8D%E5%8A%A1%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%9C%AC%E6%B3%95.html
-https://pages.gp.idealisan.com/typora/GitHub%20Pages%20%E5%B7%A5%E5%85%B7%E8%AE%BE%E8%AE%A1.html
+https://pages.gp.idealisan.com/typora/Intel%E7%AC%AC%E5%85%AD%E4%BB%A3%E5%A4%84%E7%90%86%E5%99%A8Skylake%E5%B9%B3%E5%8F%B0%E5%AE%89%E8%A3%85Windows%207.html
 https://pages.gp.idealisan.com/typora/IPv6%20%E9%9D%99%E6%80%81IP%E9%85%8D%E7%BD%AE%E7%9A%84%E5%BF%83%E5%BE%97.html
 https://pages.gp.idealisan.com/typora/Java%20UDP%20%E7%BC%96%E7%A8%8B%E7%AE%80%E4%BB%8B.html
 https://pages.gp.idealisan.com/typora/java%20web%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%EF%BC%8C%E5%B1%85%E7%84%B6%E6%98%AFjvm%E7%9A%84%E9%94%99.html
@@ -34,7 +35,6 @@ https://pages.gp.idealisan.com/typora/nginx%E9%85%8D%E7%BD%AEphp%E5%87%BA%E7%8E%
 https://pages.gp.idealisan.com/typora/PC%E8%BD%AF%E4%BB%B6%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4.html
 https://pages.gp.idealisan.com/typora/randomouse%20%E4%B8%80%E4%B8%AA%E7%94%A8%E5%B0%8F%E8%80%81%E9%BC%A0%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E6%80%9D%E8%B7%AF.html
 https://pages.gp.idealisan.com/typora/RIP%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E6%A8%A1%E6%8B%9F%E5%AE%9E%E9%AA%8C.html
-https://pages.gp.idealisan.com/typora/sample%20-%20%E5%89%AF%E6%9C%AC.html
 https://pages.gp.idealisan.com/typora/sample.html
 https://pages.gp.idealisan.com/typora/seoimo.com%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9FWordPress%E8%84%9A%E6%9C%AC.html
 https://pages.gp.idealisan.com/typora/Typora%E6%8F%92%E5%85%A5%E5%90%84%E7%A7%8D%E5%BA%94%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E9%80%89%E6%8B%A9.html

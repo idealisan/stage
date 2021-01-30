@@ -1,3 +1,3 @@
-java -jar HtmlFolderIndexer.jar sample.html.template
+java -jar HtmlFolderIndexer.jar p.properties
 python.exe smg.py
 pause

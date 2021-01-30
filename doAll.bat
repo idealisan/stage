@@ -1,4 +1,4 @@
-java -jar HtmlFolderIndexer.jar sample.html.template
+java -jar HtmlFolderIndexer.jar p.properties
 python.exe smg.py
 git add *
 git commit -m "auto push"
