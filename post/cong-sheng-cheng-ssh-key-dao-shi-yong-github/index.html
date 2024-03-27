@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>从生成SSH Key到使用Github | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="最近为了使用Gridea写静态博客，好不容易从Macbook上找到了旧的Gridea文件夹。Gridea不会推送整个博客的所有文件，而仅仅是生成的HTML和所需的资源文件。我不想使用onedrive同步gridea文件夹，于是想到使用git..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">从生成SSH Key到使用Github</h2>
+            <div class="post-date">2022-11-28</div>
+            
+            <div class="post-content" v-pre>
+              <p>最近为了使用Gridea写静态博客，好不容易从Macbook上找到了旧的Gridea文件夹。Gridea不会推送整个博客的所有文件，而仅仅是生成的HTML和所需的资源文件。我不想使用onedrive同步gridea文件夹，于是想到使用github的私有仓库来同步，于是要开始一番操作了。</p>
+<p>首先，GitHub已经停止使用用户名和密码push仓库，所以只能使用SSH认证。</p>
+<h2 id="第一步就是要生成一对ssh密钥">第一步就是要生成一对SSH密钥。</h2>
+<p>理想状态下， 应该是一个自然人拥有一对SSH密钥就够了，使用unix登录、github等等都用这一套密钥，但是处于隐私原因也好，还是分开管理，我选择单独为GitHub生成一对新的密钥。无论是再Windows、mac还是linux上，使用下面的命令可以开始生成一对密钥。</p>
+<pre><code class="language-shell">ssh-keygen -t rsa -C
+</code></pre>
+<p>然后跟随提示，注意选择一个文件名，不要总是使用默认的文件名，免得引起混乱。</p>
+<h2 id="在github账户设置里添加ssh公钥">在Github账户设置里添加SSH公钥</h2>
+<p>在GitHub账户设置的SSH and GPG keys一栏里，选择new SSH key按钮，填写一个合适的title帮助记忆这个key的用途，key type选择默认的authentication key就好，将上一步生成的puh结尾的公钥文件的内容全部复制到网页上key一栏中，点击add SSH key按钮即可。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1669648047522.png" alt="" loading="lazy"></p>
+<h2 id="在本地电脑上配置ssh和git">在本地电脑上配置SSH和git</h2>
+<p>在生成密钥之后，SSH和git依然不会使用这对密钥连接GitHub和任何其他服务。要将新生成的四幺添加到ssh-agent才行。<br>
+在WSL和Windows上，由于ssh服务不运行，需要先启动ssh-agent。可以直接运行下面的命令，也可以添加到用户的.profile里边让shell启动的时候自动运行。</p>
+<pre><code class="language-shell">eval $(ssh-agent)
+</code></pre>
+<p>然后使用ssh-add添加私钥。</p>
+<pre><code class="language-shell"> ssh-add ~/.ssh/github-pri
+</code></pre>
+<h2 id="使用git的ssh方法克隆仓库或指定remote">使用git的ssh方法克隆仓库或指定remote</h2>
+<p>从github克隆仓库的时候注意要使用ssh方法而不是https。<br>
+如果不是克隆，二十给本地仓库设置一个remote origin，拿主意改成ssh的url而不要使用https的url。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/ru-he-xiang-bie-ren-de-github-cang-ku-ti-jiao-xiu-gai/">
+                  <h3 class="post-title">
+                    如何向别人的github仓库提交修改
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用 Mac M1 芯片的这段时间体验记录 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="就像编程语言自举一样，这篇文章也是在M1芯片的Mac上完成并发布的。
+这是我的第一台mac电脑，一台配备16GB RAM，1TB SSD，Apple M1芯片的MacBook Pro， 13.3英寸。在7月16日我下单购买，到22号我收到了..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用 Mac M1 芯片的这段时间体验记录</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <p>就像编程语言自举一样，这篇文章也是在M1芯片的Mac上完成并发布的。</p>
+<p>这是我的第一台mac电脑，一台配备16GB RAM，1TB SSD，Apple M1芯片的MacBook Pro， 13.3英寸。在7月16日我下单购买，到22号我收到了这台电脑。在前一天，也就是21号，我收到了附赠的AirPods 2，耳机本来在几天前就送到了，不过我在长沙出差就让顺丰师傅等到21号再配送。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648345310.png" alt="" loading="lazy"></p>
+<p>我拿到mac的时候是在晚上6点40左右，有83%左右的电量，实际使用了一天，到第二天的下午两点左右，剩余电量还有20到30左右，具体不记得了，我借了朋友小路的小米氮化镓60W充电器充电。印象深刻的是mac的活动监视器里边显示剩余电量可用时间为13-18小时。这么久的电池续航时间是我以前曾不能想的。</p>
+<p>我的旧电脑是惠普的第二代光影精灵游戏本 HP Pavilion 15-bc012tx，原始配备英特尔酷睿i5 6300HQ处理器，英伟达GTX 960M 2GB VRAM 显卡，1TB 7200 RPM HDD和8GB DDR4内存。经过多次升级配置，此时它配备16GB（8+8）DDR4内存，英特尔760P 256GB SSD，散热风扇也更换成了新的，不过风扇声音依然很明显。操作系统被我改装成了Windows 10 LTSC 2019。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648366749.png" alt="" loading="lazy"></p>
+<p>其实旧电脑的配置也依然能用，毕竟16GB内存和英特尔SSD宝刀未老，但是狂躁的风扇声音、拙劣的显示效果、质感不太好还被我拆开过好几次以至于有些松动的塑料外壳和让我难以忍受的 Windows 10 让我没有从前那么喜欢这台电脑了。再加上它是一台15.6英寸的游戏本，充电器也是老式的大砖头黑色转换器，携带出门实在太重。</p>
+<h2 id="133英寸的笔记本电脑">13.3英寸的笔记本电脑</h2>
+<p>一开始我以为13英寸的屏幕会明显感觉到小，因为家里最小的笔记本屏幕是2010款的Acer 4741G，14英寸的屏幕，已经明显感觉比我的惠普游戏本小很多了。为什么不用那个旧acer笔记本电脑出门上班？因为它也不轻薄，电源也是大砖头转换器，并且性能已经不行了——实际上4年多以前就尝试过使用它，性能不行，显卡也崩了，才换的惠普游戏本。</p>
+<p>这款MacBook屏幕虽然不大，但是好在分辨率很高，精细度很高，最终看起来像是1440X900的分辨率的屏幕尺寸，比1080p小一点，但是比1366X768大一些。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648375257.png" alt="" loading="lazy"></p>
+<p>另一方面，mac上不推崇屏幕左右分屏，虽然可以这么做，但是在并不大的笔记本显示屏上很难这么做。这导致绝大多数时候我都被迫专注于一个应用程序，而对于单个应用程序而言，这个屏幕足够了。</p>
+<p>要说有什么时候这个屏幕大小是不够的，那就是某些傻蛋写的网页会太宽了，比如csdn和优酷。在我最开始使用的时候出现过页面宽度太宽，需要横向滚动的问题，还好mac的触控板确实如他人所言甚是舒畅。现在再看这两个网站，发现他们也不需要横向滚动，不会占据整个屏幕的宽度。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648386456.png" alt="" loading="lazy"><br>
+mac实际上缩小了屏幕上所有元素的大小，包括网页的元素大小，但是我一直没有察觉到这一点。因为屏幕精细度PPI的提升，显示元素的时候反而使用了更多的像素点，看起来方不会觉得比大屏幕更难以识别元素。不过更高的精细度带来的显示效果的提升也被更小的元素抵消了一部分。我的旧惠普游戏本屏幕PPI是135左右，Windows默认的缩放比例是125%，看起来尚可，不过由于不是 整倍数缩放，那些不支持所放的应用程序看起来额外的丑。但是对于一般的文字显示来说125%也还不错，除了衬线字体在小字号依然没有显示出衬线。Mac的这块屏幕能够总是显示出衬线字体的衬线，无论字号多小。</p>
+<h2 id="屏幕的亮度-色彩和宽高比例">屏幕的亮度、色彩和宽高比例</h2>
+<p>两年前我使用惠普游戏本的时候就已经想要给电脑换个屏幕了。惠普游戏本的屏幕是一块非常普通的显示面板，45%sRGB，250nits亮度，1080p分辨率。其实我也不指望颜色有多好，只是希望分辨率提升一些，让PPI达到200上下。为了达到这个个目标，我计算过，15.6英寸的显示屏需要一块2k屏。然而不幸的是，惠普这款电脑的显示屏接口是30pin的，最高只能支持1080p显示面板，无法更换到更高分辨率。我也就死心了。</p>
+<p>新的Mac配备一块非常优秀的屏幕，视网膜显示屏、P3色域，最高500nits亮度，macOS自身有颜色管理，这让这块屏幕成了除了我的iPhone之外目前家里最好的屏幕。我家的智能电视虽然有4K超高亮度广色域屏幕，但是毕竟不是索尼或LG的，国产的安卓电视也就不能指望色准、色域有多好。更何况安卓5.1也只能按照sRGB显示色彩，所谓的广色域其实就是色彩错误地变得更艳丽了。电视的尺寸太大，当作显示器使用色准和PPI都不够好。</p>
+<p>我曾经以为Mac显示效果好的原因是整倍数的高PPI缩放，最近了解到其实是因为现在的Mac应用程序都是用的是设备无关的绘图尺寸单位，所以即便不是整倍数的缩放也能够良好显示。而在Windows上，目前只能是整倍数缩放才行， 而且部分使用老旧的win32API的应用程序无论如何都不支持高PPI显示，即便是整倍数缩放。</p>
+<p>我还是很希望MacBook的屏幕PPI更高一点，不过考虑到笔记本续航和图形处理器性能，更高PPI可能会很困难。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/ru-he-ba-lu-you-qi-dang-zuo-jiao-huan-ji-lai-shi-yong/">
+                  <h3 class="post-title">
+                    如何把路由器当作交换机来使用？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

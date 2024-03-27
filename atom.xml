@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://pages.gp.idealisan.com</id>
+    <title>Idealisan Pages of Tech</title>
+    <updated>2024-03-27T01:28:17.459Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://pages.gp.idealisan.com"/>
+    <link rel="self" href="https://pages.gp.idealisan.com/atom.xml"/>
+    <subtitle>Do something.</subtitle>
+    <logo>https://pages.gp.idealisan.com/images/avatar.png</logo>
+    <icon>https://pages.gp.idealisan.com/favicon.ico</icon>
+    <rights>All rights reserved 2024, Idealisan Pages of Tech</rights>
+    <entry>
+        <title type="html"><![CDATA[上传腾讯文档，保留word公式的一个妥协方法]]></title>
+        <id>https://pages.gp.idealisan.com/post/shang-chuan-teng-xun-wen-dang-bao-liu-word-gong-shi-de-yi-ge-tuo-xie-fang-fa/</id>
+        <link href="https://pages.gp.idealisan.com/post/shang-chuan-teng-xun-wen-dang-bao-liu-word-gong-shi-de-yi-ge-tuo-xie-fang-fa/">
+        </link>
+        <updated>2024-03-03T07:10:15.000Z</updated>
+        <content type="html"><![CDATA[<p>现在找到的最佳方案是，把word文档保存成doc格式的老版本文档，再上传到腾讯文档，所有的公式会以图片的形式得到保留。</p>
+<p>目前没有办法上传并保留成可编辑的公式的办法。</p>
+<p>此外，在线公式编辑多数采用的是latex语法，现在word也支持latex的很多语法了，对于不太复杂的公式可以粘贴latex代码再点一下转换按钮。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[为什么这么讨厌安卓？安卓的缺点有哪些]]></title>
+        <id>https://pages.gp.idealisan.com/post/wei-shi-me-zhe-me-tao-yan-an-zhuo-an-zhuo-de-que-dian-you-na-xie/</id>
+        <link href="https://pages.gp.idealisan.com/post/wei-shi-me-zhe-me-tao-yan-an-zhuo-an-zhuo-de-que-dian-you-na-xie/">
+        </link>
+        <updated>2024-03-03T07:08:01.000Z</updated>
+        <content type="html"><![CDATA[<p>性能配置方面，iPhone性能只有顶配，廉价款之比旗舰落后半年到一年的性能，差距一般不会超过30%，缩水的是屏幕、传感器之类的，但是即便是缩水的，用的也是老旗舰的硬件，依然能做到不错的体验；安卓这边的廉价机型那就百花齐放了，骁龙400系列的芯片用来做智能手机感觉基本无法使用，和旗舰芯片比较差距可以是80%，估计只装微信用久了都卡。</p>
+<p>屏幕，对，屏幕。现在安卓手机屏幕标准很高了，但是高不代表好。比如广色域屏幕在不同亮度下的颜色曲线是否准确，这一点我深感怀疑。屏幕是唯一必不可少的输入输出设备，应该予以重视。安卓屏幕通常默认是一个不太准确的设置，可以在设置中选择用户自己喜欢的颜色模式，但是这意味着图片资源按照用户的喜好变色，而不是始终保持应该有的颜色。比如微信绿色的图标，在sRGB标准下应该是正确的颜色，但是用户选择广色域模式的时候，过于浓郁了，然而用户就是喜欢这样的错误效果，仅管这一效果只应应用于广色域照片和视频上。允许用户犯错，看起来这是一个自由问题，给予更多自由总应该是好的，但是同时也降低了安卓手机对于追求准确的用户的吸引力，因为增加了犯错的可能。而ios这边，总是准确的，如果希望要其他颜色风格，这个问题应该交给软件开发者去更改，而不是交给ios全局更改。</p>
+<p>外观设计方面，安卓相对而言百花齐放，但是这只是一个中性的 描述，不是夸赞。百花齐放不一定代表里边有好看的。安卓厂商对做工方面的品控差一些，早年三星塑料壳子真的很没有质感，更别提肆意乱开的机身开孔，比如sim卡槽位置在机身厚度上不居中、耳机孔也可以不居中，扬声器的孔也可以是歪的，这些问题不能说在iPhone上没有，但几乎是没有的。iPhone的设计稿更注重外观审美，其他可能不好说，但是基本的居中、排布整齐是做到了的，再加上更严格的工差控制，外观上更加精致。</p>
+<p>软件系统上，安卓更加开放，或者说，其实是不受管理。这也是个中性描述。我自己愿意的话，可以自己编写安卓软件自己使用，而ios上就不行。这是我眼中安卓的一个好处。但是同时，因为开发成本低，客观上导致了软件质量较差，毕竟开发者门槛更低。另外一方面，安卓软件的适配问题总是会降低新手机的体验。对于最新的系统而言，最好的体验当然是所有软件针对这一系统版本适配，然而这是不可能的，即便是ios也要保持至少三个ios版本的支持。但是安卓长期的状态是保持超过3个版本以上的兼容性，因为碎片化。这两年可能因为新手机更新，碎片化已经缓解了，但是仍然不是很满意。比如至少微信、抖音依然支持安卓7，而目前安卓12已经上市，13也已经发布。为了兼容安卓7，软件要付出额外的代价，无论是新功能的取舍还是冗余代码和资源，这些都会一定程度上降低新系统上的性能。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[讲话时在中文中夹杂英语]]></title>
+        <id>https://pages.gp.idealisan.com/post/jiang-hua-shi-zai-zhong-wen-zhong-jia-za-ying-yu/</id>
+        <link href="https://pages.gp.idealisan.com/post/jiang-hua-shi-zai-zhong-wen-zhong-jia-za-ying-yu/">
+        </link>
+        <updated>2024-03-03T07:07:34.000Z</updated>
+        <content type="html"><![CDATA[<p>书面语中我会尽量避免，但是平时沟通真的还是惯用什么就说什么，有时候甚至会因为在线会议里避免歧义而故意用英语，比如“检测”和“监测”，我这边的工作里这两个词经常会一起出现在前后几句话里，为了容易区分，有时候我就说成detection和monitoring。如果能用汉语说清楚，我会觉得讲的很棒，但是有时候真的词汇量不够了，找到对应的词语需要精力，那为了效率，只能哪个方便用哪个了。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[细数协程与线程池的异同，发现并无本质区别]]></title>
+        <id>https://pages.gp.idealisan.com/post/xi-shu-xie-cheng-yu-xian-cheng-chi-de-yi-tong-fa-xian-bing-wu-ben-zhi-qu-bie/</id>
+        <link href="https://pages.gp.idealisan.com/post/xi-shu-xie-cheng-yu-xian-cheng-chi-de-yi-tong-fa-xian-bing-wu-ben-zhi-qu-bie/">
+        </link>
+        <updated>2024-03-03T07:07:02.000Z</updated>
+        <content type="html"><![CDATA[<p>首先，协程是基于线程池实现的。有n个线程来完成m个协程。那么在操作系统看来，调度对象是n个线程。这方面协程与线程池无差别。</p>
+<p>让出CPU的时机上，协程是由于异步IO或者任务结束而不再占用CPU，线程池中提交的任务也同样由于异步IO或者任务结束而不占用CPU。</p>
+<p>任务中途挂起状态上，协程允许任务中间由于IO挂起，等到恢复到就绪状态后，可能被放到另一个线程上继续执行，这些调度过程是不需要干预的。线程池则不存在任务挂起状态，每个任务都必须一口气完成，如果某个任务中间出现了wait()这样让出CPU的操作，那么任务也不会被丢回到等待队列，而是继续占用线程资源。在使用线程池的时候，如果一个长期任务中间有让出CPU，那么应该将其分割成为不含让出CPU的小片段，再使用回调等方式逐步添加到任务队列。这里线程池远不如协程方便。</p>
+<p>实际上，协程是线程池的自动调度任务的版本，自动根据任务状态将其剩余部分丢回到等待队列，免去了人工干预分割任务成各个片段的麻烦。协程需要由调度器管理任务状态，所以不像线程一样可以人工干预使其进入等待，也不再有必要暴露管理线程状态的接口。</p>
+<p>从调度任务带来的性能上，如果使用相同数量的线程，合理地划分任务片段，实际上协程不会比线程池具有更好的性能。但是划分任务片段是个麻烦事，让任务调度看起来像JS的回调一样，只是把发起回调变成了提交任务片段。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Telegram是如何识别设备型号的]]></title>
+        <id>https://pages.gp.idealisan.com/post/telegram-shi-ru-he-shi-bie-she-bei-xing-hao-de/</id>
+        <link href="https://pages.gp.idealisan.com/post/telegram-shi-ru-he-shi-bie-she-bei-xing-hao-de/">
+        </link>
+        <updated>2024-03-03T07:02:45.000Z</updated>
+        <content type="html"><![CDATA[<p>在Telegram账号登入新的设备的时候，会在旧设备的对话窗口中看到一条消息，提示有新的设备登入，比如我在使用Python实现的Telegram Media Downlaoder的时候，发现这一客户端被识别为CPython 3.8，我感到不安，因为这一标识和官方客户端不同，这一标记增加了风控风险。尽管我相信不滥用的情况下应当不会对帐号有太大风险，但是我还是希望尽可能模拟原始客户端。于是我开始寻找Telegram是如何识别客户端信息的。</p>
+<p>我观察Telegram Media Downlaoder的代码发现其中调用了pyrogram的库，这名字一看就感觉和telegram有关系，经过搜索发现这确实是一个python版本的telegram客户端库。由于在Telegram Media Downlaoder的代码中没有发现CPython相关的内容，于是我认为很可能是pyrogram透露了客户端信息。我直接打开了site-packages查看pyrogram的代码，找不到CPython相关的字符串。但是我知道CPython和版本号是运行时环境信息，与测试开始查找用于检测运行时环境信息的代码。首先是sys.version_info，这一信息不包含CPython，sys.version也不包含CPython，不过好在我认识到我应该搜索sys这一关键字，程序中调用sys的应该不多，而其中一定包含我想要的CPython信息。全局搜索sys发现在pyrogram的客户端构造方法中，有下面三行代码决定了登陆提示里边的设备信息：</p>
+<pre><code class="language-ini">APP_VERSION = f&quot;Pyrogram {__version__}&quot;
+DEVICE_MODEL = f&quot;{platform.python_implementation()} {platform.python_version()}&quot;
+SYSTEM_VERSION = f&quot;{platform.system()} {platform.release()}&quot;
+</code></pre>
+<p>第一行是App版本，是一个字面量；第二行是CPython3.8对应的信息；第三行是宿主机Winodws系统的信息。这三点结合起来基本能够覆盖登陆信息里的内容了。要修改登录信息只需要在构造pyrogram客户端的时候指定这三个参数就好：</p>
+<pre><code class="language-ini">    app_version: str = APP_VERSION,
+    device_model: str = DEVICE_MODEL,
+    system_version: str = SYSTEM_VERSION,
+</code></pre>
+<p>另外，我使用的API_ID和API_HASH是直接从Telegram Web源代码里取得的，那么我应该将其模仿为web客户端。安卓、桌面客户端源代码里删除了API_ID和API_HASH，水池kdweb客户端开发者是不小心还是心态开放。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows上使用超分辨率桌面来享用平滑字体]]></title>
+        <id>https://pages.gp.idealisan.com/post/windows-shang-shi-yong-chao-fen-bian-lu-zhuo-mian-lai-xiang-yong-ping-hua-zi-ti/</id>
+        <link href="https://pages.gp.idealisan.com/post/windows-shang-shi-yong-chao-fen-bian-lu-zhuo-mian-lai-xiang-yong-ping-hua-zi-ti/">
+        </link>
+        <updated>2022-12-06T10:49:45.000Z</updated>
+        <content type="html"><![CDATA[<p>macOS和部分Linux桌面上，可以使用虚拟分辨率来再不够高像素密度的显示器上想用虚拟的高密度屏幕的显示效果，虽然不如真正的高密度显示器效果好，但是能够克服字体不够平滑的问题。实际上，由于Windows上大量使用宋体作为界面字体，在低密度屏幕上支离破碎的文字是最需要平滑的，而linux和macOS上本身字体渲染策略是可以模糊而不要支离破碎，所以其实不需要因为字体不够平滑来虚拟超分辨率。</p>
+<p>上半年，我在拼多多购买了一块GTX 1660S二手显卡，支持DSR超分辨率。借助DSR可以把1080P屏幕超分辨率成最高4K的分辨率。在4K屏幕上，或许还能超分辨率为5K让27英寸的显示器更合适。</p>
+<figure data-type="image" tabindex="1"><img src="https://pages.gp.idealisan.com/post-images/1692420868211.png" alt="" loading="lazy"></figure>
+<p>在装好驱动后，在桌面上右键点击，打开nVidia控制面板</p>
+<figure data-type="image" tabindex="2"><img src="https://pages.gp.idealisan.com/post-images/1692421017667.png" alt="" loading="lazy"></figure>
+<p>在左侧选择“管理3D设置”，在右侧DSR-因数选择合适的档位，我推荐选择整数倍数的分辨率，比如1080P的两倍是4K。DSR-平滑因数，我推荐20%，更高文字会更模糊，更低会支离破碎。最后应用即可。</p>
+<figure data-type="image" tabindex="3"><img src="https://pages.gp.idealisan.com/post-images/1692421276354.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[桌面版Telegram限制复制消息和限制保存文件的工作原理分析]]></title>
+        <id>https://pages.gp.idealisan.com/post/zhuo-mian-ban-telegram-xian-zhi-fu-zhi-xiao-xi-he-xian-zhi-bao-cun-wen-jian-de-gong-zuo-yuan-li-fen-xi/</id>
+        <link href="https://pages.gp.idealisan.com/post/zhuo-mian-ban-telegram-xian-zhi-fu-zhi-xiao-xi-he-xian-zhi-bao-cun-wen-jian-de-gong-zuo-yuan-li-fen-xi/">
+        </link>
+        <updated>2022-12-03T12:38:53.000Z</updated>
+        <content type="html"><![CDATA[<p>本文来分析和总结Telegram的Windows、Linux和mac的基于Qt的桌面客户端的功能限制的实现流程。由于TG源代码量很大，不能全盘分析，此处只是有针对性地关注TG的限制功能是如何在客户端实现的。实际上，部分功能限制，比如转发消息限制是通过服务器控制的，而下载文件和复制消息文本是客户端限制的。这里仅讨论客户端上的限制是如何实现的。</p>
+<p>首先我们要通过前文记录的方式生成一个VS项目，这里不再赘述。</p>
+<p>在项目中，我们直接通过全局搜索查找TG用户界面上的文本字符串即可快速从 lang.strings 定位相关功能的UI代码位置。</p>
+<h1 id="限制保存图片-视频">限制保存图片、视频</h1>
+<p>在用户界面上，有一个 Save As... 的菜单，搜索这个字符串会找到的语言翻译文件中的&quot;lng_mediaview_save_as&quot; = &quot;Save As...&quot; 。再搜索 lng_mediaview_save_as 会找到对应的UI代码</p>
+<pre><code class="language-cpp">, _docSaveAs(_widget, tr::lng_mediaview_save_as(tr::now), st::mediaviewFileLink)
+</code></pre>
+<p>这是那个菜单的按钮构造函数。以及另一处</p>
+<pre><code class="language-cpp">	if (!hasCopyMediaRestriction()) {
+		addAction(
+			tr::lng_mediaview_save_as(tr::now),
+			[=] { saveAs(); },
+			&amp;st::mediaMenuIconDownload);
+	}
+</code></pre>
+<p>此处检查了媒体文件的限制，如果没有限制就添加一个另存为的菜单按钮。可以看出另存为操作的执行函数是 saveAs() 。我们先去看看  saveAs() 是怎么做的。这个函数有110多行，我们简略来看。</p>
+<pre><code class="language-cpp">void OverlayWidget::saveAs() {
+	if (showCopyMediaRestriction()) {
+		return;
+	}
+	QString file;
+	if (_document) {
+		const auto &amp;location = _document-&gt;location(true);
+		const auto bytes = _documentMedia-&gt;bytes();
+		if (!bytes.isEmpty() || location.accessEnable()) {
+            //如果文件已经下载到磁盘，检查文件路径等信息，保存文件
+		} else {
+            //如果文件没有下载到磁盘，比如没加载完全的视频，交给handler继续处理
+			DocumentSaveClickHandler::SaveAndTrack(
+				_message ? _message-&gt;fullId() : FullMsgId(),
+				_document,
+				DocumentSaveClickHandler::Mode::ToNewFile);
+		}
+	} else if (_photo &amp;&amp; _photo-&gt;hasVideo()) {
+		constexpr auto large = Data::PhotoSize::Large;
+		if (const auto bytes = _photoMedia-&gt;videoContent(large); !bytes.isEmpty()) {
+			//如果已经有视频文件，那么直接另存一份
+		} else {
+			_photo-&gt;loadVideo(large, fileOrigin());
+			_savePhotoVideoWhenLoaded = SavePhotoVideo::SaveAs;
+            //加载完保存
+		}
+	} else {
+		if (!_photo || !_photoMedia-&gt;loaded()) {
+			return;
+		}
+        //加载和保存照片
+}
+</code></pre>
+<p>这个函数适用于消息的右键菜单的另存为选项和图片视频查看浮层的另存为菜单选项。第一部分是处理下载文件的操作，第二部分是下载视频的操作，第三部分是下载照片的操作。后两个部分，也就是视频和照片是可能经过压缩的，与文件有所不同。</p>
+<p>进一步，我们来看 DocumentSaveClickHandler::SaveAndTrack 是如何工作的。</p>
+<pre><code class="language-cpp">void DocumentSaveClickHandler::SaveAndTrack(
+		FullMsgId itemId,
+		not_null&lt;DocumentData*&gt; document,
+		Mode mode) {
+	Save(itemId ? itemId : Data::FileOrigin(), document, mode);
+	if (document-&gt;loading() &amp;&amp; !document-&gt;loadingFilePath().isEmpty()) {
+		if (const auto item = document-&gt;owner().message(itemId)) {
+			Core::App().downloadManager().addLoading({
+				.item = item,
+				.document = document,
+			});
+		}
+	}
+}
+</code></pre>
+<p>SaveAndTrack 包含保存和跟踪下载进度两个部分。Save 函数内部不检查文件限制，仅仅是继续下载保存，同时这个文件被记录于 downloadManager。</p>
+<p>看到这，基本确认权限检查就是 	if (!hasCopyMediaRestriction()) 和 	if (showCopyMediaRestriction()) 做的，其他位置没有重复检查。</p>
+<pre><code class="language-cpp">bool OverlayWidget::hasCopyMediaRestriction() const {
+	return (_history &amp;&amp; !_history-&gt;peer-&gt;allowsForwarding())
+		|| (_message &amp;&amp; _message-&gt;forbidsSaving());
+}
+</code></pre>
+<p>hasCopyMediaRestriction() 检查了会话对象的 allowsForwarding() 以及消息的 forbidsSaving() 。</p>
+<pre><code class="language-cpp">bool OverlayWidget::showCopyMediaRestriction() {
+	if (!hasCopyMediaRestriction()) {
+		return false;
+	}
+	Ui::ShowMultilineToast({
+		.parentOverride = _widget,
+		.text = { _history-&gt;peer-&gt;isBroadcast()
+			? tr::lng_error_nocopy_channel(tr::now)
+			: tr::lng_error_nocopy_group(tr::now) },
+	});
+	return true;
+}
+</code></pre>
+<p>showCopyMediaRestriction() 则直接调用了 hasCopyMediaRestriction() 。也就是检查了会话对象的 allowsForwarding() 以及消息的 forbidsSaving() 。</p>
+<pre><code class="language-cpp">bool PeerData::allowsForwarding() const {
+	if (const auto user = asUser()) {
+		return true;
+	} else if (const auto channel = asChannel()) {
+		return channel-&gt;allowsForwarding();
+	} else if (const auto chat = asChat()) {
+		return chat-&gt;allowsForwarding();
+	}
+	return false;
+}
+</code></pre>
+<p>allowsForwarding() 首先检查是不是用户自己操作，用户自己是允许转发自己的消息的。对于其他对话和频道，继续检查具体的 allowsForwarding() 。</p>
+<pre><code class="language-cpp">bool ChannelData::allowsForwarding() const {
+	return !(flags() &amp; Flag::NoForwards);
+}
+</code></pre>
+<p>频道的权限检查就是频道的标记。</p>
+<pre><code class="language-cpp">bool ChatData::allowsForwarding() const {
+	return !(flags() &amp; Flag::NoForwards);
+}
+</code></pre>
+<p>同样的，会话的权限检查也是标记。那么会话的flag是在哪里初始化的呢？通过查找引用发现在多出使用了setflags。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670076911939.png" alt="" loading="lazy"><br>
+虽然能够找到set和add的使用位置，但是更应该关注那里使用了flag。使用的方法有两个：</p>
+<pre><code class="language-cpp">	[[nodiscard]] auto flags() const {
+		return _flags.current();
+	}
+	[[nodiscard]] auto flagsValue() const {
+		return _flags.value();
+	}
+</code></pre>
+<p>那么就要看看 current() 和 value()是怎么做的。</p>
+<pre><code class="language-cpp">	auto current() const {
+		return _value;
+	}
+	auto value() const {
+		return _changes.events_starting_with({
+			Type::from_raw(kEssential),
+			_value });
+	}
+</code></pre>
+<p>current 比较简单。value() 则还使用了事件流，比较复杂，不太理解。</p>
+<h1 id="限制复制消息文本">限制复制消息文本</h1>
+<p>复制消息的菜单文本是 Copy Text 。对应的翻译文本是 &quot;lng_context_copy_text&quot; = &quot;Copy Text&quot; 。借助VS查找使用位置的功能，出现 lng_context_copy_text 的代码包括<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670077600012.png" alt="" loading="lazy"></p>
+<pre><code class="language-cpp">				if (msg
+					&amp;&amp; !link
+					&amp;&amp; (view-&gt;hasVisibleText()
+						|| mediaHasTextForCopy
+						|| item-&gt;Has&lt;HistoryMessageLogEntryOriginal&gt;())) {
+					_menu-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+						copyContextText(itemId);
+					}, &amp;st::menuIconCopy);
+				}
+</code></pre>
+<p>此处的上下文表明当消息不是链接、有可见文本、媒体有文本、 item-&gt;Has<HistoryMessageLogEntryOriginal>() 的时候显示复制文本的菜单选项。最后这个has函数难以理解，暂时没看懂。<br>
+上边这部分代码仅仅是允许复制的情况下出现复制选项的条件，而不是故意的限制。故意的限制需要看更外层的判断。</p>
+<p>奇怪的是，向上查找限制条件的时候却没有找到判断代码。于是只能看看受限的条件下文本时什么，从那方面下手。不幸的是，受限的情况下桌面版的菜单没有出现受限的提示，而仅仅去掉了不允许的菜单，剩下复制链接和举报两个菜单。仔细观察，发现上面的代码来自于 admin文件，可能是仅限于会话中有管理权限的用户。我们继续查看其它位置的 lng_context_copy_text。</p>
+<pre><code class="language-cpp">				if (!item-&gt;isService()
+					&amp;&amp; view
+					&amp;&amp; actionText.isEmpty()
+					&amp;&amp; !hasCopyRestriction(item)
+					&amp;&amp; (view-&gt;hasVisibleText() || mediaHasTextForCopy)) {
+					_menu-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+						copyContextText(itemId);
+					}, &amp;st::menuIconCopy);
+				}
+</code></pre>
+<p>这是位于history_inner_widget.cpp 的代码。可以看到其中出现了 hasCopyRestriction() 这个限制检测。</p>
+<pre><code class="language-cpp">		if (!link
+			&amp;&amp; (view-&gt;hasVisibleText() || mediaHasTextForCopy)
+			&amp;&amp; !list-&gt;hasCopyRestriction(view-&gt;data())) {
+			const auto asGroup = (request.pointState != PointState::GroupPart);
+			result-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+				if (const auto item = owner-&gt;message(itemId)) {
+					if (!list-&gt;showCopyRestriction(item)) {
+						if (asGroup) {
+							if (const auto group = owner-&gt;groups().find(item)) {
+								TextUtilities::SetClipboardText(HistoryGroupText(group));
+								return;
+							}
+						}
+						TextUtilities::SetClipboardText(HistoryItemText(item));
+					}
+				}
+			}, &amp;st::menuIconCopy);
+		}
+</code></pre>
+<p>另一处的代码也使用了 hasCopyRestriction() 。</p>
+<pre><code class="language-cpp">bool ListWidget::hasCopyRestriction(HistoryItem *item) const {
+	return _delegate-&gt;listCopyRestrictionType(item)
+		!= CopyRestrictionType::None;
+}
+
+bool ListWidget::showCopyRestriction(HistoryItem *item) {
+	const auto type = _delegate-&gt;listCopyRestrictionType(item);
+	if (type == CopyRestrictionType::None) {
+		return false;
+	}
+	Ui::ShowMultilineToast({
+		.parentOverride = Window::Show(_controller).toastParent(),
+		.text = { (type == CopyRestrictionType::Channel)
+			? tr::lng_error_nocopy_channel(tr::now)
+			: tr::lng_error_nocopy_group(tr::now) },
+	});
+	return true;
+}
+</code></pre>
+<p>到这里，限制显示菜单的关键代码已经找到了。我们再去检查检查点击菜单之后的操作是否受到限制。其实可以直接看到复制文本就是简单的 TextUtilities::SetClipboardText ，想必应该不会有更复杂的检查了。</p>
+<p>不过注意，选择文本的时候的时候有一个另外的限制</p>
+<pre><code class="language-cpp">bool ListWidget::hasCopyRestrictionForSelected() const {
+	if (hasCopyRestriction()) {
+		return true;
+	}
+	if (_selected.empty()) {
+		if (_selectedTextItem &amp;&amp; _selectedTextItem-&gt;forbidsForward()) {
+			return true;
+		}
+	}
+	for (const auto &amp;[itemId, selection] : _selected) {
+		if (const auto item = session().data().message(itemId)) {
+			if (item-&gt;forbidsForward()) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+</code></pre>
+<h1 id="限制导出历史记录">限制导出历史记录</h1>
+<p>TG桌面版的一个特色功能是可以导出消息记录为HTML或者JSON格式。但是这个功能也受到限制条件约束。在允许导出的会话中，对应的菜单文本是 Export chat history ，而受限的情况下不显示这个菜单。所以我们首先查找这个字符串。然而找不到这个字符串，有可能因为这是桌面版独有的功能，没有做翻译吧。那么从同一个菜单列表里的其他选项来看，包括 leave channel ，可以从这里找菜单的渲染选项，对应的翻译函数是 lng_profile_leave_channel 。使用位置包括 info_profile_actions.cpp 和 window_peer_menu.cpp，在 window_peer_menu.cpp 文件中查找 export 找到了添加导出菜单的代码。具体代码分别如下。</p>
+<pre><code class="language-cpp">void Filler::addExportChat() {
+	if (_thread-&gt;asTopic() || !_peer-&gt;canExportChatHistory()) {
+		return;
+	}
+	const auto peer = _peer;
+	_addAction(
+		tr::lng_profile_export_chat(tr::now),
+		[=] { PeerMenuExportChat(peer); },
+		&amp;st::menuIconExport);
+}
+
+bool PeerData::canExportChatHistory() const {
+	if (isRepliesChat() || !allowsForwarding()) {
+		return false;
+	} else if (const auto channel = asChannel()) {
+		if (!channel-&gt;amIn() &amp;&amp; channel-&gt;invitePeekExpires()) {
+			return false;
+		}
+	}
+	for (const auto &amp;block : _owner-&gt;history(id)-&gt;blocks) {
+		for (const auto &amp;message : block-&gt;messages) {
+			if (!message-&gt;data()-&gt;isService()) {
+				return true;
+			}
+		}
+	}
+	if (const auto from = migrateFrom()) {
+		return from-&gt;canExportChatHistory();
+	}
+	return false;
+}
+</code></pre>
+<p>如果会话是 topic 那么不允许导出记录，这可能是因为 topic 功能是新加的，还没有做导出的功能，不过我感觉目前的发展态势很可能不会有导出 topic 的设计，回头可以试试能不能导出 topic。canExportChatHistory() 不允许回复评论的会话导出、不允许不能转发的会话的导出、不允许自己没加入的channel导出、允许非官方服务会话导出，剩下的 migrateFrom() 不太清楚是什么，而其余情况则不允许导出。目前为止看的是如何限制了显示导出菜单。</p>
+<p>再来看看点击到处菜单之后是否有限制。</p>
+<pre><code class="language-cpp">void PeerMenuExportChat(not_null&lt;PeerData*&gt; peer) {
+	Core::App().exportManager().start(peer);
+}
+
+
+void Manager::start(
+		not_null&lt;Main::Session*&gt; session,
+		const MTPInputPeer &amp;singlePeer) {
+	if (_panel) {
+		_panel-&gt;activatePanel();
+		return;
+	}
+	_controller = std::make_unique&lt;Controller&gt;(
+		&amp;session-&gt;mtp(),
+		singlePeer);
+	_panel = std::make_unique&lt;View::PanelController&gt;(
+		session,
+		_controller.get());
+	session-&gt;account().sessionChanges(
+	) | rpl::filter([=](Main::Session *value) {
+		return (value != session);
+	}) | rpl::start_with_next([=] {
+		stop();
+	}, _panel-&gt;lifetime());
+
+	_viewChanges.fire(_panel.get());
+
+	_panel-&gt;stopRequests(
+	) | rpl::start_with_next([=] {
+		LOG((&quot;Export Info: Stop requested.&quot;));
+		stop();
+	}, _controller-&gt;lifetime());
+}
+</code></pre>
+<p>看到其中没有额外检测限制。不过似乎export功能是额外的网络通信方法，而不是直接掉用抓取消息的方法，所以有可能服务器端会检测并限制。具体的 操作是 _controller 对象继续完成。</p>
+<pre><code class="language-cpp">void ControllerObject::exportNext() {
+	if (++_stepIndex &gt;= _steps.size()) {
+		if (ioCatchError(_writer-&gt;finish())) {
+			return;
+		}
+		_api.finishExport([=] {
+			setFinishedState();
+		});
+		return;
+	}
+
+	const auto step = _steps[_stepIndex];
+	switch (step) {
+	case Step::Initializing: return initialize();
+	case Step::DialogsList: return collectDialogsList();
+	case Step::PersonalInfo: return exportPersonalInfo();
+	case Step::Userpics: return exportUserpics();
+	case Step::Contacts: return exportContacts();
+	case Step::Sessions: return exportSessions();
+	case Step::OtherData: return exportOtherData();
+	case Step::Dialogs: return exportDialogs();
+	}
+	Unexpected(&quot;Step in ControllerObject::exportNext.&quot;);
+}
+
+void ControllerObject::initialize() {
+	setState(stateInitializing());
+	_api.startExport(_settings, &amp;_stats, [=](ApiWrap::StartInfo info) {
+		initialized(info);
+	});
+}
+</code></pre>
+<p>果然使用的是单独的 api 。</p>
+<h1 id="修改的部分">修改的部分</h1>
+<p>最后附上修改过程中的git patch</p>
+<pre><code>Index: Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+--- a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp	(date 1711436324994)
+@@ -1425,73 +1425,31 @@
+ }
+ 
+ bool ListWidget::hasCopyRestriction(HistoryItem *item) const {
+-	return _delegate-&gt;listCopyRestrictionType(item)
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ bool ListWidget::hasCopyMediaRestriction(not_null&lt;HistoryItem*&gt; item) const {
+-	return _delegate-&gt;listCopyMediaRestrictionType(item)
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ bool ListWidget::showCopyRestriction(HistoryItem *item) {
+-	const auto type = _delegate-&gt;listCopyRestrictionType(item);
+-	if (type == CopyRestrictionType::None) {
+-		return false;
+-	}
+-	_controller-&gt;showToast((type == CopyRestrictionType::Channel)
+-		? tr::lng_error_nocopy_channel(tr::now)
+-		: tr::lng_error_nocopy_group(tr::now));
+-	return true;
++	return false;
+ }
+ 
+ bool ListWidget::showCopyMediaRestriction(not_null&lt;HistoryItem*&gt; item) {
+-	const auto type = _delegate-&gt;listCopyMediaRestrictionType(item);
+-	if (type == CopyRestrictionType::None) {
+-		return false;
+-	}
+-	_controller-&gt;showToast((type == CopyRestrictionType::Channel)
+-		? tr::lng_error_nocopy_channel(tr::now)
+-		: tr::lng_error_nocopy_group(tr::now));
+-	return true;
++	return false;
+ }
+ 
+ bool ListWidget::hasCopyRestrictionForSelected() const {
+-	if (hasCopyRestriction()) {
+-		return true;
+-	}
+-	if (_selected.empty()) {
+-		if (_selectedTextItem &amp;&amp; _selectedTextItem-&gt;forbidsForward()) {
+-			return true;
+-		}
+-	}
+-	for (const auto &amp;[itemId, selection] : _selected) {
+-		if (const auto item = session().data().message(itemId)) {
+-			if (item-&gt;forbidsForward()) {
+-				return true;
+-			}
+-		}
+-	}
+ 	return false;
+ }
+ 
+ bool ListWidget::showCopyRestrictionForSelected() {
+-	if (_selected.empty()) {
+-		if (_selectedTextItem &amp;&amp; showCopyRestriction(_selectedTextItem)) {
+-			return true;
+-		}
+-	}
+-	for (const auto &amp;[itemId, selection] : _selected) {
+-		if (showCopyRestriction(session().data().message(itemId))) {
+-			return true;
+-		}
+-	}
+ 	return false;
+ }
+ 
+ bool ListWidget::hasSelectRestriction() const {
+-	return _delegate-&gt;listSelectRestrictionType()
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ auto ListWidget::findViewForPinnedTracking(int top) const
+Index: Telegram/SourceFiles/data/data_channel.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_channel.cpp b/Telegram/SourceFiles/data/data_channel.cpp
+--- a/Telegram/SourceFiles/data/data_channel.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_channel.cpp	(date 1711436193284)
+@@ -590,7 +590,7 @@
+ }
+ 
+ bool ChannelData::allowsForwarding() const {
+-	return !(flags() &amp; Flag::NoForwards);
++	return true;
+ }
+ 
+ bool ChannelData::canViewMembers() const {
+Index: Telegram/SourceFiles/data/data_peer.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_peer.cpp b/Telegram/SourceFiles/data/data_peer.cpp
+--- a/Telegram/SourceFiles/data/data_peer.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_peer.cpp	(date 1711436159065)
+@@ -1074,14 +1074,7 @@
+ }
+ 
+ bool PeerData::allowsForwarding() const {
+-	if (const auto user = asUser()) {
+-		return true;
+-	} else if (const auto channel = asChannel()) {
+-		return channel-&gt;allowsForwarding();
+-	} else if (const auto chat = asChat()) {
+-		return chat-&gt;allowsForwarding();
+-	}
+-	return false;
++	return true;
+ }
+ 
+ Data::RestrictionCheckResult PeerData::amRestricted(
+Index: Telegram/SourceFiles/data/data_chat.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_chat.cpp b/Telegram/SourceFiles/data/data_chat.cpp
+--- a/Telegram/SourceFiles/data/data_chat.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_chat.cpp	(date 1711436207659)
+@@ -64,7 +64,7 @@
+ }
+ 
+ bool ChatData::allowsForwarding() const {
+-	return !(flags() &amp; Flag::NoForwards);
++	return true;
+ }
+ 
+ bool ChatData::canEditInformation() const {
+Index: Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp	(date 1711424890852)
+@@ -1037,13 +1037,7 @@
+ }
+ 
+ bool OverlayWidget::hasCopyMediaRestriction(bool skipPremiumCheck) const {
+-	if (const auto story = _stories ? _stories-&gt;story() : nullptr) {
+-		return skipPremiumCheck
+-			? !story-&gt;canDownloadIfPremium()
+-			: !story-&gt;canDownloadChecked();
+-	}
+-	return (_history &amp;&amp; !_history-&gt;peer-&gt;allowsForwarding())
+-		|| (_message &amp;&amp; _message-&gt;forbidsSaving());
++	return false;
+ }
+ 
+ bool OverlayWidget::showCopyMediaRestriction(bool skipPRemiumCheck) {
+Index: Telegram/SourceFiles/history/history_inner_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/history/history_inner_widget.cpp b/Telegram/SourceFiles/history/history_inner_widget.cpp
+--- a/Telegram/SourceFiles/history/history_inner_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/history/history_inner_widget.cpp	(date 1711424890841)
+@@ -2760,7 +2760,7 @@
+ 
+ bool HistoryInner::hasCopyMediaRestriction(
+ 		not_null&lt;HistoryItem*&gt; item) const {
+-	return hasCopyRestriction(item) || item-&gt;forbidsSaving();
++	return false;
+ }
+ 
+ bool HistoryInner::showCopyRestriction(HistoryItem *item) {
+
+</code></pre>
+<h1 id="windows编译环境和注意事项">Windows编译环境和注意事项</h1>
+<ul>
+<li>尽可能不要使用GUI IDE来编译，比如使用在native控制台窗口中的的devenv telegram.sln /Build &quot;Release|x64&quot; /Project Telegram命令来编译最终的可执行文件而不是使用Visual Studio打开sln项目去点击菜单中的build按钮，似乎GUI环境会做出一些莫名其妙的改变导致代码出问题。</li>
+<li>如果需要修改代码，不要使用VS，而使用JetBrains的工具或者任何其他不会有副作用的编辑器来编辑代码。</li>
+<li>编译环境直接搜索下载&quot;Windows Dev VMware Image&quot;，使用这个虚拟开发环境是最方便的，从而避免系统没有调整成unicode或者区域设置等问题，也避免visual studio安装麻烦，不过注意虚拟环境中似乎缺少C++抽象模板库，需要在Visual Studio Installer中修改，在individual component一栏中找到对应版本的ATL安装，否则可能会有依赖库在前期创建项目的时候无法编译。</li>
+<li>代理设置，要配置好控制台和git的代理，并且代理规则至少是绕过大陆模式，而不是黑名单模式。</li>
+<li>内存问题，编译MinSizeRel需要比较多的内存，虚拟机8GB编译失败，但是能编译普通的Release。尝试将虚拟机的内存调大到13.4GB（宿主机16GB内存的情况下推荐的最大内存）能够编译MinSizeRel。</li>
+</ul>
+<h1 id="mac编译环境和注意事项">Mac编译环境和注意事项</h1>
+<p>Mac上比较简单，因为brew能够帮很多忙，保证网络良好的情况下官方的命令已经比较简单了，但是有以下几个麻烦。</p>
+<ul>
+<li>代理设置，要配置好控制台和git的代理，并且代理规则至少是绕过大陆模式，而不是黑名单模式。</li>
+<li>在arm架构的Mac上编译libde265的时候因为第三方库没有找到x86版本而不能编译，去prepare.py中寻找相关命令，去掉“X86_64;arm64”中的X86_64即可，如果遇到问题，参考prepare.py手动运行命令尝试解决。</li>
+<li>不要使用XCode编辑代码，最好根本不要使用XCode的GUI打开项目，可能会出错。</li>
+<li>不要使用Mac上的XCode GUI编译，而是在有xcodeproject文件的目录中使用命令 xcodebuild -scheme Telegram build -configuration MinSizeRel来编译，似乎XCode的GUI也会导致一些问题。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[编译Telegram Desktop版]]></title>
+        <id>https://pages.gp.idealisan.com/post/bian-yi-telegram-desktop-ban/</id>
+        <link href="https://pages.gp.idealisan.com/post/bian-yi-telegram-desktop-ban/">
+        </link>
+        <updated>2022-12-03T07:46:11.000Z</updated>
+        <content type="html"><![CDATA[<p>在GitHub上有不止一个telegram的仓库，其中有一些是已经废弃旧版本，本文使用的是这个链接 https://github.com/telegramdesktop/tdesktop 的编译说明。</p>
+<p>具体而言，大体将会按照 https://github.com/telegramdesktop/tdesktop/blob/dev/docs/building-win-x64.md 的桌面版说明书配置编译环境等准备工作。</p>
+<p>首先，我们需要准备一个文件夹位置用来放置需要的源代码和必要的工具文件。保险起见，我是用一个路径中不带空格的文件夹，例如 E:\codeBase\tg-build-path 文件夹，代表官方说明书中的 BuildPath 。</p>
+<p>由于编译过程要求控制台环境使用UTF8编码，而中文版Windows默认为GBK，为了解决这个问题，控制面板的区域设置中，开启“使用utf8提供全球语言支持”。经过实测，必须更改这个全局设置，而不是使用网上其他的设置控制台编码的方法，比如CHCP命令。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670068703068.png" alt="" loading="lazy"></p>
+<p>接下来是按照要求安装编译工具。我以前编译过一个旧版本的，那时候使用的第三方工具比现在要多一些。现在的版本已经方便不少了。我很推荐使用 scoop https://scoop.sh/ 安装这些开源的工具，scoop 会自动配置path环境变量，很方便。似乎不必严格按照官方的说明文档要求将这些工具放在 BuildPath\ThirdParty 。</p>
+<ul>
+<li>Visual Studio 2022 with 10.0.22000.0 SDK 。老老实实安装VS这个巨无霸，安装的时候选择C++桌面开发的板块，并注意选择SDK版本即可。</li>
+<li>Python 3.10 。实际上不一定要版本3.10，我记得以前编译的时候用的应该不是这么新的版本，同时也不用完全按照要求放在 BuildPath\ThirdParty 之中，只需要保证环境变量 path 中能够找到并运行python即可。我此时使用的是 Python 3.8.2 。</li>
+<li>CMake 3.21 or later 。由于我曾经安装 Git、MinGW 等工具的时候已经安装过 CMake ，此处我使用的是 cmake version 3.24.2 。</li>
+<li>Git 。 使用scoop或者Git官方安装包安装均可，其实很可能已经安装了git，能够在path中找到即可。此处我使用的是 git version 2.33.0.windows.2 。</li>
+</ul>
+<p>为了方便地使用 x64 Native Tools Command Prompt for VS 2022.bat ，我将开始菜单中的快捷方式 x64 Native Tools Command Prompt for VS 2022 复制了一份到 E:\codeBase\tg-build-path ，并且注意在快捷方式属性中修改起始位置为 E:\codeBase\tg-build-path 。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670054661890.png" alt="" loading="lazy"></p>
+<p>双击复制的快捷方式，在命令行窗口里执行命令安装要求的python包。</p>
+<pre><code class="language-shell">python -m pip install pywin32 six
+</code></pre>
+<p>同样双击快捷方式，然后克隆代码。</p>
+<pre><code>git clone --recursive https://github.com/telegramdesktop/tdesktop.git
+</code></pre>
+<p>因为要递归克隆多个代码库，这可能需要一会，不过我的网速还不错，最快的时候能达到100Mbps，还可以接受速度。如果因网络问题遇到困难，请检查自己连接github的能力。</p>
+<p>克隆完毕后，继续在命令行窗口中执行下面的命令来生成 Windows 平台的代码和VS项目。生成的过程将会耗费很长时间，似乎这是一个单线程的操作，非常慢。</p>
+<pre><code>tdesktop\Telegram\build\prepare\win.bat
+</code></pre>
+<p>可以利用这个时间去申请一对 api_id 和 api_hash。参照官方说明 https://github.com/telegramdesktop/tdesktop/blob/dev/docs/building-win-x64.md#obtain-your-api-credentials 。</p>
+<pre><code class="language-shell">configure.bat x64 -D TDESKTOP_API_ID=your_api_id -D TDESKTOP_API_HASH=your_api_hash
+</code></pre>
+<p>如果没有出现问题，可以用VS打开 E:\codeBase\tg-build-path\tdesktop\out\Telegram.sln ，然后在菜单里使用  Build &gt; Build Telegram (Debug and Release configurations) 编译了。编译过程也要很久。编译生成的程序在 out 文件夹里。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[从生成SSH Key到使用Github]]></title>
+        <id>https://pages.gp.idealisan.com/post/cong-sheng-cheng-ssh-key-dao-shi-yong-github/</id>
+        <link href="https://pages.gp.idealisan.com/post/cong-sheng-cheng-ssh-key-dao-shi-yong-github/">
+        </link>
+        <updated>2022-11-28T14:54:26.000Z</updated>
+        <content type="html"><![CDATA[<p>最近为了使用Gridea写静态博客，好不容易从Macbook上找到了旧的Gridea文件夹。Gridea不会推送整个博客的所有文件，而仅仅是生成的HTML和所需的资源文件。我不想使用onedrive同步gridea文件夹，于是想到使用github的私有仓库来同步，于是要开始一番操作了。</p>
+<p>首先，GitHub已经停止使用用户名和密码push仓库，所以只能使用SSH认证。</p>
+<h2 id="第一步就是要生成一对ssh密钥">第一步就是要生成一对SSH密钥。</h2>
+<p>理想状态下， 应该是一个自然人拥有一对SSH密钥就够了，使用unix登录、github等等都用这一套密钥，但是处于隐私原因也好，还是分开管理，我选择单独为GitHub生成一对新的密钥。无论是再Windows、mac还是linux上，使用下面的命令可以开始生成一对密钥。</p>
+<pre><code class="language-shell">ssh-keygen -t rsa -C
+</code></pre>
+<p>然后跟随提示，注意选择一个文件名，不要总是使用默认的文件名，免得引起混乱。</p>
+<h2 id="在github账户设置里添加ssh公钥">在Github账户设置里添加SSH公钥</h2>
+<p>在GitHub账户设置的SSH and GPG keys一栏里，选择new SSH key按钮，填写一个合适的title帮助记忆这个key的用途，key type选择默认的authentication key就好，将上一步生成的puh结尾的公钥文件的内容全部复制到网页上key一栏中，点击add SSH key按钮即可。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1669648047522.png" alt="" loading="lazy"></p>
+<h2 id="在本地电脑上配置ssh和git">在本地电脑上配置SSH和git</h2>
+<p>在生成密钥之后，SSH和git依然不会使用这对密钥连接GitHub和任何其他服务。要将新生成的四幺添加到ssh-agent才行。<br>
+在WSL和Windows上，由于ssh服务不运行，需要先启动ssh-agent。可以直接运行下面的命令，也可以添加到用户的.profile里边让shell启动的时候自动运行。</p>
+<pre><code class="language-shell">eval $(ssh-agent)
+</code></pre>
+<p>然后使用ssh-add添加私钥。</p>
+<pre><code class="language-shell"> ssh-add ~/.ssh/github-pri
+</code></pre>
+<h2 id="使用git的ssh方法克隆仓库或指定remote">使用git的ssh方法克隆仓库或指定remote</h2>
+<p>从github克隆仓库的时候注意要使用ssh方法而不是https。<br>
+如果不是克隆，二十给本地仓库设置一个remote origin，拿主意改成ssh的url而不要使用https的url。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何向别人的github仓库提交修改]]></title>
+        <id>https://pages.gp.idealisan.com/post/ru-he-xiang-bie-ren-de-github-cang-ku-ti-jiao-xiu-gai/</id>
+        <link href="https://pages.gp.idealisan.com/post/ru-he-xiang-bie-ren-de-github-cang-ku-ti-jiao-xiu-gai/">
+        </link>
+        <updated>2021-11-23T06:31:29.000Z</updated>
+        <content type="html"><![CDATA[<p>场景：<br>
+**现在需要向老师代码仓库提交我的作业，我需要在老师的仓库中添加一个我的学号的文件夹，方便作为以后交作业的目录。</p>
+<p>前提条件是我知道老师的仓库的地址，比如克隆仓库的链接，我还要有一个github账号。</p>
+<p>第一步，需要在网页上登录我的github账号，并且fork老师的仓库。一定要fork才能和老师的仓库建立关联。</p>
+<p>第二步，克隆自己名下fork得到的仓库到自己的电脑上。</p>
+<p>第三步，在自己电脑上的仓库中新建文件夹，并且一定要在文件夹里创建一个文件，比如一个自我介绍的markdown文件。一定要创建文件，因为git不会记录空目录。</p>
+<p>第四步，使用github desktop或者git命令行提交自己电脑上的修改，并且推送到自己账号下的远程仓库。</p>
+<p>第五步，使用网页版github，在自己fork得到的仓库页面上点击pull request，按照流程创建一个request即可。</p>
+<p>第六步，等待老师同意request。老师同意之后，自己的邮箱里会收到GitHub的提醒邮件。</p>
+]]></content>
+    </entry>
+</feed>

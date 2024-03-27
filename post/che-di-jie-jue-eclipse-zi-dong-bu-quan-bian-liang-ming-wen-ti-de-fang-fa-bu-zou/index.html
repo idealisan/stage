@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>彻底解决Eclipse自动补全变量名问题的方法步骤 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="原文： https://www.cnblogs.com/w-wfy/p/5861274.html
+设置增强的补全功能
+一、打开 Eclipse
+-&gt; Window -&gt; Preferences
+找到Java 下的　Editor ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">彻底解决Eclipse自动补全变量名问题的方法步骤</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <p>原文： https://www.cnblogs.com/w-wfy/p/5861274.html</p>
+<h2 id="设置增强的补全功能">设置增强的补全功能</h2>
+<p>一、打开 Eclipse</p>
+<p>-&gt; Window -&gt; Preferences</p>
+<p>找到Java 下的　Editor 下的　Content Assist ,　右边出现的选项中，有一个Auto activation triggers for Java:会看到只有一个&quot;.&quot;存在。表示：只有输入&quot;.&quot;之后才会有代码提示,把&quot;.&quot;的地方修改成</p>
+<pre><code>.abcdefghijklmnopqrstuvwsyzABCDEFGHIJKLMNOPQRSTUVWSYZ_
+</code></pre>
+<p>点最下面的&quot;OK&quot;来保存设置。 Ps：如果你的版本比较低，不能直接修改的话，就导出配置文件，然后修改配置文件。最后再导入配置文件就可以了。</p>
+<h2 id="去掉不想要的自动上屏键">去掉不想要的自动上屏键</h2>
+<p><em>需要使用Eclipse SDK，一般的Eclipse发行版不行。SDK下载 https://archive.eclipse.org/eclipse/downloads/</em></p>
+<p>1.先找到相关的插件： window -&gt; show view -&gt; plug-ins 找到插件org.eclipse.jface.text,右键点击,选择import as Source Project,导入完成后,在你的workspace就可以看到这个project了</p>
+<p>2.修改代码</p>
+<p>在src/org/eclipse/jface/text/contentassist/CompletionProposalPopup.java文件中,找到这样一行代码</p>
+<pre><code class="language-java">char[] triggers = t.getTriggerCharacter(); 
+if(contains(triggers,key))
+</code></pre>
+<p>在那行if判断里面,eclipse会判断key(就是你按下的键)是否在triggers中,如果是,那就触发下面的第一行提示上屏的代码.所以我们要做的就是把空格和=号排除就可以了:</p>
+<pre><code class="language-java">if(key != '=' &amp;&amp; key != 0x20 &amp;&amp;contains(triggers,key)){ 
+.........
+}
+</code></pre>
+<p>代码修改成这样后，提示的时候按下空格或者等号，提示就会没掉，也不会自动补全了咯！！！</p>
+<p>实际上，除了tab、空格和等号，其他按键按下的时候也不想要上屏，只有回车的时候想要上屏，所以改成	<code>if (('\r'==key||'\n'==key)&amp;&amp;contains(triggers, key)) {</code>是最愉快的方法。这样做其实是白名单的方式，而上边的方法是黑名单方式。</p>
+<p>3.把修改好的org.eclipse.jface.text导出</p>
+<p>右键点击你的workspace里的org.eclipse.jface.text,选择export--&gt;Deployable plugins and</p>
+<p>fragments, next,destination 选择archive file，然后finish.你就可以在zip文件里看到生成好的jar ,用它替换掉eclipse/plugins里面的同名jar包,就可以了。</p>
+<p>三、注意：MyEclipse无法导入插件的源码工程，可以下载对应版本的Eclipse，重新编译得到插件后再覆盖MyEclipse里的插件即可。</p>
+<p>我这里有一个MyEclipse10修改好了的jar包。。如果你的版本跟我一样的话，直接把这个jar包拷到plugins下就可以了。下载后解压，有一个是修改好的jar，一个是没修改的jar，如果哪天你想换回来，把那个没修改过的jar复制回去就行了。</p>
+<p>注意了，版本不一样的记得自己去修改！！！我这个只有myeclipse10可以用的！！</p>
+<p>之所以使用Eclipse是因为Mycelipse中没有反编译插件JODE，而且有的这个插件反而跟Myeclipse兼容性不好，所以使用Eclipse进行反编译，并且可以直接在Eclipse中进行修改。</p>
+<p><strong>如何查找MyecIipse所对应Eclipse的版本：</strong></p>
+<p>打开Myeclipse--&gt;Window--&gt;about Myeclipse enterprise workbench--&gt;detail information ---&gt;plug-ins ,在feature中找到org.eclipse.jface.text，然后看对应的Provider，比如此时的是Eclipse org,再然后就在Features中找到对应的Eclipse org所对应的版本即可，从而下载eclipse修改上述的例子。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/cha-kan-ubuntu-xi-tong-ri-zhi/">
+                  <h3 class="post-title">
+                    查看ubuntu系统日志
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

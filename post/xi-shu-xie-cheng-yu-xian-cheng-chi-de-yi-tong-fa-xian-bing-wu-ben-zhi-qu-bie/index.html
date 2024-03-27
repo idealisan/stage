@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>细数协程与线程池的异同，发现并无本质区别 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="首先，协程是基于线程池实现的。有n个线程来完成m个协程。那么在操作系统看来，调度对象是n个线程。这方面协程与线程池无差别。
+让出CPU的时机上，协程是由于异步IO或者任务结束而不再占用CPU，线程池中提交的任务也同样由于异步IO或者任务结束..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">细数协程与线程池的异同，发现并无本质区别</h2>
+            <div class="post-date">2024-03-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>首先，协程是基于线程池实现的。有n个线程来完成m个协程。那么在操作系统看来，调度对象是n个线程。这方面协程与线程池无差别。</p>
+<p>让出CPU的时机上，协程是由于异步IO或者任务结束而不再占用CPU，线程池中提交的任务也同样由于异步IO或者任务结束而不占用CPU。</p>
+<p>任务中途挂起状态上，协程允许任务中间由于IO挂起，等到恢复到就绪状态后，可能被放到另一个线程上继续执行，这些调度过程是不需要干预的。线程池则不存在任务挂起状态，每个任务都必须一口气完成，如果某个任务中间出现了wait()这样让出CPU的操作，那么任务也不会被丢回到等待队列，而是继续占用线程资源。在使用线程池的时候，如果一个长期任务中间有让出CPU，那么应该将其分割成为不含让出CPU的小片段，再使用回调等方式逐步添加到任务队列。这里线程池远不如协程方便。</p>
+<p>实际上，协程是线程池的自动调度任务的版本，自动根据任务状态将其剩余部分丢回到等待队列，免去了人工干预分割任务成各个片段的麻烦。协程需要由调度器管理任务状态，所以不像线程一样可以人工干预使其进入等待，也不再有必要暴露管理线程状态的接口。</p>
+<p>从调度任务带来的性能上，如果使用相同数量的线程，合理地划分任务片段，实际上协程不会比线程池具有更好的性能。但是划分任务片段是个麻烦事，让任务调度看起来像JS的回调一样，只是把发起回调变成了提交任务片段。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/telegram-shi-ru-he-shi-bie-she-bei-xing-hao-de/">
+                  <h3 class="post-title">
+                    Telegram是如何识别设备型号的
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

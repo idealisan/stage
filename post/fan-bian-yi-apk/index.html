@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>反编译APK | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="局限
+要求apk未使用高级加密工具，例如腾讯的加固或者其他加密方法加密。最好是未加密的。此处例子是我自己的一款软件的早期未额外加密版本。
+步骤
+反编译apk的目的是获取spk包中的java代码、xml、布局和图像等资源。
+
+使用apktoo..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">反编译APK</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="局限">局限</h2>
+<p>要求apk未使用高级加密工具，例如腾讯的加固或者其他加密方法加密。最好是未加密的。此处例子是我自己的一款软件的早期未额外加密版本。</p>
+<h2 id="步骤">步骤</h2>
+<p>反编译apk的目的是获取spk包中的java代码、xml、布局和图像等资源。</p>
+<ol>
+<li>使用apktool获取可阅读的、反混淆的xml和图像资源</li>
+<li>使用dex2jar反向dex得到jar</li>
+<li>使用FernFlowerUI3.4反编译jar得到可阅读的java源文件</li>
+</ol>
+<h2 id="获取工具">获取工具</h2>
+<h5 id="apktool">apktool</h5>
+<p>apktool的项目地址是<code>https://ibotpeaches.github.io/Apktool/install/</code>，可以找到下载地址等信息。其中下载信息如下。</p>
+<p>apktool可以在如下网址下载jar包，重命名为apktool.jar。</p>
+<pre><code>https://bitbucket.org/iBotPeaches/apktool/downloads/
+</code></pre>
+<p>需要使用批处理脚本或shell脚本运行这个jar包。脚本下载地址是：</p>
+<pre><code>https://ibotpeaches.github.io/Apktool/install/
+</code></pre>
+<p>将脚本和apktool.jar放在同一目录里。不带参数运行脚本应该可以看到一些信息，说明可以运行。建议使用新版本的jar包，旧版本的对新的sdk产生的apk支持不好。</p>
+<h5 id="dex2jar">dex2jar</h5>
+<p>项目地址为<code>https://github.com/pxb1988/dex2jar</code>，本文使用的是<code>https://github.com/pxb1988/dex2jar/releases/download/2.0/dex-tools-2.0.zip</code>。</p>
+<h5 id="fernflowerui">FernflowerUI</h5>
+<p>项目地址为<code>https://github.com/6168218c/FernflowerUI</code>，可以获取其最新发布版本。</p>
+<p>有可能会被报病毒。该软件为一个UI，它会自动下载其后端程序。</p>
+<p>注意，其稳定版本为2015年的版本，相当老旧，可能使用较新的每夜构建的快照版本更加合适。我在使用2015年的旧版本的时候出错了，而快照版本作为可以正常使用。</p>
+<h2 id="使用apktool获取资源">使用apktool获取资源</h2>
+<p>将apk文件，apktool.bat，apktool.jar放在一起，并在该目录中运行脚本：</p>
+<pre><code class="language-shell">$ apktool.bat d myapk.apk
+</code></pre>
+<p>解这就会在该目录中产生一个文件夹，其中包含了apk的资源。</p>
+<h2 id="使用dex2jar反向dex">使用dex2jar反向dex</h2>
+<p>使用解压缩软件，或者干脆把apk包命名为.zip文件，然后提取其中的.dex文件到一个文件夹里。可能有多个dex文件，全部提取出来。</p>
+<p>运行dex2jar中的借本即可从dex得到jar：</p>
+<pre><code class="language-shell">$ d2j-dex2jar.bat classes.dex
+</code></pre>
+<h2 id="使用fernflowerui反编译jar">使用FernFlowerUI反编译jar</h2>
+<p>建议使用static版本的fernflowerUI，首次使用的时候他会提示需要下载后端程序，让他自动下载即可。</p>
+<p>从菜单里打开dex2jar得到的jar文件，等待反编译完成即可。其实像intellij IDEA也能够反编译jar和class到java文件。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/shi-yong-tar-da-bao-bei-fen-linux-xi-tong/">
+                  <h3 class="post-title">
+                    使用tar打包备份linux系统
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

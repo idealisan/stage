@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>桌面版Telegram限制复制消息和限制保存文件的工作原理分析 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="本文来分析和总结Telegram的Windows、Linux和mac的基于Qt的桌面客户端的功能限制的实现流程。由于TG源代码量很大，不能全盘分析，此处只是有针对性地关注TG的限制功能是如何在客户端实现的。实际上，部分功能限制，比如转发消息..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">桌面版Telegram限制复制消息和限制保存文件的工作原理分析</h2>
+            <div class="post-date">2022-12-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>本文来分析和总结Telegram的Windows、Linux和mac的基于Qt的桌面客户端的功能限制的实现流程。由于TG源代码量很大，不能全盘分析，此处只是有针对性地关注TG的限制功能是如何在客户端实现的。实际上，部分功能限制，比如转发消息限制是通过服务器控制的，而下载文件和复制消息文本是客户端限制的。这里仅讨论客户端上的限制是如何实现的。</p>
+<p>首先我们要通过前文记录的方式生成一个VS项目，这里不再赘述。</p>
+<p>在项目中，我们直接通过全局搜索查找TG用户界面上的文本字符串即可快速从 lang.strings 定位相关功能的UI代码位置。</p>
+<h1 id="限制保存图片-视频">限制保存图片、视频</h1>
+<p>在用户界面上，有一个 Save As... 的菜单，搜索这个字符串会找到的语言翻译文件中的&quot;lng_mediaview_save_as&quot; = &quot;Save As...&quot; 。再搜索 lng_mediaview_save_as 会找到对应的UI代码</p>
+<pre><code class="language-cpp">, _docSaveAs(_widget, tr::lng_mediaview_save_as(tr::now), st::mediaviewFileLink)
+</code></pre>
+<p>这是那个菜单的按钮构造函数。以及另一处</p>
+<pre><code class="language-cpp">	if (!hasCopyMediaRestriction()) {
+		addAction(
+			tr::lng_mediaview_save_as(tr::now),
+			[=] { saveAs(); },
+			&amp;st::mediaMenuIconDownload);
+	}
+</code></pre>
+<p>此处检查了媒体文件的限制，如果没有限制就添加一个另存为的菜单按钮。可以看出另存为操作的执行函数是 saveAs() 。我们先去看看  saveAs() 是怎么做的。这个函数有110多行，我们简略来看。</p>
+<pre><code class="language-cpp">void OverlayWidget::saveAs() {
+	if (showCopyMediaRestriction()) {
+		return;
+	}
+	QString file;
+	if (_document) {
+		const auto &amp;location = _document-&gt;location(true);
+		const auto bytes = _documentMedia-&gt;bytes();
+		if (!bytes.isEmpty() || location.accessEnable()) {
+            //如果文件已经下载到磁盘，检查文件路径等信息，保存文件
+		} else {
+            //如果文件没有下载到磁盘，比如没加载完全的视频，交给handler继续处理
+			DocumentSaveClickHandler::SaveAndTrack(
+				_message ? _message-&gt;fullId() : FullMsgId(),
+				_document,
+				DocumentSaveClickHandler::Mode::ToNewFile);
+		}
+	} else if (_photo &amp;&amp; _photo-&gt;hasVideo()) {
+		constexpr auto large = Data::PhotoSize::Large;
+		if (const auto bytes = _photoMedia-&gt;videoContent(large); !bytes.isEmpty()) {
+			//如果已经有视频文件，那么直接另存一份
+		} else {
+			_photo-&gt;loadVideo(large, fileOrigin());
+			_savePhotoVideoWhenLoaded = SavePhotoVideo::SaveAs;
+            //加载完保存
+		}
+	} else {
+		if (!_photo || !_photoMedia-&gt;loaded()) {
+			return;
+		}
+        //加载和保存照片
+}
+</code></pre>
+<p>这个函数适用于消息的右键菜单的另存为选项和图片视频查看浮层的另存为菜单选项。第一部分是处理下载文件的操作，第二部分是下载视频的操作，第三部分是下载照片的操作。后两个部分，也就是视频和照片是可能经过压缩的，与文件有所不同。</p>
+<p>进一步，我们来看 DocumentSaveClickHandler::SaveAndTrack 是如何工作的。</p>
+<pre><code class="language-cpp">void DocumentSaveClickHandler::SaveAndTrack(
+		FullMsgId itemId,
+		not_null&lt;DocumentData*&gt; document,
+		Mode mode) {
+	Save(itemId ? itemId : Data::FileOrigin(), document, mode);
+	if (document-&gt;loading() &amp;&amp; !document-&gt;loadingFilePath().isEmpty()) {
+		if (const auto item = document-&gt;owner().message(itemId)) {
+			Core::App().downloadManager().addLoading({
+				.item = item,
+				.document = document,
+			});
+		}
+	}
+}
+</code></pre>
+<p>SaveAndTrack 包含保存和跟踪下载进度两个部分。Save 函数内部不检查文件限制，仅仅是继续下载保存，同时这个文件被记录于 downloadManager。</p>
+<p>看到这，基本确认权限检查就是 	if (!hasCopyMediaRestriction()) 和 	if (showCopyMediaRestriction()) 做的，其他位置没有重复检查。</p>
+<pre><code class="language-cpp">bool OverlayWidget::hasCopyMediaRestriction() const {
+	return (_history &amp;&amp; !_history-&gt;peer-&gt;allowsForwarding())
+		|| (_message &amp;&amp; _message-&gt;forbidsSaving());
+}
+</code></pre>
+<p>hasCopyMediaRestriction() 检查了会话对象的 allowsForwarding() 以及消息的 forbidsSaving() 。</p>
+<pre><code class="language-cpp">bool OverlayWidget::showCopyMediaRestriction() {
+	if (!hasCopyMediaRestriction()) {
+		return false;
+	}
+	Ui::ShowMultilineToast({
+		.parentOverride = _widget,
+		.text = { _history-&gt;peer-&gt;isBroadcast()
+			? tr::lng_error_nocopy_channel(tr::now)
+			: tr::lng_error_nocopy_group(tr::now) },
+	});
+	return true;
+}
+</code></pre>
+<p>showCopyMediaRestriction() 则直接调用了 hasCopyMediaRestriction() 。也就是检查了会话对象的 allowsForwarding() 以及消息的 forbidsSaving() 。</p>
+<pre><code class="language-cpp">bool PeerData::allowsForwarding() const {
+	if (const auto user = asUser()) {
+		return true;
+	} else if (const auto channel = asChannel()) {
+		return channel-&gt;allowsForwarding();
+	} else if (const auto chat = asChat()) {
+		return chat-&gt;allowsForwarding();
+	}
+	return false;
+}
+</code></pre>
+<p>allowsForwarding() 首先检查是不是用户自己操作，用户自己是允许转发自己的消息的。对于其他对话和频道，继续检查具体的 allowsForwarding() 。</p>
+<pre><code class="language-cpp">bool ChannelData::allowsForwarding() const {
+	return !(flags() &amp; Flag::NoForwards);
+}
+</code></pre>
+<p>频道的权限检查就是频道的标记。</p>
+<pre><code class="language-cpp">bool ChatData::allowsForwarding() const {
+	return !(flags() &amp; Flag::NoForwards);
+}
+</code></pre>
+<p>同样的，会话的权限检查也是标记。那么会话的flag是在哪里初始化的呢？通过查找引用发现在多出使用了setflags。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670076911939.png" alt="" loading="lazy"><br>
+虽然能够找到set和add的使用位置，但是更应该关注那里使用了flag。使用的方法有两个：</p>
+<pre><code class="language-cpp">	[[nodiscard]] auto flags() const {
+		return _flags.current();
+	}
+	[[nodiscard]] auto flagsValue() const {
+		return _flags.value();
+	}
+</code></pre>
+<p>那么就要看看 current() 和 value()是怎么做的。</p>
+<pre><code class="language-cpp">	auto current() const {
+		return _value;
+	}
+	auto value() const {
+		return _changes.events_starting_with({
+			Type::from_raw(kEssential),
+			_value });
+	}
+</code></pre>
+<p>current 比较简单。value() 则还使用了事件流，比较复杂，不太理解。</p>
+<h1 id="限制复制消息文本">限制复制消息文本</h1>
+<p>复制消息的菜单文本是 Copy Text 。对应的翻译文本是 &quot;lng_context_copy_text&quot; = &quot;Copy Text&quot; 。借助VS查找使用位置的功能，出现 lng_context_copy_text 的代码包括<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670077600012.png" alt="" loading="lazy"></p>
+<pre><code class="language-cpp">				if (msg
+					&amp;&amp; !link
+					&amp;&amp; (view-&gt;hasVisibleText()
+						|| mediaHasTextForCopy
+						|| item-&gt;Has&lt;HistoryMessageLogEntryOriginal&gt;())) {
+					_menu-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+						copyContextText(itemId);
+					}, &amp;st::menuIconCopy);
+				}
+</code></pre>
+<p>此处的上下文表明当消息不是链接、有可见文本、媒体有文本、 item-&gt;Has<HistoryMessageLogEntryOriginal>() 的时候显示复制文本的菜单选项。最后这个has函数难以理解，暂时没看懂。<br>
+上边这部分代码仅仅是允许复制的情况下出现复制选项的条件，而不是故意的限制。故意的限制需要看更外层的判断。</p>
+<p>奇怪的是，向上查找限制条件的时候却没有找到判断代码。于是只能看看受限的条件下文本时什么，从那方面下手。不幸的是，受限的情况下桌面版的菜单没有出现受限的提示，而仅仅去掉了不允许的菜单，剩下复制链接和举报两个菜单。仔细观察，发现上面的代码来自于 admin文件，可能是仅限于会话中有管理权限的用户。我们继续查看其它位置的 lng_context_copy_text。</p>
+<pre><code class="language-cpp">				if (!item-&gt;isService()
+					&amp;&amp; view
+					&amp;&amp; actionText.isEmpty()
+					&amp;&amp; !hasCopyRestriction(item)
+					&amp;&amp; (view-&gt;hasVisibleText() || mediaHasTextForCopy)) {
+					_menu-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+						copyContextText(itemId);
+					}, &amp;st::menuIconCopy);
+				}
+</code></pre>
+<p>这是位于history_inner_widget.cpp 的代码。可以看到其中出现了 hasCopyRestriction() 这个限制检测。</p>
+<pre><code class="language-cpp">		if (!link
+			&amp;&amp; (view-&gt;hasVisibleText() || mediaHasTextForCopy)
+			&amp;&amp; !list-&gt;hasCopyRestriction(view-&gt;data())) {
+			const auto asGroup = (request.pointState != PointState::GroupPart);
+			result-&gt;addAction(tr::lng_context_copy_text(tr::now), [=] {
+				if (const auto item = owner-&gt;message(itemId)) {
+					if (!list-&gt;showCopyRestriction(item)) {
+						if (asGroup) {
+							if (const auto group = owner-&gt;groups().find(item)) {
+								TextUtilities::SetClipboardText(HistoryGroupText(group));
+								return;
+							}
+						}
+						TextUtilities::SetClipboardText(HistoryItemText(item));
+					}
+				}
+			}, &amp;st::menuIconCopy);
+		}
+</code></pre>
+<p>另一处的代码也使用了 hasCopyRestriction() 。</p>
+<pre><code class="language-cpp">bool ListWidget::hasCopyRestriction(HistoryItem *item) const {
+	return _delegate-&gt;listCopyRestrictionType(item)
+		!= CopyRestrictionType::None;
+}
+
+bool ListWidget::showCopyRestriction(HistoryItem *item) {
+	const auto type = _delegate-&gt;listCopyRestrictionType(item);
+	if (type == CopyRestrictionType::None) {
+		return false;
+	}
+	Ui::ShowMultilineToast({
+		.parentOverride = Window::Show(_controller).toastParent(),
+		.text = { (type == CopyRestrictionType::Channel)
+			? tr::lng_error_nocopy_channel(tr::now)
+			: tr::lng_error_nocopy_group(tr::now) },
+	});
+	return true;
+}
+</code></pre>
+<p>到这里，限制显示菜单的关键代码已经找到了。我们再去检查检查点击菜单之后的操作是否受到限制。其实可以直接看到复制文本就是简单的 TextUtilities::SetClipboardText ，想必应该不会有更复杂的检查了。</p>
+<p>不过注意，选择文本的时候的时候有一个另外的限制</p>
+<pre><code class="language-cpp">bool ListWidget::hasCopyRestrictionForSelected() const {
+	if (hasCopyRestriction()) {
+		return true;
+	}
+	if (_selected.empty()) {
+		if (_selectedTextItem &amp;&amp; _selectedTextItem-&gt;forbidsForward()) {
+			return true;
+		}
+	}
+	for (const auto &amp;[itemId, selection] : _selected) {
+		if (const auto item = session().data().message(itemId)) {
+			if (item-&gt;forbidsForward()) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+</code></pre>
+<h1 id="限制导出历史记录">限制导出历史记录</h1>
+<p>TG桌面版的一个特色功能是可以导出消息记录为HTML或者JSON格式。但是这个功能也受到限制条件约束。在允许导出的会话中，对应的菜单文本是 Export chat history ，而受限的情况下不显示这个菜单。所以我们首先查找这个字符串。然而找不到这个字符串，有可能因为这是桌面版独有的功能，没有做翻译吧。那么从同一个菜单列表里的其他选项来看，包括 leave channel ，可以从这里找菜单的渲染选项，对应的翻译函数是 lng_profile_leave_channel 。使用位置包括 info_profile_actions.cpp 和 window_peer_menu.cpp，在 window_peer_menu.cpp 文件中查找 export 找到了添加导出菜单的代码。具体代码分别如下。</p>
+<pre><code class="language-cpp">void Filler::addExportChat() {
+	if (_thread-&gt;asTopic() || !_peer-&gt;canExportChatHistory()) {
+		return;
+	}
+	const auto peer = _peer;
+	_addAction(
+		tr::lng_profile_export_chat(tr::now),
+		[=] { PeerMenuExportChat(peer); },
+		&amp;st::menuIconExport);
+}
+
+bool PeerData::canExportChatHistory() const {
+	if (isRepliesChat() || !allowsForwarding()) {
+		return false;
+	} else if (const auto channel = asChannel()) {
+		if (!channel-&gt;amIn() &amp;&amp; channel-&gt;invitePeekExpires()) {
+			return false;
+		}
+	}
+	for (const auto &amp;block : _owner-&gt;history(id)-&gt;blocks) {
+		for (const auto &amp;message : block-&gt;messages) {
+			if (!message-&gt;data()-&gt;isService()) {
+				return true;
+			}
+		}
+	}
+	if (const auto from = migrateFrom()) {
+		return from-&gt;canExportChatHistory();
+	}
+	return false;
+}
+</code></pre>
+<p>如果会话是 topic 那么不允许导出记录，这可能是因为 topic 功能是新加的，还没有做导出的功能，不过我感觉目前的发展态势很可能不会有导出 topic 的设计，回头可以试试能不能导出 topic。canExportChatHistory() 不允许回复评论的会话导出、不允许不能转发的会话的导出、不允许自己没加入的channel导出、允许非官方服务会话导出，剩下的 migrateFrom() 不太清楚是什么，而其余情况则不允许导出。目前为止看的是如何限制了显示导出菜单。</p>
+<p>再来看看点击到处菜单之后是否有限制。</p>
+<pre><code class="language-cpp">void PeerMenuExportChat(not_null&lt;PeerData*&gt; peer) {
+	Core::App().exportManager().start(peer);
+}
+
+
+void Manager::start(
+		not_null&lt;Main::Session*&gt; session,
+		const MTPInputPeer &amp;singlePeer) {
+	if (_panel) {
+		_panel-&gt;activatePanel();
+		return;
+	}
+	_controller = std::make_unique&lt;Controller&gt;(
+		&amp;session-&gt;mtp(),
+		singlePeer);
+	_panel = std::make_unique&lt;View::PanelController&gt;(
+		session,
+		_controller.get());
+	session-&gt;account().sessionChanges(
+	) | rpl::filter([=](Main::Session *value) {
+		return (value != session);
+	}) | rpl::start_with_next([=] {
+		stop();
+	}, _panel-&gt;lifetime());
+
+	_viewChanges.fire(_panel.get());
+
+	_panel-&gt;stopRequests(
+	) | rpl::start_with_next([=] {
+		LOG((&quot;Export Info: Stop requested.&quot;));
+		stop();
+	}, _controller-&gt;lifetime());
+}
+</code></pre>
+<p>看到其中没有额外检测限制。不过似乎export功能是额外的网络通信方法，而不是直接掉用抓取消息的方法，所以有可能服务器端会检测并限制。具体的 操作是 _controller 对象继续完成。</p>
+<pre><code class="language-cpp">void ControllerObject::exportNext() {
+	if (++_stepIndex &gt;= _steps.size()) {
+		if (ioCatchError(_writer-&gt;finish())) {
+			return;
+		}
+		_api.finishExport([=] {
+			setFinishedState();
+		});
+		return;
+	}
+
+	const auto step = _steps[_stepIndex];
+	switch (step) {
+	case Step::Initializing: return initialize();
+	case Step::DialogsList: return collectDialogsList();
+	case Step::PersonalInfo: return exportPersonalInfo();
+	case Step::Userpics: return exportUserpics();
+	case Step::Contacts: return exportContacts();
+	case Step::Sessions: return exportSessions();
+	case Step::OtherData: return exportOtherData();
+	case Step::Dialogs: return exportDialogs();
+	}
+	Unexpected(&quot;Step in ControllerObject::exportNext.&quot;);
+}
+
+void ControllerObject::initialize() {
+	setState(stateInitializing());
+	_api.startExport(_settings, &amp;_stats, [=](ApiWrap::StartInfo info) {
+		initialized(info);
+	});
+}
+</code></pre>
+<p>果然使用的是单独的 api 。</p>
+<h1 id="修改的部分">修改的部分</h1>
+<p>最后附上修改过程中的git patch</p>
+<pre><code>Index: Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp
+--- a/Telegram/SourceFiles/history/view/history_view_list_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/history/view/history_view_list_widget.cpp	(date 1711436324994)
+@@ -1425,73 +1425,31 @@
+ }
+ 
+ bool ListWidget::hasCopyRestriction(HistoryItem *item) const {
+-	return _delegate-&gt;listCopyRestrictionType(item)
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ bool ListWidget::hasCopyMediaRestriction(not_null&lt;HistoryItem*&gt; item) const {
+-	return _delegate-&gt;listCopyMediaRestrictionType(item)
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ bool ListWidget::showCopyRestriction(HistoryItem *item) {
+-	const auto type = _delegate-&gt;listCopyRestrictionType(item);
+-	if (type == CopyRestrictionType::None) {
+-		return false;
+-	}
+-	_controller-&gt;showToast((type == CopyRestrictionType::Channel)
+-		? tr::lng_error_nocopy_channel(tr::now)
+-		: tr::lng_error_nocopy_group(tr::now));
+-	return true;
++	return false;
+ }
+ 
+ bool ListWidget::showCopyMediaRestriction(not_null&lt;HistoryItem*&gt; item) {
+-	const auto type = _delegate-&gt;listCopyMediaRestrictionType(item);
+-	if (type == CopyRestrictionType::None) {
+-		return false;
+-	}
+-	_controller-&gt;showToast((type == CopyRestrictionType::Channel)
+-		? tr::lng_error_nocopy_channel(tr::now)
+-		: tr::lng_error_nocopy_group(tr::now));
+-	return true;
++	return false;
+ }
+ 
+ bool ListWidget::hasCopyRestrictionForSelected() const {
+-	if (hasCopyRestriction()) {
+-		return true;
+-	}
+-	if (_selected.empty()) {
+-		if (_selectedTextItem &amp;&amp; _selectedTextItem-&gt;forbidsForward()) {
+-			return true;
+-		}
+-	}
+-	for (const auto &amp;[itemId, selection] : _selected) {
+-		if (const auto item = session().data().message(itemId)) {
+-			if (item-&gt;forbidsForward()) {
+-				return true;
+-			}
+-		}
+-	}
+ 	return false;
+ }
+ 
+ bool ListWidget::showCopyRestrictionForSelected() {
+-	if (_selected.empty()) {
+-		if (_selectedTextItem &amp;&amp; showCopyRestriction(_selectedTextItem)) {
+-			return true;
+-		}
+-	}
+-	for (const auto &amp;[itemId, selection] : _selected) {
+-		if (showCopyRestriction(session().data().message(itemId))) {
+-			return true;
+-		}
+-	}
+ 	return false;
+ }
+ 
+ bool ListWidget::hasSelectRestriction() const {
+-	return _delegate-&gt;listSelectRestrictionType()
+-		!= CopyRestrictionType::None;
++	return false;
+ }
+ 
+ auto ListWidget::findViewForPinnedTracking(int top) const
+Index: Telegram/SourceFiles/data/data_channel.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_channel.cpp b/Telegram/SourceFiles/data/data_channel.cpp
+--- a/Telegram/SourceFiles/data/data_channel.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_channel.cpp	(date 1711436193284)
+@@ -590,7 +590,7 @@
+ }
+ 
+ bool ChannelData::allowsForwarding() const {
+-	return !(flags() &amp; Flag::NoForwards);
++	return true;
+ }
+ 
+ bool ChannelData::canViewMembers() const {
+Index: Telegram/SourceFiles/data/data_peer.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_peer.cpp b/Telegram/SourceFiles/data/data_peer.cpp
+--- a/Telegram/SourceFiles/data/data_peer.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_peer.cpp	(date 1711436159065)
+@@ -1074,14 +1074,7 @@
+ }
+ 
+ bool PeerData::allowsForwarding() const {
+-	if (const auto user = asUser()) {
+-		return true;
+-	} else if (const auto channel = asChannel()) {
+-		return channel-&gt;allowsForwarding();
+-	} else if (const auto chat = asChat()) {
+-		return chat-&gt;allowsForwarding();
+-	}
+-	return false;
++	return true;
+ }
+ 
+ Data::RestrictionCheckResult PeerData::amRestricted(
+Index: Telegram/SourceFiles/data/data_chat.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/data/data_chat.cpp b/Telegram/SourceFiles/data/data_chat.cpp
+--- a/Telegram/SourceFiles/data/data_chat.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/data/data_chat.cpp	(date 1711436207659)
+@@ -64,7 +64,7 @@
+ }
+ 
+ bool ChatData::allowsForwarding() const {
+-	return !(flags() &amp; Flag::NoForwards);
++	return true;
+ }
+ 
+ bool ChatData::canEditInformation() const {
+Index: Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp	(date 1711424890852)
+@@ -1037,13 +1037,7 @@
+ }
+ 
+ bool OverlayWidget::hasCopyMediaRestriction(bool skipPremiumCheck) const {
+-	if (const auto story = _stories ? _stories-&gt;story() : nullptr) {
+-		return skipPremiumCheck
+-			? !story-&gt;canDownloadIfPremium()
+-			: !story-&gt;canDownloadChecked();
+-	}
+-	return (_history &amp;&amp; !_history-&gt;peer-&gt;allowsForwarding())
+-		|| (_message &amp;&amp; _message-&gt;forbidsSaving());
++	return false;
+ }
+ 
+ bool OverlayWidget::showCopyMediaRestriction(bool skipPRemiumCheck) {
+Index: Telegram/SourceFiles/history/history_inner_widget.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+&lt;+&gt;UTF-8
+===================================================================
+diff --git a/Telegram/SourceFiles/history/history_inner_widget.cpp b/Telegram/SourceFiles/history/history_inner_widget.cpp
+--- a/Telegram/SourceFiles/history/history_inner_widget.cpp	(revision 89c6bb163eac63d5688106f7b34d9ede49b914e5)
++++ b/Telegram/SourceFiles/history/history_inner_widget.cpp	(date 1711424890841)
+@@ -2760,7 +2760,7 @@
+ 
+ bool HistoryInner::hasCopyMediaRestriction(
+ 		not_null&lt;HistoryItem*&gt; item) const {
+-	return hasCopyRestriction(item) || item-&gt;forbidsSaving();
++	return false;
+ }
+ 
+ bool HistoryInner::showCopyRestriction(HistoryItem *item) {
+
+</code></pre>
+<h1 id="windows编译环境和注意事项">Windows编译环境和注意事项</h1>
+<ul>
+<li>尽可能不要使用GUI IDE来编译，比如使用在native控制台窗口中的的devenv telegram.sln /Build &quot;Release|x64&quot; /Project Telegram命令来编译最终的可执行文件而不是使用Visual Studio打开sln项目去点击菜单中的build按钮，似乎GUI环境会做出一些莫名其妙的改变导致代码出问题。</li>
+<li>如果需要修改代码，不要使用VS，而使用JetBrains的工具或者任何其他不会有副作用的编辑器来编辑代码。</li>
+<li>编译环境直接搜索下载&quot;Windows Dev VMware Image&quot;，使用这个虚拟开发环境是最方便的，从而避免系统没有调整成unicode或者区域设置等问题，也避免visual studio安装麻烦，不过注意虚拟环境中似乎缺少C++抽象模板库，需要在Visual Studio Installer中修改，在individual component一栏中找到对应版本的ATL安装，否则可能会有依赖库在前期创建项目的时候无法编译。</li>
+<li>代理设置，要配置好控制台和git的代理，并且代理规则至少是绕过大陆模式，而不是黑名单模式。</li>
+<li>内存问题，编译MinSizeRel需要比较多的内存，虚拟机8GB编译失败，但是能编译普通的Release。尝试将虚拟机的内存调大到13.4GB（宿主机16GB内存的情况下推荐的最大内存）能够编译MinSizeRel。</li>
+</ul>
+<h1 id="mac编译环境和注意事项">Mac编译环境和注意事项</h1>
+<p>Mac上比较简单，因为brew能够帮很多忙，保证网络良好的情况下官方的命令已经比较简单了，但是有以下几个麻烦。</p>
+<ul>
+<li>代理设置，要配置好控制台和git的代理，并且代理规则至少是绕过大陆模式，而不是黑名单模式。</li>
+<li>在arm架构的Mac上编译libde265的时候因为第三方库没有找到x86版本而不能编译，去prepare.py中寻找相关命令，去掉“X86_64;arm64”中的X86_64即可，如果遇到问题，参考prepare.py手动运行命令尝试解决。</li>
+<li>不要使用XCode编辑代码，最好根本不要使用XCode的GUI打开项目，可能会出错。</li>
+<li>不要使用Mac上的XCode GUI编译，而是在有xcodeproject文件的目录中使用命令 xcodebuild -scheme Telegram build -configuration MinSizeRel来编译，似乎XCode的GUI也会导致一些问题。</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/bian-yi-telegram-desktop-ban/">
+                  <h3 class="post-title">
+                    编译Telegram Desktop版
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

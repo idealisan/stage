@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Telegram是如何识别设备型号的 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在Telegram账号登入新的设备的时候，会在旧设备的对话窗口中看到一条消息，提示有新的设备登入，比如我在使用Python实现的Telegram Media Downlaoder的时候，发现这一客户端被识别为CPython 3.8，我感到不..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Telegram是如何识别设备型号的</h2>
+            <div class="post-date">2024-03-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>在Telegram账号登入新的设备的时候，会在旧设备的对话窗口中看到一条消息，提示有新的设备登入，比如我在使用Python实现的Telegram Media Downlaoder的时候，发现这一客户端被识别为CPython 3.8，我感到不安，因为这一标识和官方客户端不同，这一标记增加了风控风险。尽管我相信不滥用的情况下应当不会对帐号有太大风险，但是我还是希望尽可能模拟原始客户端。于是我开始寻找Telegram是如何识别客户端信息的。</p>
+<p>我观察Telegram Media Downlaoder的代码发现其中调用了pyrogram的库，这名字一看就感觉和telegram有关系，经过搜索发现这确实是一个python版本的telegram客户端库。由于在Telegram Media Downlaoder的代码中没有发现CPython相关的内容，于是我认为很可能是pyrogram透露了客户端信息。我直接打开了site-packages查看pyrogram的代码，找不到CPython相关的字符串。但是我知道CPython和版本号是运行时环境信息，与测试开始查找用于检测运行时环境信息的代码。首先是sys.version_info，这一信息不包含CPython，sys.version也不包含CPython，不过好在我认识到我应该搜索sys这一关键字，程序中调用sys的应该不多，而其中一定包含我想要的CPython信息。全局搜索sys发现在pyrogram的客户端构造方法中，有下面三行代码决定了登陆提示里边的设备信息：</p>
+<pre><code class="language-ini">APP_VERSION = f&quot;Pyrogram {__version__}&quot;
+DEVICE_MODEL = f&quot;{platform.python_implementation()} {platform.python_version()}&quot;
+SYSTEM_VERSION = f&quot;{platform.system()} {platform.release()}&quot;
+</code></pre>
+<p>第一行是App版本，是一个字面量；第二行是CPython3.8对应的信息；第三行是宿主机Winodws系统的信息。这三点结合起来基本能够覆盖登陆信息里的内容了。要修改登录信息只需要在构造pyrogram客户端的时候指定这三个参数就好：</p>
+<pre><code class="language-ini">    app_version: str = APP_VERSION,
+    device_model: str = DEVICE_MODEL,
+    system_version: str = SYSTEM_VERSION,
+</code></pre>
+<p>另外，我使用的API_ID和API_HASH是直接从Telegram Web源代码里取得的，那么我应该将其模仿为web客户端。安卓、桌面客户端源代码里删除了API_ID和API_HASH，水池kdweb客户端开发者是不小心还是心态开放。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/windows-shang-shi-yong-chao-fen-bian-lu-zhuo-mian-lai-xiang-yong-ping-hua-zi-ti/">
+                  <h3 class="post-title">
+                    Windows上使用超分辨率桌面来享用平滑字体
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

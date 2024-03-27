@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>我的服务器又被封，tcping简单使用方法 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="不幸，服务器端口被封
+非常不幸，即便使用了http伪装，我的SSR服务器端口还是被封了。使用的检测方法是首先使用国内站长工具端口扫描http://tool.chinaz.com/port/，紧接着用国外端口扫描工具 https://www...." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">我的服务器又被封，tcping简单使用方法</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="不幸服务器端口被封">不幸，服务器端口被封</h2>
+<p>非常不幸，即便使用了http伪装，我的SSR服务器端口还是被封了。使用的检测方法是首先使用国内站长工具端口扫描http://tool.chinaz.com/port/，紧接着用国外端口扫描工具 https://www.yougetsignal.com/tools/open-ports/ 。无奈的发现端口确实被封了。</p>
+<p>紧接着我更换了端口，不到半天的时间，新的端口再次被封。</p>
+<p>再换端口，发现服务器IP开始不稳定了，SSH连接已无法建立。</p>
+<p>稍后重试，SSH和web服务已经可以连接。</p>
+<h2 id="学会了使用tcping">学会了使用tcping</h2>
+<p>在https://elifulkerson.com/projects/tcping.php 下载了tcping的windows版本，学习使用它检查服务器特定的TCP端口。其使用格式是：</p>
+<pre><code class="language-shell">$ tcping example.com 8080
+</code></pre>
+<p>不是像URL一样指明host和端口，其间用冒号分隔，而是用空格分隔。</p>
+<p>判断IP被封的方法很简单，就是ping不通那基本上就是IP被封了。最好再用其他的网站ping以下，如果都ping不通那就被封了。</p>
+<h2 id="下一步可能再次更换服务器ip">下一步，可能再次更换服务器IP</h2>
+<p>已经更换过太多次IP了，但是实在是没有别的办法。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/shi-yong-mac-m1-xin-pian-de-zhe-duan-shi-jian-ti-yan-ji-lu/">
+                  <h3 class="post-title">
+                    使用 Mac M1 芯片的这段时间体验记录
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

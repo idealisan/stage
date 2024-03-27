@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>安卓ListView上下留白正确做法 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="https://stackoverflow.com/questions/3953647/adding-empty-space-to-end-of-listview
+The easiest way to add space is to add..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">安卓ListView上下留白正确做法</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <p><a href="https://stackoverflow.com/questions/3953647/adding-empty-space-to-end-of-listview?newreg=462d66e5712f42ef8e62c88d5186240d">https://stackoverflow.com/questions/3953647/adding-empty-space-to-end-of-listview</a></p>
+<p>The easiest way to add space is to add padding in xml and set <code>clipToPadding:&quot;false&quot;</code>.</p>
+<h3 id="for-recyclerview">For <code>RecyclerView</code></h3>
+<pre><code>&lt;android.support.v7.widget.RecyclerView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:paddingTop=&quot;20dp&quot;
+android:paddingBottom=&quot;20dp&quot;
+android:clipToPadding=&quot;false&quot;/&gt;
+</code></pre>
+<h3 id="for-listview">For <code>ListView</code></h3>
+<pre><code>&lt;ListView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:paddingTop=&quot;20dp&quot;
+android:paddingBottom=&quot;20dp&quot;
+android:clipToPadding=&quot;false&quot;/&gt;
+</code></pre>
+<h3 id="and-same-goes-for-the-scrollview">And same goes for the <code>ScrollView</code></h3>
+<pre><code>&lt;ScrollView
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:paddingTop=&quot;20dp&quot;
+android:paddingBottom=&quot;20dp&quot;
+android:clipToPadding=&quot;false&quot;/&gt;
+</code></pre>
+<p>This specifically adds the blank space to top and bottom but hide the space when you scroll the view.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/an-zhuo-shou-ji-xiang-ce-xian-shi-bu-quan-de-jie-jue-ban-fa/">
+                  <h3 class="post-title">
+                    安卓手机相册显示不全的解决办法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

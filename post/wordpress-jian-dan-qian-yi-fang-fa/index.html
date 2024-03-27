@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>WordPress简单迁移方法 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="迁移WordPress的简单方法
+在新机器上安装WordPress的全新副本
+用过WordPress的应该都知道怎么安装。
+从旧的WordPress上导出文章、页面等数据
+在站点管理的“工具 - 导出”里边可以导出xml格式的数据，建议直接..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">WordPress简单迁移方法</h2>
+            <div class="post-date">2021-11-23</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="迁移wordpress的简单方法">迁移WordPress的简单方法</h1>
+<h2 id="在新机器上安装wordpress的全新副本">在新机器上安装WordPress的全新副本</h2>
+<p>用过WordPress的应该都知道怎么安装。</p>
+<h2 id="从旧的wordpress上导出文章-页面等数据">从旧的WordPress上导出文章、页面等数据</h2>
+<p>在站点管理的“工具 - 导出”里边可以导出xml格式的数据，建议直接选择多有内容，然后下载导出的文件。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648597322.png" alt="" loading="lazy"></p>
+<h2 id="在新机器上安装并运行导入工具">在新机器上安装并运行导入工具</h2>
+<p><img src="https://pages.gp.idealisan.com/post-images/1637648607482.png" alt="" loading="lazy"><br>
+选择并导入xml文件，不需要选择下载附件，下载基本上不会成功，附件稍后通过手动复制的方法导入。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1637648613341.png" alt="" loading="lazy"></p>
+<h2 id="导入图片等文件附件">导入图片等文件（附件）</h2>
+<p>把旧机器上的wordpress/wp-content文件夹复制并合并到到新机器上的相同文件夹。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/hui-pu-shou-ke-hu-ji-tong-dian-zi-dong-qi-dong-de-she-zhi-fang-fa/">
+                  <h3 class="post-title">
+                    惠普瘦客户机通电自动启动的设置方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

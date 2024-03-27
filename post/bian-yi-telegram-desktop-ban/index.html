@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>编译Telegram Desktop版 | Idealisan Pages of Tech</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://pages.gp.idealisan.com/favicon.ico?v=1711502844101">
+<link rel="stylesheet" href="https://pages.gp.idealisan.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在GitHub上有不止一个telegram的仓库，其中有一些是已经废弃旧版本，本文使用的是这个链接 https://github.com/telegramdesktop/tdesktop 的编译说明。
+具体而言，大体将会按照 https:/..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://pages.gp.idealisan.com">
+        <img src="https://pages.gp.idealisan.com/images/avatar.png?v=1711502844101" class="site-logo">
+        <h1 class="site-title">Idealisan Pages of Tech</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Do something.
+    </div>
+    <div class="site-footer">
+          <script data-ad-client="ca-pub-3862828868888915" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> | <a class="rss" href="https://pages.gp.idealisan.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">编译Telegram Desktop版</h2>
+            <div class="post-date">2022-12-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>在GitHub上有不止一个telegram的仓库，其中有一些是已经废弃旧版本，本文使用的是这个链接 https://github.com/telegramdesktop/tdesktop 的编译说明。</p>
+<p>具体而言，大体将会按照 https://github.com/telegramdesktop/tdesktop/blob/dev/docs/building-win-x64.md 的桌面版说明书配置编译环境等准备工作。</p>
+<p>首先，我们需要准备一个文件夹位置用来放置需要的源代码和必要的工具文件。保险起见，我是用一个路径中不带空格的文件夹，例如 E:\codeBase\tg-build-path 文件夹，代表官方说明书中的 BuildPath 。</p>
+<p>由于编译过程要求控制台环境使用UTF8编码，而中文版Windows默认为GBK，为了解决这个问题，控制面板的区域设置中，开启“使用utf8提供全球语言支持”。经过实测，必须更改这个全局设置，而不是使用网上其他的设置控制台编码的方法，比如CHCP命令。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670068703068.png" alt="" loading="lazy"></p>
+<p>接下来是按照要求安装编译工具。我以前编译过一个旧版本的，那时候使用的第三方工具比现在要多一些。现在的版本已经方便不少了。我很推荐使用 scoop https://scoop.sh/ 安装这些开源的工具，scoop 会自动配置path环境变量，很方便。似乎不必严格按照官方的说明文档要求将这些工具放在 BuildPath\ThirdParty 。</p>
+<ul>
+<li>Visual Studio 2022 with 10.0.22000.0 SDK 。老老实实安装VS这个巨无霸，安装的时候选择C++桌面开发的板块，并注意选择SDK版本即可。</li>
+<li>Python 3.10 。实际上不一定要版本3.10，我记得以前编译的时候用的应该不是这么新的版本，同时也不用完全按照要求放在 BuildPath\ThirdParty 之中，只需要保证环境变量 path 中能够找到并运行python即可。我此时使用的是 Python 3.8.2 。</li>
+<li>CMake 3.21 or later 。由于我曾经安装 Git、MinGW 等工具的时候已经安装过 CMake ，此处我使用的是 cmake version 3.24.2 。</li>
+<li>Git 。 使用scoop或者Git官方安装包安装均可，其实很可能已经安装了git，能够在path中找到即可。此处我使用的是 git version 2.33.0.windows.2 。</li>
+</ul>
+<p>为了方便地使用 x64 Native Tools Command Prompt for VS 2022.bat ，我将开始菜单中的快捷方式 x64 Native Tools Command Prompt for VS 2022 复制了一份到 E:\codeBase\tg-build-path ，并且注意在快捷方式属性中修改起始位置为 E:\codeBase\tg-build-path 。<br>
+<img src="https://pages.gp.idealisan.com/post-images/1670054661890.png" alt="" loading="lazy"></p>
+<p>双击复制的快捷方式，在命令行窗口里执行命令安装要求的python包。</p>
+<pre><code class="language-shell">python -m pip install pywin32 six
+</code></pre>
+<p>同样双击快捷方式，然后克隆代码。</p>
+<pre><code>git clone --recursive https://github.com/telegramdesktop/tdesktop.git
+</code></pre>
+<p>因为要递归克隆多个代码库，这可能需要一会，不过我的网速还不错，最快的时候能达到100Mbps，还可以接受速度。如果因网络问题遇到困难，请检查自己连接github的能力。</p>
+<p>克隆完毕后，继续在命令行窗口中执行下面的命令来生成 Windows 平台的代码和VS项目。生成的过程将会耗费很长时间，似乎这是一个单线程的操作，非常慢。</p>
+<pre><code>tdesktop\Telegram\build\prepare\win.bat
+</code></pre>
+<p>可以利用这个时间去申请一对 api_id 和 api_hash。参照官方说明 https://github.com/telegramdesktop/tdesktop/blob/dev/docs/building-win-x64.md#obtain-your-api-credentials 。</p>
+<pre><code class="language-shell">configure.bat x64 -D TDESKTOP_API_ID=your_api_id -D TDESKTOP_API_HASH=your_api_hash
+</code></pre>
+<p>如果没有出现问题，可以用VS打开 E:\codeBase\tg-build-path\tdesktop\out\Telegram.sln ，然后在菜单里使用  Build &gt; Build Telegram (Debug and Release configurations) 编译了。编译过程也要很久。编译生成的程序在 out 文件夹里。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://pages.gp.idealisan.com/post/cong-sheng-cheng-ssh-key-dao-shi-yong-github/">
+                  <h3 class="post-title">
+                    从生成SSH Key到使用Github
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
